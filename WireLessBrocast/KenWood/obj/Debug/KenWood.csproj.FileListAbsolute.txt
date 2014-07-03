@@ -1,0 +1,4 @@
+D:\backd\防洪\WireLessBrocast\KenWood\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\KenWood\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\KenWood\obj\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\KenWood\obj\Debug\KenWood.pdb

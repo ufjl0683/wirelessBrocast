@@ -1,0 +1,11 @@
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Test.exe
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Test.pdb
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Recoder.dll
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Recoder.pdb
+D:\backd\防洪\WireLessBrocast\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WireLessBrocast\Test\obj\Debug\Test.exe
+D:\backd\防洪\WireLessBrocast\Test\obj\Debug\Test.pdb
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Controller.exe
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Controller.pdb

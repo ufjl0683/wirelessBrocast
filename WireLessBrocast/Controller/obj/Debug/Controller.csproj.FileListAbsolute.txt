@@ -1,0 +1,9 @@
+D:\backd\防洪\WireLessBrocast\Controller\obj\Debug\Controller.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\Controller.exe
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\Controller.pdb
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\Recoder.dll
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\Recoder.pdb
+D:\backd\防洪\WireLessBrocast\Controller\obj\Debug\Controller.exe
+D:\backd\防洪\WireLessBrocast\Controller\obj\Debug\Controller.pdb

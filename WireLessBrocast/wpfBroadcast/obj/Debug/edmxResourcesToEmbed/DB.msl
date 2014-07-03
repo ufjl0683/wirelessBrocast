@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BroadcastModelStoreContainer" CdmEntityContainer="BroadcastEntities">
+    <EntitySetMapping Name="tblUser">
+      <EntityTypeMapping TypeName="BroadcastModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserGroup">
+      <EntityTypeMapping TypeName="BroadcastModel.tblUserGroup">
+        <MappingFragment StoreEntitySet="tblUserGroup">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSIte">
+      <EntityTypeMapping TypeName="BroadcastModel.tblSIte">
+        <MappingFragment StoreEntitySet="tblSIte">
+          <ScalarProperty Name="DoorOpen" ColumnName="DoorOpen" />
+          <ScalarProperty Name="Speaker" ColumnName="Speaker" />
+          <ScalarProperty Name="Amp" ColumnName="Amp" />
+          <ScalarProperty Name="DC" ColumnName="DC" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+          <ScalarProperty Name="Comm" ColumnName="Comm" />
+          <ScalarProperty Name="SITE_NAME" ColumnName="SITE_NAME" />
+          <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSysLog">
+      <EntityTypeMapping TypeName="BroadcastModel.tblSysLog">
+        <MappingFragment StoreEntitySet="tblSysLog">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EndTimeStamp" ColumnName="EndTimeStamp" />
+          <ScalarProperty Name="StartTimeStamp" ColumnName="StartTimeStamp" />
+          <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSchedule">
+      <EntityTypeMapping TypeName="BroadcastModel.tblSchedule">
+        <MappingFragment StoreEntitySet="tblSchedule">
+          <ScalarProperty Name="IsMute" ColumnName="IsMute" />
+          <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRecordSound">
+      <EntityTypeMapping TypeName="BroadcastModel.tblRecordSound">
+        <MappingFragment StoreEntitySet="tblRecordSound">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

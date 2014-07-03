@@ -1,0 +1,5 @@
+D:\backd\防洪\WirelessTest\WirelessTest\bin\Debug\WirelessTest.exe
+D:\backd\防洪\WirelessTest\WirelessTest\bin\Debug\WirelessTest.pdb
+D:\backd\防洪\WirelessTest\WirelessTest\obj\Debug\WirelessTest.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WirelessTest\WirelessTest\obj\Debug\WirelessTest.exe
+D:\backd\防洪\WirelessTest\WirelessTest\obj\Debug\WirelessTest.pdb

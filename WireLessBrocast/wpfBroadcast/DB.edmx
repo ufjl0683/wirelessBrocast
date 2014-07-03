@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BroadcastModelStoreContainer">
+          <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblSchedule_tblRecordSound" Association="BroadcastModel.Store.FK_tblSchedule_tblRecordSound">
+            <End Role="tblRecordSound" EntitySet="tblRecordSound" />
+            <End Role="tblSchedule" EntitySet="tblSchedule" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblRecordSound">
+          <Key>
+            <PropertyRef Name="PlayIndex" />
+          </Key>
+          <Property Name="PlayIndex" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSchedule">
+          <Key>
+            <PropertyRef Name="TimeStamp" />
+          </Key>
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="PlayIndex" Type="int" Nullable="false" />
+          <Property Name="IsMute" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSIte">
+          <Key>
+            <PropertyRef Name="SITE_ID" />
+          </Key>
+          <Property Name="SITE_ID" Type="int" Nullable="false" />
+          <Property Name="SITE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comm" Type="bit" Nullable="false" />
+          <Property Name="AC" Type="bit" Nullable="false" />
+          <Property Name="DC" Type="bit" Nullable="false" />
+          <Property Name="Amp" Type="bit" Nullable="false" />
+          <Property Name="Speaker" Type="bit" Nullable="false" />
+          <Property Name="DoorOpen" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSysLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SITE_ID" Type="int" Nullable="false" />
+          <Property Name="StartTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="EndTimeStamp" Type="datetime" />
+          <Property Name="Type" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUserGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_tblSchedule_tblRecordSound">
+          <End Role="tblRecordSound" Type="BroadcastModel.Store.tblRecordSound" Multiplicity="1" />
+          <End Role="tblSchedule" Type="BroadcastModel.Store.tblSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecordSound">
+              <PropertyRef Name="PlayIndex" />
+            </Principal>
+            <Dependent Role="tblSchedule">
+              <PropertyRef Name="PlayIndex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BroadcastModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="BroadcastEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tblUser" EntityType="BroadcastModel.tblUser" />
+          <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.tblUserGroup" />
+          <EntitySet Name="tblSIte" EntityType="BroadcastModel.tblSIte" />
+          <EntitySet Name="tblSysLog" EntityType="BroadcastModel.tblSysLog" />
+          <EntitySet Name="tblSchedule" EntityType="BroadcastModel.tblSchedule" />
+          <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.tblRecordSound" />
+          <AssociationSet Name="FK_tblSchedule_tblRecordSound" Association="BroadcastModel.FK_tblSchedule_tblRecordSound">
+            <End Role="tblRecordSound" EntitySet="tblRecordSound" />
+            <End Role="tblSchedule" EntitySet="tblSchedule" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblUserGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblSIte">
+          <Key>
+            <PropertyRef Name="SITE_ID" />
+          </Key>
+          <Property Type="Int32" Name="SITE_ID" Nullable="false" />
+          <Property Type="String" Name="SITE_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Comm" Nullable="false" />
+          <Property Type="Boolean" Name="AC" Nullable="false" />
+          <Property Type="Boolean" Name="DC" Nullable="false" />
+          <Property Type="Boolean" Name="Amp" Nullable="false" />
+          <Property Type="Boolean" Name="Speaker" Nullable="false" />
+          <Property Type="Boolean" Name="DoorOpen" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSysLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="SITE_ID" Nullable="false" />
+          <Property Type="DateTime" Name="StartTimeStamp" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndTimeStamp" Precision="3" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSchedule">
+          <Key>
+            <PropertyRef Name="TimeStamp" />
+          </Key>
+          <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="PlayIndex" Nullable="false" />
+          <Property Type="Boolean" Name="IsMute" Nullable="false" />
+          <NavigationProperty Name="tblRecordSound" Relationship="BroadcastModel.FK_tblSchedule_tblRecordSound" FromRole="tblSchedule" ToRole="tblRecordSound" />
+        </EntityType>
+        <EntityType Name="tblRecordSound">
+          <Key>
+            <PropertyRef Name="PlayIndex" />
+          </Key>
+          <Property Type="Int32" Name="PlayIndex" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblSchedule" Relationship="BroadcastModel.FK_tblSchedule_tblRecordSound" FromRole="tblRecordSound" ToRole="tblSchedule" />
+        </EntityType>
+        <Association Name="FK_tblSchedule_tblRecordSound">
+          <End Type="BroadcastModel.tblRecordSound" Role="tblRecordSound" Multiplicity="1" />
+          <End Type="BroadcastModel.tblSchedule" Role="tblSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecordSound">
+              <PropertyRef Name="PlayIndex" />
+            </Principal>
+            <Dependent Role="tblSchedule">
+              <PropertyRef Name="PlayIndex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BroadcastModelStoreContainer" CdmEntityContainer="BroadcastEntities">
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="BroadcastModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserGroup">
+            <EntityTypeMapping TypeName="BroadcastModel.tblUserGroup">
+              <MappingFragment StoreEntitySet="tblUserGroup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSIte">
+            <EntityTypeMapping TypeName="BroadcastModel.tblSIte">
+              <MappingFragment StoreEntitySet="tblSIte">
+                <ScalarProperty Name="DoorOpen" ColumnName="DoorOpen" />
+                <ScalarProperty Name="Speaker" ColumnName="Speaker" />
+                <ScalarProperty Name="Amp" ColumnName="Amp" />
+                <ScalarProperty Name="DC" ColumnName="DC" />
+                <ScalarProperty Name="AC" ColumnName="AC" />
+                <ScalarProperty Name="Comm" ColumnName="Comm" />
+                <ScalarProperty Name="SITE_NAME" ColumnName="SITE_NAME" />
+                <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSysLog">
+            <EntityTypeMapping TypeName="BroadcastModel.tblSysLog">
+              <MappingFragment StoreEntitySet="tblSysLog">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EndTimeStamp" ColumnName="EndTimeStamp" />
+                <ScalarProperty Name="StartTimeStamp" ColumnName="StartTimeStamp" />
+                <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSchedule">
+            <EntityTypeMapping TypeName="BroadcastModel.tblSchedule">
+              <MappingFragment StoreEntitySet="tblSchedule">
+                <ScalarProperty Name="IsMute" ColumnName="IsMute" />
+                <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRecordSound">
+            <EntityTypeMapping TypeName="BroadcastModel.tblRecordSound">
+              <MappingFragment StoreEntitySet="tblRecordSound">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="預設值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

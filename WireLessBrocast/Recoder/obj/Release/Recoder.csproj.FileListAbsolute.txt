@@ -1,0 +1,4 @@
+D:\backd\防洪\WireLessBrocast\Recoder\bin\Release\Recoder.dll
+D:\backd\防洪\WireLessBrocast\Recoder\bin\Release\Recoder.pdb
+D:\backd\防洪\WireLessBrocast\Recoder\obj\Release\Recoder.dll
+D:\backd\防洪\WireLessBrocast\Recoder\obj\Release\Recoder.pdb
