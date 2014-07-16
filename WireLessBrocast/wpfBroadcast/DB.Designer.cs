@@ -17,12 +17,6 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-#region EDM 關聯性中繼資料
-
-[assembly: EdmRelationshipAttribute("BroadcastModel", "FK_tblSchedule_tblRecordSound", "tblRecordSound", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(wpfBroadcast.tblRecordSound), "tblSchedule", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(wpfBroadcast.tblSchedule), true)]
-
-#endregion
-
 namespace wpfBroadcast
 {
     #region 內容
@@ -138,22 +132,6 @@ namespace wpfBroadcast
         /// <summary>
         /// 沒有可用的中繼資料文件。
         /// </summary>
-        public ObjectSet<tblSchedule> tblSchedule
-        {
-            get
-            {
-                if ((_tblSchedule == null))
-                {
-                    _tblSchedule = base.CreateObjectSet<tblSchedule>("tblSchedule");
-                }
-                return _tblSchedule;
-            }
-        }
-        private ObjectSet<tblSchedule> _tblSchedule;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
         public ObjectSet<tblRecordSound> tblRecordSound
         {
             get
@@ -166,6 +144,38 @@ namespace wpfBroadcast
             }
         }
         private ObjectSet<tblRecordSound> _tblRecordSound;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblTestLog> tblTestLog
+        {
+            get
+            {
+                if ((_tblTestLog == null))
+                {
+                    _tblTestLog = base.CreateObjectSet<tblTestLog>("tblTestLog");
+                }
+                return _tblTestLog;
+            }
+        }
+        private ObjectSet<tblTestLog> _tblTestLog;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblSchedule> tblSchedule
+        {
+            get
+            {
+                if ((_tblSchedule == null))
+                {
+                    _tblSchedule = base.CreateObjectSet<tblSchedule>("tblSchedule");
+                }
+                return _tblSchedule;
+            }
+        }
+        private ObjectSet<tblSchedule> _tblSchedule;
 
         #endregion
 
@@ -204,19 +214,27 @@ namespace wpfBroadcast
         }
     
         /// <summary>
-        /// 將新物件加入 tblSchedule EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblSchedule(tblSchedule tblSchedule)
-        {
-            base.AddObject("tblSchedule", tblSchedule);
-        }
-    
-        /// <summary>
         /// 將新物件加入 tblRecordSound EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
         /// </summary>
         public void AddTotblRecordSound(tblRecordSound tblRecordSound)
         {
             base.AddObject("tblRecordSound", tblRecordSound);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblTestLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblTestLog(tblTestLog tblTestLog)
+        {
+            base.AddObject("tblTestLog", tblTestLog);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblSchedule EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblSchedule(tblSchedule tblSchedule)
+        {
+            base.AddObject("tblSchedule", tblSchedule);
         }
 
         #endregion
@@ -252,7 +270,7 @@ namespace wpfBroadcast
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -271,7 +289,7 @@ namespace wpfBroadcast
                 {
                     OnPlayIndexChanging(value);
                     ReportPropertyChanging("PlayIndex");
-                    _PlayIndex = StructuralObject.SetValidValue(value);
+                    _PlayIndex = StructuralObject.SetValidValue(value, "PlayIndex");
                     ReportPropertyChanged("PlayIndex");
                     OnPlayIndexChanged();
                 }
@@ -296,7 +314,7 @@ namespace wpfBroadcast
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -304,33 +322,6 @@ namespace wpfBroadcast
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-
-        #endregion
-
-    
-        #region 導覽屬性
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BroadcastModel", "FK_tblSchedule_tblRecordSound", "tblSchedule")]
-        public EntityCollection<tblSchedule> tblSchedule
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tblSchedule>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblSchedule");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tblSchedule>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblSchedule", value);
-                }
-            }
-        }
 
         #endregion
 
@@ -349,26 +340,53 @@ namespace wpfBroadcast
         /// <summary>
         /// 建立新 tblSchedule 物件。
         /// </summary>
+        /// <param name="id">ID 屬性的初始值。</param>
         /// <param name="timeStamp">TimeStamp 屬性的初始值。</param>
-        /// <param name="playIndex">PlayIndex 屬性的初始值。</param>
         /// <param name="isMute">IsMute 屬性的初始值。</param>
-        public static tblSchedule CreatetblSchedule(global::System.DateTime timeStamp, global::System.Int32 playIndex, global::System.Boolean isMute)
+        public static tblSchedule CreatetblSchedule(global::System.Int32 id, global::System.DateTime timeStamp, global::System.Boolean isMute)
         {
             tblSchedule tblSchedule = new tblSchedule();
+            tblSchedule.ID = id;
             tblSchedule.TimeStamp = timeStamp;
-            tblSchedule.PlayIndex = playIndex;
             tblSchedule.IsMute = isMute;
             return tblSchedule;
         }
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime TimeStamp
         {
@@ -378,43 +396,16 @@ namespace wpfBroadcast
             }
             set
             {
-                if (_TimeStamp != value)
-                {
-                    OnTimeStampChanging(value);
-                    ReportPropertyChanging("TimeStamp");
-                    _TimeStamp = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("TimeStamp");
-                    OnTimeStampChanged();
-                }
+                OnTimeStampChanging(value);
+                ReportPropertyChanging("TimeStamp");
+                _TimeStamp = StructuralObject.SetValidValue(value, "TimeStamp");
+                ReportPropertyChanged("TimeStamp");
+                OnTimeStampChanged();
             }
         }
         private global::System.DateTime _TimeStamp;
         partial void OnTimeStampChanging(global::System.DateTime value);
         partial void OnTimeStampChanged();
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 PlayIndex
-        {
-            get
-            {
-                return _PlayIndex;
-            }
-            set
-            {
-                OnPlayIndexChanging(value);
-                ReportPropertyChanging("PlayIndex");
-                _PlayIndex = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PlayIndex");
-                OnPlayIndexChanged();
-            }
-        }
-        private global::System.Int32 _PlayIndex;
-        partial void OnPlayIndexChanging(global::System.Int32 value);
-        partial void OnPlayIndexChanged();
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -431,7 +422,7 @@ namespace wpfBroadcast
             {
                 OnIsMuteChanging(value);
                 ReportPropertyChanging("IsMute");
-                _IsMute = StructuralObject.SetValidValue(value);
+                _IsMute = StructuralObject.SetValidValue(value, "IsMute");
                 ReportPropertyChanged("IsMute");
                 OnIsMuteChanged();
             }
@@ -439,49 +430,30 @@ namespace wpfBroadcast
         private global::System.Boolean _IsMute;
         partial void OnIsMuteChanging(global::System.Boolean value);
         partial void OnIsMuteChanged();
-
-        #endregion
-
-    
-        #region 導覽屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
         /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BroadcastModel", "FK_tblSchedule_tblRecordSound", "tblRecordSound")]
-        public tblRecordSound tblRecordSound
+        public Nullable<global::System.DateTime> TestDate
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblRecordSound>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblRecordSound").Value;
+                return _TestDate;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblRecordSound>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblRecordSound").Value = value;
+                OnTestDateChanging(value);
+                ReportPropertyChanging("TestDate");
+                _TestDate = StructuralObject.SetValidValue(value, "TestDate");
+                ReportPropertyChanged("TestDate");
+                OnTestDateChanged();
             }
         }
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<tblRecordSound> tblRecordSoundReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tblRecordSound>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblRecordSound");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tblRecordSound>("BroadcastModel.FK_tblSchedule_tblRecordSound", "tblRecordSound", value);
-                }
-            }
-        }
+        private Nullable<global::System.DateTime> _TestDate;
+        partial void OnTestDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnTestDateChanged();
 
         #endregion
 
@@ -507,7 +479,8 @@ namespace wpfBroadcast
         /// <param name="amp">Amp 屬性的初始值。</param>
         /// <param name="speaker">Speaker 屬性的初始值。</param>
         /// <param name="doorOpen">DoorOpen 屬性的初始值。</param>
-        public static tblSIte CreatetblSIte(global::System.Int32 sITE_ID, global::System.Boolean comm, global::System.Boolean aC, global::System.Boolean dC, global::System.Boolean amp, global::System.Boolean speaker, global::System.Boolean doorOpen)
+        /// <param name="inTest">InTest 屬性的初始值。</param>
+        public static tblSIte CreatetblSIte(global::System.Int32 sITE_ID, global::System.Boolean comm, global::System.Boolean aC, global::System.Boolean dC, global::System.Boolean amp, global::System.Boolean speaker, global::System.Boolean doorOpen, global::System.Boolean inTest)
         {
             tblSIte tblSIte = new tblSIte();
             tblSIte.SITE_ID = sITE_ID;
@@ -517,12 +490,13 @@ namespace wpfBroadcast
             tblSIte.Amp = amp;
             tblSIte.Speaker = speaker;
             tblSIte.DoorOpen = doorOpen;
+            tblSIte.InTest = inTest;
             return tblSIte;
         }
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -541,7 +515,7 @@ namespace wpfBroadcast
                 {
                     OnSITE_IDChanging(value);
                     ReportPropertyChanging("SITE_ID");
-                    _SITE_ID = StructuralObject.SetValidValue(value);
+                    _SITE_ID = StructuralObject.SetValidValue(value, "SITE_ID");
                     ReportPropertyChanged("SITE_ID");
                     OnSITE_IDChanged();
                 }
@@ -566,7 +540,7 @@ namespace wpfBroadcast
             {
                 OnSITE_NAMEChanging(value);
                 ReportPropertyChanging("SITE_NAME");
-                _SITE_NAME = StructuralObject.SetValidValue(value, true);
+                _SITE_NAME = StructuralObject.SetValidValue(value, true, "SITE_NAME");
                 ReportPropertyChanged("SITE_NAME");
                 OnSITE_NAMEChanged();
             }
@@ -590,7 +564,7 @@ namespace wpfBroadcast
             {
                 OnCommChanging(value);
                 ReportPropertyChanging("Comm");
-                _Comm = StructuralObject.SetValidValue(value);
+                _Comm = StructuralObject.SetValidValue(value, "Comm");
                 ReportPropertyChanged("Comm");
                 OnCommChanged();
             }
@@ -614,7 +588,7 @@ namespace wpfBroadcast
             {
                 OnACChanging(value);
                 ReportPropertyChanging("AC");
-                _AC = StructuralObject.SetValidValue(value);
+                _AC = StructuralObject.SetValidValue(value, "AC");
                 ReportPropertyChanged("AC");
                 OnACChanged();
             }
@@ -638,7 +612,7 @@ namespace wpfBroadcast
             {
                 OnDCChanging(value);
                 ReportPropertyChanging("DC");
-                _DC = StructuralObject.SetValidValue(value);
+                _DC = StructuralObject.SetValidValue(value, "DC");
                 ReportPropertyChanged("DC");
                 OnDCChanged();
             }
@@ -662,7 +636,7 @@ namespace wpfBroadcast
             {
                 OnAmpChanging(value);
                 ReportPropertyChanging("Amp");
-                _Amp = StructuralObject.SetValidValue(value);
+                _Amp = StructuralObject.SetValidValue(value, "Amp");
                 ReportPropertyChanged("Amp");
                 OnAmpChanged();
             }
@@ -686,7 +660,7 @@ namespace wpfBroadcast
             {
                 OnSpeakerChanging(value);
                 ReportPropertyChanging("Speaker");
-                _Speaker = StructuralObject.SetValidValue(value);
+                _Speaker = StructuralObject.SetValidValue(value, "Speaker");
                 ReportPropertyChanged("Speaker");
                 OnSpeakerChanged();
             }
@@ -710,7 +684,7 @@ namespace wpfBroadcast
             {
                 OnDoorOpenChanging(value);
                 ReportPropertyChanging("DoorOpen");
-                _DoorOpen = StructuralObject.SetValidValue(value);
+                _DoorOpen = StructuralObject.SetValidValue(value, "DoorOpen");
                 ReportPropertyChanged("DoorOpen");
                 OnDoorOpenChanged();
             }
@@ -718,10 +692,33 @@ namespace wpfBroadcast
         private global::System.Boolean _DoorOpen;
         partial void OnDoorOpenChanging(global::System.Boolean value);
         partial void OnDoorOpenChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean InTest
+        {
+            get
+            {
+                return _InTest;
+            }
+            set
+            {
+                OnInTestChanging(value);
+                ReportPropertyChanging("InTest");
+                _InTest = StructuralObject.SetValidValue(value, "InTest");
+                ReportPropertyChanged("InTest");
+                OnInTestChanged();
+            }
+        }
+        private global::System.Boolean _InTest;
+        partial void OnInTestChanging(global::System.Boolean value);
+        partial void OnInTestChanged();
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -755,7 +752,7 @@ namespace wpfBroadcast
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -774,7 +771,7 @@ namespace wpfBroadcast
                 {
                     OnIDChanging(value);
                     ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
+                    _ID = StructuralObject.SetValidValue(value, "ID");
                     ReportPropertyChanged("ID");
                     OnIDChanged();
                 }
@@ -799,7 +796,7 @@ namespace wpfBroadcast
             {
                 OnSITE_IDChanging(value);
                 ReportPropertyChanging("SITE_ID");
-                _SITE_ID = StructuralObject.SetValidValue(value);
+                _SITE_ID = StructuralObject.SetValidValue(value, "SITE_ID");
                 ReportPropertyChanged("SITE_ID");
                 OnSITE_IDChanged();
             }
@@ -823,7 +820,7 @@ namespace wpfBroadcast
             {
                 OnStartTimeStampChanging(value);
                 ReportPropertyChanging("StartTimeStamp");
-                _StartTimeStamp = StructuralObject.SetValidValue(value);
+                _StartTimeStamp = StructuralObject.SetValidValue(value, "StartTimeStamp");
                 ReportPropertyChanged("StartTimeStamp");
                 OnStartTimeStampChanged();
             }
@@ -847,7 +844,7 @@ namespace wpfBroadcast
             {
                 OnEndTimeStampChanging(value);
                 ReportPropertyChanging("EndTimeStamp");
-                _EndTimeStamp = StructuralObject.SetValidValue(value);
+                _EndTimeStamp = StructuralObject.SetValidValue(value, "EndTimeStamp");
                 ReportPropertyChanged("EndTimeStamp");
                 OnEndTimeStampChanged();
             }
@@ -871,7 +868,7 @@ namespace wpfBroadcast
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, false);
+                _Type = StructuralObject.SetValidValue(value, false, "Type");
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -895,7 +892,7 @@ namespace wpfBroadcast
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, false);
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -903,10 +900,297 @@ namespace wpfBroadcast
         private global::System.String _Message;
         partial void OnMessageChanging(global::System.String value);
         partial void OnMessageChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value, true, "UserID");
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.String _UserID;
+        partial void OnUserIDChanging(global::System.String value);
+        partial void OnUserIDChanged();
 
         #endregion
 
+    }
     
+    /// <summary>
+    /// 沒有可用的中繼資料文件。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BroadcastModel", Name="tblTestLog")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tblTestLog : EntityObject
+    {
+        #region Factory 方法
+    
+        /// <summary>
+        /// 建立新 tblTestLog 物件。
+        /// </summary>
+        /// <param name="id">ID 屬性的初始值。</param>
+        /// <param name="dateTime">DateTime 屬性的初始值。</param>
+        /// <param name="sITE_ID">SITE_ID 屬性的初始值。</param>
+        /// <param name="aC">AC 屬性的初始值。</param>
+        /// <param name="dC">DC 屬性的初始值。</param>
+        /// <param name="aMP">AMP 屬性的初始值。</param>
+        /// <param name="sPK">SPK 屬性的初始值。</param>
+        /// <param name="dOOR">DOOR 屬性的初始值。</param>
+        /// <param name="comm">Comm 屬性的初始值。</param>
+        public static tblTestLog CreatetblTestLog(global::System.Int32 id, global::System.DateTime dateTime, global::System.Int32 sITE_ID, global::System.Boolean aC, global::System.Boolean dC, global::System.Boolean aMP, global::System.Boolean sPK, global::System.Boolean dOOR, global::System.Boolean comm)
+        {
+            tblTestLog tblTestLog = new tblTestLog();
+            tblTestLog.ID = id;
+            tblTestLog.DateTime = dateTime;
+            tblTestLog.SITE_ID = sITE_ID;
+            tblTestLog.AC = aC;
+            tblTestLog.DC = dC;
+            tblTestLog.AMP = aMP;
+            tblTestLog.SPK = sPK;
+            tblTestLog.DOOR = dOOR;
+            tblTestLog.Comm = comm;
+            return tblTestLog;
+        }
+
+        #endregion
+
+        #region 簡單屬性
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DateTime
+        {
+            get
+            {
+                return _DateTime;
+            }
+            set
+            {
+                OnDateTimeChanging(value);
+                ReportPropertyChanging("DateTime");
+                _DateTime = StructuralObject.SetValidValue(value, "DateTime");
+                ReportPropertyChanged("DateTime");
+                OnDateTimeChanged();
+            }
+        }
+        private global::System.DateTime _DateTime;
+        partial void OnDateTimeChanging(global::System.DateTime value);
+        partial void OnDateTimeChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SITE_ID
+        {
+            get
+            {
+                return _SITE_ID;
+            }
+            set
+            {
+                OnSITE_IDChanging(value);
+                ReportPropertyChanging("SITE_ID");
+                _SITE_ID = StructuralObject.SetValidValue(value, "SITE_ID");
+                ReportPropertyChanged("SITE_ID");
+                OnSITE_IDChanged();
+            }
+        }
+        private global::System.Int32 _SITE_ID;
+        partial void OnSITE_IDChanging(global::System.Int32 value);
+        partial void OnSITE_IDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean AC
+        {
+            get
+            {
+                return _AC;
+            }
+            set
+            {
+                OnACChanging(value);
+                ReportPropertyChanging("AC");
+                _AC = StructuralObject.SetValidValue(value, "AC");
+                ReportPropertyChanged("AC");
+                OnACChanged();
+            }
+        }
+        private global::System.Boolean _AC;
+        partial void OnACChanging(global::System.Boolean value);
+        partial void OnACChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean DC
+        {
+            get
+            {
+                return _DC;
+            }
+            set
+            {
+                OnDCChanging(value);
+                ReportPropertyChanging("DC");
+                _DC = StructuralObject.SetValidValue(value, "DC");
+                ReportPropertyChanged("DC");
+                OnDCChanged();
+            }
+        }
+        private global::System.Boolean _DC;
+        partial void OnDCChanging(global::System.Boolean value);
+        partial void OnDCChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean AMP
+        {
+            get
+            {
+                return _AMP;
+            }
+            set
+            {
+                OnAMPChanging(value);
+                ReportPropertyChanging("AMP");
+                _AMP = StructuralObject.SetValidValue(value, "AMP");
+                ReportPropertyChanged("AMP");
+                OnAMPChanged();
+            }
+        }
+        private global::System.Boolean _AMP;
+        partial void OnAMPChanging(global::System.Boolean value);
+        partial void OnAMPChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SPK
+        {
+            get
+            {
+                return _SPK;
+            }
+            set
+            {
+                OnSPKChanging(value);
+                ReportPropertyChanging("SPK");
+                _SPK = StructuralObject.SetValidValue(value, "SPK");
+                ReportPropertyChanged("SPK");
+                OnSPKChanged();
+            }
+        }
+        private global::System.Boolean _SPK;
+        partial void OnSPKChanging(global::System.Boolean value);
+        partial void OnSPKChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean DOOR
+        {
+            get
+            {
+                return _DOOR;
+            }
+            set
+            {
+                OnDOORChanging(value);
+                ReportPropertyChanging("DOOR");
+                _DOOR = StructuralObject.SetValidValue(value, "DOOR");
+                ReportPropertyChanged("DOOR");
+                OnDOORChanged();
+            }
+        }
+        private global::System.Boolean _DOOR;
+        partial void OnDOORChanging(global::System.Boolean value);
+        partial void OnDOORChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Comm
+        {
+            get
+            {
+                return _Comm;
+            }
+            set
+            {
+                OnCommChanging(value);
+                ReportPropertyChanging("Comm");
+                _Comm = StructuralObject.SetValidValue(value, "Comm");
+                ReportPropertyChanged("Comm");
+                OnCommChanged();
+            }
+        }
+        private global::System.Boolean _Comm;
+        partial void OnCommChanging(global::System.Boolean value);
+        partial void OnCommChanged();
+
+        #endregion
+
     }
     
     /// <summary>
@@ -936,7 +1220,7 @@ namespace wpfBroadcast
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -955,7 +1239,7 @@ namespace wpfBroadcast
                 {
                     OnUserIDChanging(value);
                     ReportPropertyChanging("UserID");
-                    _UserID = StructuralObject.SetValidValue(value, false);
+                    _UserID = StructuralObject.SetValidValue(value, false, "UserID");
                     ReportPropertyChanged("UserID");
                     OnUserIDChanged();
                 }
@@ -980,7 +1264,7 @@ namespace wpfBroadcast
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value, false, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -1004,7 +1288,7 @@ namespace wpfBroadcast
             {
                 OnGroupIDChanging(value);
                 ReportPropertyChanging("GroupID");
-                _GroupID = StructuralObject.SetValidValue(value);
+                _GroupID = StructuralObject.SetValidValue(value, "GroupID");
                 ReportPropertyChanged("GroupID");
                 OnGroupIDChanged();
             }
@@ -1028,7 +1312,7 @@ namespace wpfBroadcast
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, true);
+                _UserName = StructuralObject.SetValidValue(value, true, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -1039,7 +1323,6 @@ namespace wpfBroadcast
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -1067,7 +1350,7 @@ namespace wpfBroadcast
 
         #endregion
 
-        #region 基本屬性
+        #region 簡單屬性
     
         /// <summary>
         /// 沒有可用的中繼資料文件。
@@ -1086,7 +1369,7 @@ namespace wpfBroadcast
                 {
                     OnGroupIDChanging(value);
                     ReportPropertyChanging("GroupID");
-                    _GroupID = StructuralObject.SetValidValue(value);
+                    _GroupID = StructuralObject.SetValidValue(value, "GroupID");
                     ReportPropertyChanged("GroupID");
                     OnGroupIDChanged();
                 }
@@ -1111,7 +1394,7 @@ namespace wpfBroadcast
             {
                 OnGroupNameChanging(value);
                 ReportPropertyChanging("GroupName");
-                _GroupName = StructuralObject.SetValidValue(value, false);
+                _GroupName = StructuralObject.SetValidValue(value, false, "GroupName");
                 ReportPropertyChanged("GroupName");
                 OnGroupNameChanged();
             }
@@ -1122,10 +1405,8 @@ namespace wpfBroadcast
 
         #endregion
 
-    
     }
 
     #endregion
 
-    
 }

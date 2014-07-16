@@ -8,6 +8,18 @@ using System.Threading;
 
 namespace WirelessBrocast
 {
+
+
+    public enum  StatusIndex :int 
+{
+        BUSY=0,
+        Door=1,
+        AC=2,
+        DC=3,
+        AMP=4,
+        SPEAKER=5
+
+}
     public delegate void SlaveReceiveEventHandler(object sender, byte[] data); 
     public class KenWood
     {
@@ -56,6 +68,28 @@ namespace WirelessBrocast
            ReceiverThread.Start();
        }
 
+        public bool Test(int id, bool IsSilent,int repeat)
+        {
+            byte[] res = Send(new byte[] { (byte)id, (byte)'T', (byte)(IsSilent?1:0), (byte)repeat });
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+
+        }
+        public bool VoiceBroadcast(int id, bool start)
+        {
+
+            byte[] res = Send(new byte[] { (byte)id, (byte)'V', start?(byte)1:(byte)0 });
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
         public bool Play(int id,int inx, int cnt)
         {
             byte[] res = Send(new byte[] { (byte)id, (byte)'P', (byte)inx, (byte)cnt });
@@ -66,7 +100,26 @@ namespace WirelessBrocast
             else
                 return false;
         }
-
+        public bool Echo(int id)
+        {
+            byte[] res = Send(new byte[] { (byte)id, (byte)'E' });
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
+        public bool Abort(int id)
+        {
+            byte[] res = Send(new byte[] { (byte)id, (byte)'X' });
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
         public bool GetPlayStatus(int id,out byte status,out byte status1, out int cnt)
         {
             byte[] res;

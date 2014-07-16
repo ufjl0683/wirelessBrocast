@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WirelessBrocast;
 
 namespace wpfBroadcast
 {
@@ -19,9 +20,13 @@ namespace wpfBroadcast
     /// </summary>
     public partial class wndLogin : Window
     {
+     //   public wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
+      //  System.Windows.Threading.DispatcherTimer tmr = new System.Windows.Threading.DispatcherTimer();
+         
         public wndLogin()
         {
             InitializeComponent();
+          //  App.Kenwood = new KenWood(0, App.ComPort, true);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,10 +42,36 @@ namespace wpfBroadcast
             }
 #endif
             txtAccount.Text = txtPwd.Password = "";
-            (App.Current as App).loginUser = usr;
+           // App.Current.Properties["loginUser"] = usr;
+            if (usr == null)
+                usr = new tblUser() { UserID = "", GroupID = 1, Password = "", UserName = "" };
+           App.loginUser = usr;
             this.Hide();
             new Main().ShowDialog();
             this.Show();
         }
+
+        
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+          
+            
+        }
+
+        void tmr_Tick(object sender, EventArgs e)
+        {
+           
+                 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            App.tmr.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+            Environment.Exit(0);
+        }
+
+             
+        }
     }
-}
+

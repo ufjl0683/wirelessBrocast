@@ -7,3 +7,5 @@ D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\KenWood.pdb
 D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\Recoder.pdb
 D:\backd\防洪\WireLessBrocast\Controller\obj\Debug\Controller.exe
 D:\backd\防洪\WireLessBrocast\Controller\obj\Debug\Controller.pdb
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\1.wav
+D:\backd\防洪\WireLessBrocast\Controller\bin\Debug\0.wav

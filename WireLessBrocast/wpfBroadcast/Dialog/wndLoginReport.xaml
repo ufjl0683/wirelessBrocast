@@ -5,10 +5,10 @@
         Title="wndLoginReport" Height="600" Width="600" FontSize="18" Loaded="Window_Loaded">
     <Grid Margin="0">
 
-        <Viewer:CrystalReportsViewer x:Name="repotyViewier" Margin="0,75,-0.4,0.4"/>
+        <Viewer:CrystalReportsViewer x:Name="repotyViewier" Margin="0,75,-0.4,0.4" ShowLogo="False"/>
         <DatePicker x:Name="dtpBeginDate" HorizontalAlignment="Left" Height="30" Margin="21,24,0,0" Width="159" SelectedDateChanged="DatePicker_SelectedDateChanged" VerticalAlignment="Top"/>
         <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Height="30" Margin="264,24,0,0" Width="159" VerticalAlignment="Top"/>
-        <Button Content="查詢" HorizontalAlignment="Left" Margin="465,24,0,0" Width="72" Click="Button_Click" RenderTransformOrigin="0.5,0.503" Height="30" VerticalAlignment="Top"/>
+        <Button Content="查詢" Style="{StaticResource ButtonStyle1}" HorizontalAlignment="Left" Margin="465,24,0,0" Width="72" Click="Button_Click" RenderTransformOrigin="0.5,0.503" Height="30" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

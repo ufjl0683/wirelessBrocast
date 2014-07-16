@@ -32,7 +32,7 @@ namespace wpfBroadcast
             this.accdMenu.SelectAll();
 
           db  = new BroadcastEntities();
-            tblSysLog log = new tblSysLog() { Message = "系統啟動", SITE_ID = 0, Type = "S", StartTimeStamp = DateTime.Now };
+            tblSysLog log = new tblSysLog() { Message = "系統登入", SITE_ID = 0, Type = "S", StartTimeStamp = DateTime.Now ,UserID=App.loginUser.UserID};
 
             db.tblSysLog.AddObject(log);
             db.SaveChanges();
@@ -40,7 +40,7 @@ namespace wpfBroadcast
            
             // 將資料載入 tblSIte。您可以依需要修改這個程式碼。
             System.Windows.Data.CollectionViewSource tblSIteViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblSIteViewSource")));
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSIte> tblSIteQuery = this.GettblSIteQuery(db);
+            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSIte> tblSIteQuery = this.GettblSIteQuery(App.db);
             tblSIteViewSource.Source = tblSIteQuery.Execute(System.Data.Objects.MergeOption.AppendOnly);
 
         }
@@ -74,7 +74,7 @@ namespace wpfBroadcast
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
         //    wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
-            tblSysLog log = new tblSysLog() { Message = "系統結束", SITE_ID = 0, Type = "S", StartTimeStamp = DateTime.Now };
+            tblSysLog log = new tblSysLog() { Message = "系統登出", SITE_ID = 0, Type = "S", StartTimeStamp = DateTime.Now, UserID = (App.loginUser.UserID)  };
 
             db.tblSysLog.AddObject(log);
             db.SaveChanges();
@@ -110,24 +110,25 @@ namespace wpfBroadcast
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-          //  System.Windows.Data.CollectionViewSource tblSIteViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblSIteViewSource")));
-             
-          tblSIte site=db.tblSIte.Where(n=>n.SITE_ID==1).FirstOrDefault() ;
-          if (site == null)
-              return;
-          site.AC = !site.AC;
-          site.DC = !site.DC;
-          site.DoorOpen = !site.DoorOpen;
-          site.Amp = !site.Amp;
-          site.Comm = !site.Comm;
-          site.Speaker = !site.Speaker;
-          db.SaveChanges();
-
+           // System.Windows.Data.CollectionViewSource tblSIteViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblSIteViewSource")));
+            lock (App.db)
+            {
+                tblSIte site = App.db.tblSIte.Where(n => n.SITE_ID == 1).FirstOrDefault();
+                if (site == null)
+                    return;
+                site.AC = !site.AC;
+                site.DC = !site.DC;
+                site.DoorOpen = !site.DoorOpen;
+                site.Amp = !site.Amp;
+                site.Comm = !site.Comm;
+                site.Speaker = !site.Speaker;
+                App.db.SaveChanges();
+            }
         }
 
         private void btpReportLogin(object sender, RoutedEventArgs e)
         {
-            wndLoginReport wnd = new Dialog.wndLoginReport("S");
+            Dialog.wndLoginReport wnd = new Dialog.wndLoginReport("S");
             wnd.Title = (sender as Button).Content.ToString();
             wnd.Owner = this;
 
@@ -139,6 +140,67 @@ namespace wpfBroadcast
         private void btnReportEvent(object sender, RoutedEventArgs e)
         {
             wndLoginReport wnd = new Dialog.wndLoginReport("A");
+           
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
+        }
+
+        private void RecordBrocast_Click(object sender, RoutedEventArgs e)
+        {
+            wndBroadcast wnd = new Dialog.wndBroadcast();
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
+        }
+
+        private void VoiceBrocast_Click(object sender, RoutedEventArgs e)
+        {
+            wndVoiceBroadcast wnd = new Dialog.wndVoiceBroadcast();
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            wndTest wnd = new Dialog.wndTest(false);
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
+        }
+
+        private void SilentTest_Click(object sender, RoutedEventArgs e)
+        {
+            wndTest wnd = new Dialog.wndTest(true);
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
+        }
+
+        private void btnSchTestLog(object sender, RoutedEventArgs e)
+        {
+            wndTestLogReport wnd = new Dialog.wndTestLogReport();
+
             wnd.Title = (sender as Button).Content.ToString();
             wnd.Owner = this;
 

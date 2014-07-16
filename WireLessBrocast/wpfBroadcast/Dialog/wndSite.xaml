@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpfBroadcast="clr-namespace:wpfBroadcast" x:Class="wpfBroadcast.Dialog.wndSite"
-        Title="wndSite" Height="504.179" Width="766.866" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+        Title="wndSite" Height="504.179" Width="766.866" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" FontSize="16">
     <Window.Resources>
         <wpfBroadcast:BroadcastDataSet x:Key="broadcastDataSet"/>
         <CollectionViewSource x:Key="tblSIteViewSource" Source="{Binding tblSIte, Source={StaticResource broadcastDataSet}}"/>
@@ -21,9 +21,9 @@
                 <DataGridCheckBoxColumn x:Name="doorCloseColumn" Binding="{Binding DoorClose}" Header="Door Close" Width="SizeToHeader"/>-->
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnCancel" Content="取消" HorizontalAlignment="Right" Margin="0,0,22.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
-        <Button x:Name="btnOk" Content="確定" Margin="0,0,160.8,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
-        <Button x:Name="btnOk_Copy" Content="列印" Margin="0,0,607.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
+        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"  Content="取消" HorizontalAlignment="Right" Margin="0,0,22.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
+        <Button x:Name="btnOk" Style="{DynamicResource ButtonStyle1}"   Content="確定" Margin="0,0,160.8,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
+        <Button x:Name="btnOk_Copy" Style="{DynamicResource ButtonStyle1}"    Content="列印" Margin="0,0,607.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
 
     </Grid>
 </Window>

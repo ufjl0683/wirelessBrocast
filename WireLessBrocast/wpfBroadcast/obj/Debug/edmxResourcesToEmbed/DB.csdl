@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BroadcastModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+<Schema Namespace="BroadcastModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
   <EntityContainer Name="BroadcastEntities" p1:LazyLoadingEnabled="true">
     <EntitySet Name="tblUser" EntityType="BroadcastModel.tblUser" />
     <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.tblUserGroup" />
@@ -51,6 +51,7 @@
     <Property Type="DateTime" Name="EndTimeStamp" Precision="3" />
     <Property Type="String" Name="Type" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Type="String" Name="Message" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserID" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblSchedule">
     <Key>

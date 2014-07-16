@@ -22,7 +22,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>-->
                 <DataGridTextColumn Binding="{Binding TimeStamp,Mode=TwoWay, Converter={StaticResource TimeSegToDateTimeConverter}}" ClipboardContentBinding="{x:Null}" Header="時段"/>
-                <DataGridComboBoxColumn   DisplayMemberPath="Name" SelectedValuePath="PlayIndex" SelectedValueBinding="{Binding PlayIndex, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource tblRecordSoundViewSource}}"  Width="100"  Header="預錄詞"/>
+                <!--<DataGridComboBoxColumn   DisplayMemberPath="Name" SelectedValuePath="PlayIndex" SelectedValueBinding="{Binding PlayIndex, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource tblRecordSoundViewSource}}"  Width="100"  Header="預錄詞"/>-->
 
                 <!--<DataGridTextColumn x:Name="playIndexColumn" Binding="{Binding PlayIndex}" Header="Play Index" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="playIndexColumn1" Binding="{Binding PlayIndex}" Header="Play Index" Width="SizeToHeader"/>-->
@@ -31,8 +31,8 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button x:Name="btnCancel" Content="取消" HorizontalAlignment="Right" Margin="0,0,28.6,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
-        <Button x:Name="btnOk" Content="確定" Margin="0,0,166.6,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
-        <Button x:Name="btnOk_Copy" Content="列印" Margin="0,0,419.6,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
+        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"   Content="取消" HorizontalAlignment="Right" Margin="0,0,28.6,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
+        <Button x:Name="btnOk" Style="{DynamicResource ButtonStyle1}"     Content="確定" Margin="0,0,166.6,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
+        <Button x:Name="btnOk_Copy" Style="{DynamicResource ButtonStyle1}"   Content="列印" Margin="0,0,419.6,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
     </Grid>
 </Window>

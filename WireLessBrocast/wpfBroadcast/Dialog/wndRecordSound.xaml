@@ -15,8 +15,8 @@
                 <DataGridTextColumn x:Name="nameColumn" Width="200" Header="名稱" Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnOk" Content="確定" Margin="0,0,182.8,10.4" Height="27" VerticalAlignment="Bottom" Width="94" Click="btnOk_Click" HorizontalAlignment="Right"/>
-        <Button x:Name="btnCancel" Content="取消" Margin="0,520,23.6,10.4" HorizontalAlignment="Right" Width="94" Click="btnCancel_Click" VerticalAlignment="Bottom"/>
+        <Button   x:Name="btnOk"  Style="{DynamicResource ButtonStyle1}"  Content="確定" Margin="0,0,182.8,10.4" Height="27" VerticalAlignment="Bottom" Width="94" Click="btnOk_Click" HorizontalAlignment="Right"/>
+        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"    Content="取消" Margin="0,520,23.6,10.4" HorizontalAlignment="Right" Width="94" Click="btnCancel_Click" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

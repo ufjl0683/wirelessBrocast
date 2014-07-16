@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WirelessBrocast;
 
 namespace Controller
 {
@@ -16,7 +17,7 @@ namespace Controller
          string BrocastType;
         int SoundId;
         int PlayTimes;
-     
+        int LastMenuId;
       public   TouchPanelManager(string ComPort)
       {
           this.ComPort = ComPort;
@@ -50,7 +51,7 @@ namespace Controller
       {
           return new Panel(
            new Menu[]{ new Menu(){ Text="1.一般廣播", MenuType= EnumMenuType.Normal },
-               new Menu(){ Text="2.靜音廣播", MenuType= EnumMenuType.Normal},
+               new Menu(){ Text="2.系統測試", MenuType= EnumMenuType.Normal},
                new Menu(){Text="3.系統狀態",MenuType= EnumMenuType.Normal},
                 new Menu(){ Text=" 確定", MenuType= EnumMenuType.Confirm},
                   //new Menu(){ Text=" 確定", MenuType= EnumMenuType.Confirm}
@@ -89,6 +90,8 @@ namespace Controller
           Panel MediaSelectPanel = null;
           if (menuid == 3)
           {
+              if (LastMenuId == 2)
+                  return;
               MediaSelectPanel = CreateMediaSelectPanel();
 
               touchPanel.CurrentPanel.OnMenuSelect -= MainPanel_OnMenuSelect;
@@ -101,13 +104,14 @@ namespace Controller
           else if (menuid == 2)  // show status  play  testing  door   power1  power2   amp/speaker
           {
               string door, ac, dc, amp, speaker;
-              door = Program.controller.Status.Get(1) ? "開" : "關";
-              ac = Program.controller.Status.Get(2) ? "正常" : "故障";
-              dc = Program.controller.Status.Get(3) ? "正常" : "故障";
-              amp = Program.controller.Status.Get(4) ? "正常" : "故障";
-              speaker=Program.controller.Status.Get(5) ? "正常" : "故障";
+              door = (Program.controller.Status.Get((int)StatusIndex.Door)) ? "開" : "關";
+              ac = (!Program.controller.Status.Get((int)StatusIndex.AC) )? "正常" : "故障";
+              dc = (!Program.controller.Status.Get((int)StatusIndex.DC)) ? "正常" : "故障";
+              amp = (!Program.controller.Status.Get((int)StatusIndex.AMP)) ? "正常" : "故障";
+              speaker = (!Program.controller.Status.Get((int)StatusIndex.SPEAKER)) ? "正常" : "故障";
               string s = string.Format("箱門:{0} 交流:{1} 直流:{2} 擴大機:{3} 喇吧:{4}",door,ac,dc,amp,speaker);
               touchPanel.Alert(s);
+              LastMenuId = menuid;
               return;
           }
           if (MediaSelectPanel != null)

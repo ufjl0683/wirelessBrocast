@@ -1,5 +1,5 @@
 D:\backd\防洪\WireLessBrocast\KenWood\bin\Release\KenWood.dll
 D:\backd\防洪\WireLessBrocast\KenWood\bin\Release\KenWood.pdb
-D:\backd\防洪\WireLessBrocast\KenWood\obj\Release\KenWood.csprojResolveAssemblyReference.cache
 D:\backd\防洪\WireLessBrocast\KenWood\obj\Release\KenWood.dll
 D:\backd\防洪\WireLessBrocast\KenWood\obj\Release\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\KenWood\obj\Release\KenWood.csprojResolveAssemblyReference.cache

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BroadcastModelStoreContainer" CdmEntityContainer="BroadcastEntities">
     <EntitySetMapping Name="tblUser">
       <EntityTypeMapping TypeName="BroadcastModel.tblUser">
@@ -36,6 +36,7 @@
     <EntitySetMapping Name="tblSysLog">
       <EntityTypeMapping TypeName="BroadcastModel.tblSysLog">
         <MappingFragment StoreEntitySet="tblSysLog">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="EndTimeStamp" ColumnName="EndTimeStamp" />

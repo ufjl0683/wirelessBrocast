@@ -38,9 +38,9 @@ namespace wpfBroadcast {
         
         private tblSysLogDataTable tabletblSysLog;
         
-        private global::System.Data.DataRelation relationFK_tblUser_tblUserGroup;
+        private tblTestLogDataTable tabletblTestLog;
         
-        private global::System.Data.DataRelation relationFK_tblSchedule_tblRecordSound;
+        private global::System.Data.DataRelation relationFK_tblUser_tblUserGroup;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -90,6 +90,9 @@ namespace wpfBroadcast {
                 }
                 if ((ds.Tables["tblSysLog"] != null)) {
                     base.Tables.Add(new tblSysLogDataTable(ds.Tables["tblSysLog"]));
+                }
+                if ((ds.Tables["tblTestLog"] != null)) {
+                    base.Tables.Add(new tblTestLogDataTable(ds.Tables["tblTestLog"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -181,6 +184,16 @@ namespace wpfBroadcast {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public tblTestLogDataTable tblTestLog {
+            get {
+                return this.tabletblTestLog;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -267,6 +280,9 @@ namespace wpfBroadcast {
                 if ((ds.Tables["tblSysLog"] != null)) {
                     base.Tables.Add(new tblSysLogDataTable(ds.Tables["tblSysLog"]));
                 }
+                if ((ds.Tables["tblTestLog"] != null)) {
+                    base.Tables.Add(new tblTestLogDataTable(ds.Tables["tblTestLog"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -342,8 +358,13 @@ namespace wpfBroadcast {
                     this.tabletblSysLog.InitVars();
                 }
             }
+            this.tabletblTestLog = ((tblTestLogDataTable)(base.Tables["tblTestLog"]));
+            if ((initTable == true)) {
+                if ((this.tabletblTestLog != null)) {
+                    this.tabletblTestLog.InitVars();
+                }
+            }
             this.relationFK_tblUser_tblUserGroup = this.Relations["FK_tblUser_tblUserGroup"];
-            this.relationFK_tblSchedule_tblRecordSound = this.Relations["FK_tblSchedule_tblRecordSound"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -368,14 +389,12 @@ namespace wpfBroadcast {
             base.Tables.Add(this.tabletblRecordSound);
             this.tabletblSysLog = new tblSysLogDataTable();
             base.Tables.Add(this.tabletblSysLog);
+            this.tabletblTestLog = new tblTestLogDataTable();
+            base.Tables.Add(this.tabletblTestLog);
             this.relationFK_tblUser_tblUserGroup = new global::System.Data.DataRelation("FK_tblUser_tblUserGroup", new global::System.Data.DataColumn[] {
                         this.tabletblUserGroup.GroupIDColumn}, new global::System.Data.DataColumn[] {
                         this.tabletblUser.GroupIDColumn}, false);
             this.Relations.Add(this.relationFK_tblUser_tblUserGroup);
-            this.relationFK_tblSchedule_tblRecordSound = new global::System.Data.DataRelation("FK_tblSchedule_tblRecordSound", new global::System.Data.DataColumn[] {
-                        this.tabletblRecordSound.PlayIndexColumn}, new global::System.Data.DataColumn[] {
-                        this.tabletblSchedule.PlayIndexColumn}, false);
-            this.Relations.Add(this.relationFK_tblSchedule_tblRecordSound);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -417,6 +436,12 @@ namespace wpfBroadcast {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializetblSysLog() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializetblTestLog() {
             return false;
         }
         
@@ -495,6 +520,9 @@ namespace wpfBroadcast {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void tblSysLogRowChangeEventHandler(object sender, tblSysLogRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void tblTestLogRowChangeEventHandler(object sender, tblTestLogRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1777,9 +1805,11 @@ namespace wpfBroadcast {
             
             private global::System.Data.DataColumn columnTimeStamp;
             
-            private global::System.Data.DataColumn columnPlayIndex;
-            
             private global::System.Data.DataColumn columnIsMute;
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnTestDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1824,17 +1854,25 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PlayIndexColumn {
+            public global::System.Data.DataColumn IsMuteColumn {
                 get {
-                    return this.columnPlayIndex;
+                    return this.columnIsMute;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IsMuteColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnIsMute;
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TestDateColumn {
+                get {
+                    return this.columnTestDate;
                 }
             }
             
@@ -1875,15 +1913,13 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tblScheduleRow AddtblScheduleRow(System.DateTime TimeStamp, tblRecordSoundRow parenttblRecordSoundRowByFK_tblSchedule_tblRecordSound, bool IsMute) {
+            public tblScheduleRow AddtblScheduleRow(System.DateTime TimeStamp, bool IsMute, System.DateTime TestDate) {
                 tblScheduleRow rowtblScheduleRow = ((tblScheduleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TimeStamp,
+                        IsMute,
                         null,
-                        IsMute};
-                if ((parenttblRecordSoundRowByFK_tblSchedule_tblRecordSound != null)) {
-                    columnValuesArray[1] = parenttblRecordSoundRowByFK_tblSchedule_tblRecordSound[0];
-                }
+                        TestDate};
                 rowtblScheduleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblScheduleRow);
                 return rowtblScheduleRow;
@@ -1891,9 +1927,9 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tblScheduleRow FindByTimeStamp(System.DateTime TimeStamp) {
+            public tblScheduleRow FindByID(int ID) {
                 return ((tblScheduleRow)(this.Rows.Find(new object[] {
-                            TimeStamp})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1914,8 +1950,9 @@ namespace wpfBroadcast {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnTimeStamp = base.Columns["TimeStamp"];
-                this.columnPlayIndex = base.Columns["PlayIndex"];
                 this.columnIsMute = base.Columns["IsMute"];
+                this.columnID = base.Columns["ID"];
+                this.columnTestDate = base.Columns["TestDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1923,16 +1960,22 @@ namespace wpfBroadcast {
             private void InitClass() {
                 this.columnTimeStamp = new global::System.Data.DataColumn("TimeStamp", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTimeStamp);
-                this.columnPlayIndex = new global::System.Data.DataColumn("PlayIndex", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPlayIndex);
                 this.columnIsMute = new global::System.Data.DataColumn("IsMute", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsMute);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnTimeStamp}, true));
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnTestDate = new global::System.Data.DataColumn("TestDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestDate);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnTimeStamp.AllowDBNull = false;
-                this.columnTimeStamp.Unique = true;
-                this.columnPlayIndex.AllowDBNull = false;
                 this.columnIsMute.AllowDBNull = false;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2348,6 +2391,8 @@ namespace wpfBroadcast {
             
             private global::System.Data.DataColumn columnID;
             
+            private global::System.Data.DataColumn columnUserID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tblSysLogDataTable() {
@@ -2415,6 +2460,14 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserIDColumn {
+                get {
+                    return this.columnUserID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2450,13 +2503,14 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tblSysLogRow AddtblSysLogRow(System.DateTime StartTimeStamp, int SITE_ID, string Message) {
+            public tblSysLogRow AddtblSysLogRow(System.DateTime StartTimeStamp, int SITE_ID, string Message, string UserID) {
                 tblSysLogRow rowtblSysLogRow = ((tblSysLogRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StartTimeStamp,
                         SITE_ID,
                         Message,
-                        null};
+                        null,
+                        UserID};
                 rowtblSysLogRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblSysLogRow);
                 return rowtblSysLogRow;
@@ -2490,6 +2544,7 @@ namespace wpfBroadcast {
                 this.columnSITE_ID = base.Columns["SITE_ID"];
                 this.columnMessage = base.Columns["Message"];
                 this.columnID = base.Columns["ID"];
+                this.columnUserID = base.Columns["UserID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2503,6 +2558,8 @@ namespace wpfBroadcast {
                 base.Columns.Add(this.columnMessage);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnUserID = new global::System.Data.DataColumn("UserID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnStartTimeStamp.AllowDBNull = false;
@@ -2515,6 +2572,7 @@ namespace wpfBroadcast {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
+                this.columnUserID.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2601,6 +2659,388 @@ namespace wpfBroadcast {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "tblSysLogDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class tblTestLogDataTable : global::System.Data.TypedTableBase<tblTestLogRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnDateTime;
+            
+            private global::System.Data.DataColumn columnSITE_ID;
+            
+            private global::System.Data.DataColumn columnAC;
+            
+            private global::System.Data.DataColumn columnDC;
+            
+            private global::System.Data.DataColumn columnAMP;
+            
+            private global::System.Data.DataColumn columnSPK;
+            
+            private global::System.Data.DataColumn columnDOOR;
+            
+            private global::System.Data.DataColumn columnComm;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogDataTable() {
+                this.TableName = "tblTestLog";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal tblTestLogDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected tblTestLogDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateTimeColumn {
+                get {
+                    return this.columnDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SITE_IDColumn {
+                get {
+                    return this.columnSITE_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACColumn {
+                get {
+                    return this.columnAC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DCColumn {
+                get {
+                    return this.columnDC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AMPColumn {
+                get {
+                    return this.columnAMP;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SPKColumn {
+                get {
+                    return this.columnSPK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DOORColumn {
+                get {
+                    return this.columnDOOR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CommColumn {
+                get {
+                    return this.columnComm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRow this[int index] {
+                get {
+                    return ((tblTestLogRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event tblTestLogRowChangeEventHandler tblTestLogRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event tblTestLogRowChangeEventHandler tblTestLogRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event tblTestLogRowChangeEventHandler tblTestLogRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event tblTestLogRowChangeEventHandler tblTestLogRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddtblTestLogRow(tblTestLogRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRow AddtblTestLogRow(System.DateTime DateTime, int SITE_ID, bool AC, bool DC, bool AMP, bool SPK, bool DOOR, bool Comm) {
+                tblTestLogRow rowtblTestLogRow = ((tblTestLogRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        DateTime,
+                        SITE_ID,
+                        AC,
+                        DC,
+                        AMP,
+                        SPK,
+                        DOOR,
+                        Comm};
+                rowtblTestLogRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowtblTestLogRow);
+                return rowtblTestLogRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRow FindByID(int ID) {
+                return ((tblTestLogRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                tblTestLogDataTable cln = ((tblTestLogDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new tblTestLogDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnDateTime = base.Columns["DateTime"];
+                this.columnSITE_ID = base.Columns["SITE_ID"];
+                this.columnAC = base.Columns["AC"];
+                this.columnDC = base.Columns["DC"];
+                this.columnAMP = base.Columns["AMP"];
+                this.columnSPK = base.Columns["SPK"];
+                this.columnDOOR = base.Columns["DOOR"];
+                this.columnComm = base.Columns["Comm"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnDateTime = new global::System.Data.DataColumn("DateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateTime);
+                this.columnSITE_ID = new global::System.Data.DataColumn("SITE_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSITE_ID);
+                this.columnAC = new global::System.Data.DataColumn("AC", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAC);
+                this.columnDC = new global::System.Data.DataColumn("DC", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDC);
+                this.columnAMP = new global::System.Data.DataColumn("AMP", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAMP);
+                this.columnSPK = new global::System.Data.DataColumn("SPK", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSPK);
+                this.columnDOOR = new global::System.Data.DataColumn("DOOR", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDOOR);
+                this.columnComm = new global::System.Data.DataColumn("Comm", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComm);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
+                this.columnDateTime.AllowDBNull = false;
+                this.columnSITE_ID.AllowDBNull = false;
+                this.columnAC.AllowDBNull = false;
+                this.columnDC.AllowDBNull = false;
+                this.columnAMP.AllowDBNull = false;
+                this.columnSPK.AllowDBNull = false;
+                this.columnDOOR.AllowDBNull = false;
+                this.columnComm.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRow NewtblTestLogRow() {
+                return ((tblTestLogRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new tblTestLogRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(tblTestLogRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.tblTestLogRowChanged != null)) {
+                    this.tblTestLogRowChanged(this, new tblTestLogRowChangeEvent(((tblTestLogRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.tblTestLogRowChanging != null)) {
+                    this.tblTestLogRowChanging(this, new tblTestLogRowChangeEvent(((tblTestLogRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.tblTestLogRowDeleted != null)) {
+                    this.tblTestLogRowDeleted(this, new tblTestLogRowChangeEvent(((tblTestLogRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.tblTestLogRowDeleting != null)) {
+                    this.tblTestLogRowDeleting(this, new tblTestLogRowChangeEvent(((tblTestLogRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovetblTestLogRow(tblTestLogRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BroadcastDataSet ds = new BroadcastDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "tblTestLogDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2993,17 +3433,6 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PlayIndex {
-                get {
-                    return ((int)(this[this.tabletblSchedule.PlayIndexColumn]));
-                }
-                set {
-                    this[this.tabletblSchedule.PlayIndexColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMute {
                 get {
                     return ((bool)(this[this.tabletblSchedule.IsMuteColumn]));
@@ -3015,13 +3444,41 @@ namespace wpfBroadcast {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tblRecordSoundRow tblRecordSoundRow {
+            public int ID {
                 get {
-                    return ((tblRecordSoundRow)(this.GetParentRow(this.Table.ParentRelations["FK_tblSchedule_tblRecordSound"])));
+                    return ((int)(this[this.tabletblSchedule.IDColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_tblSchedule_tblRecordSound"]);
+                    this[this.tabletblSchedule.IDColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime TestDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabletblSchedule.TestDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'tblSchedule\' 中資料行 \'TestDate\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tabletblSchedule.TestDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTestDateNull() {
+                return this.IsNull(this.tabletblSchedule.TestDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTestDateNull() {
+                this[this.tabletblSchedule.TestDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3058,17 +3515,6 @@ namespace wpfBroadcast {
                 }
                 set {
                     this[this.tabletblRecordSound.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tblScheduleRow[] GettblScheduleRows() {
-                if ((this.Table.ChildRelations["FK_tblSchedule_tblRecordSound"] == null)) {
-                    return new tblScheduleRow[0];
-                }
-                else {
-                    return ((tblScheduleRow[])(base.GetChildRows(this.Table.ChildRelations["FK_tblSchedule_tblRecordSound"])));
                 }
             }
         }
@@ -3128,6 +3574,148 @@ namespace wpfBroadcast {
                 }
                 set {
                     this[this.tabletblSysLog.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UserID {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblSysLog.UserIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'tblSysLog\' 中資料行 \'UserID\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tabletblSysLog.UserIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUserIDNull() {
+                return this.IsNull(this.tabletblSysLog.UserIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUserIDNull() {
+                this[this.tabletblSysLog.UserIDColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class tblTestLogRow : global::System.Data.DataRow {
+            
+            private tblTestLogDataTable tabletblTestLog;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal tblTestLogRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabletblTestLog = ((tblTestLogDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tabletblTestLog.IDColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime DateTime {
+                get {
+                    return ((global::System.DateTime)(this[this.tabletblTestLog.DateTimeColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.DateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int SITE_ID {
+                get {
+                    return ((int)(this[this.tabletblTestLog.SITE_IDColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.SITE_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool AC {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.ACColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.ACColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool DC {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.DCColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.DCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool AMP {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.AMPColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.AMPColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool SPK {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.SPKColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.SPKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool DOOR {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.DOORColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.DOORColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Comm {
+                get {
+                    return ((bool)(this[this.tabletblTestLog.CommColumn]));
+                }
+                set {
+                    this[this.tabletblTestLog.CommColumn] = value;
                 }
             }
         }
@@ -3356,6 +3944,40 @@ namespace wpfBroadcast {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tblSysLogRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class tblTestLogRowChangeEvent : global::System.EventArgs {
+            
+            private tblTestLogRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRowChangeEvent(tblTestLogRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tblTestLogRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4940,37 +5562,44 @@ SELECT UserID, Password, GroupID, UserName FROM tblUser WHERE (UserID = @UserID)
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "tblSchedule";
             tableMapping.ColumnMappings.Add("TimeStamp", "TimeStamp");
-            tableMapping.ColumnMappings.Add("PlayIndex", "PlayIndex");
             tableMapping.ColumnMappings.Add("IsMute", "IsMute");
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("TestDate", "TestDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [tblSchedule] WHERE (([TimeStamp] = @Original_TimeStamp) AND ([PlayIn" +
-                "dex] = @Original_PlayIndex) AND ([IsMute] = @Original_IsMute))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [tblSchedule] WHERE (([ID] = @Original_ID) AND ([TimeStamp] = @Origin" +
+                "al_TimeStamp) AND ([IsMute] = @Original_IsMute) AND ((@IsNull_TestDate = 1 AND [" +
+                "TestDate] IS NULL) OR ([TestDate] = @Original_TestDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayIndex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayIndex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsMute", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsMute", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TestDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [tblSchedule] ([TimeStamp], [PlayIndex], [IsMute]) VALUES (@TimeStamp" +
-                ", @PlayIndex, @IsMute);\r\nSELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WH" +
-                "ERE (TimeStamp = @TimeStamp)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [tblSchedule] ([TimeStamp], [IsMute], [TestDate]) VALUES (@TimeStamp," +
+                " @IsMute, @TestDate);\r\nSELECT ID, TimeStamp, IsMute, TestDate FROM tblSchedule W" +
+                "HERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayIndex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayIndex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsMute", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsMute", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [tblSchedule] SET [TimeStamp] = @TimeStamp, [PlayIndex] = @PlayIndex, [IsMute] = @IsMute WHERE (([TimeStamp] = @Original_TimeStamp) AND ([PlayIndex] = @Original_PlayIndex) AND ([IsMute] = @Original_IsMute));
-SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeStamp)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tblSchedule] SET [TimeStamp] = @TimeStamp, [IsMute] = @IsMute, [TestDate] = @TestDate WHERE (([ID] = @Original_ID) AND ([TimeStamp] = @Original_TimeStamp) AND ([IsMute] = @Original_IsMute) AND ((@IsNull_TestDate = 1 AND [TestDate] IS NULL) OR ([TestDate] = @Original_TestDate)));
+SELECT ID, TimeStamp, IsMute, TestDate FROM tblSchedule WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayIndex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayIndex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsMute", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsMute", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayIndex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayIndex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsMute", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsMute", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TestDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4986,7 +5615,7 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT  tblSchedule.*\r\nFROM      tblSchedule";
+            this._commandCollection[0].CommandText = "SELECT ID, TimeStamp, IsMute, TestDate FROM tblSchedule";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5047,10 +5676,18 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.DateTime Original_TimeStamp, int Original_PlayIndex, bool Original_IsMute) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.DateTime)(Original_TimeStamp));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_PlayIndex));
+        public virtual int Delete(int Original_ID, System.DateTime Original_TimeStamp, bool Original_IsMute, global::System.Nullable<global::System.DateTime> Original_TestDate) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_TimeStamp));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((bool)(Original_IsMute));
+            if ((Original_TestDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_TestDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5071,10 +5708,15 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime TimeStamp, int PlayIndex, bool IsMute) {
+        public virtual int Insert(System.DateTime TimeStamp, bool IsMute, global::System.Nullable<global::System.DateTime> TestDate) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(TimeStamp));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(PlayIndex));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(IsMute));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(IsMute));
+            if ((TestDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(TestDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5095,13 +5737,27 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime TimeStamp, int PlayIndex, bool IsMute, System.DateTime Original_TimeStamp, int Original_PlayIndex, bool Original_IsMute) {
+        public virtual int Update(System.DateTime TimeStamp, bool IsMute, global::System.Nullable<global::System.DateTime> TestDate, int Original_ID, System.DateTime Original_TimeStamp, bool Original_IsMute, global::System.Nullable<global::System.DateTime> Original_TestDate, int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(TimeStamp));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(PlayIndex));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(IsMute));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Original_TimeStamp));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_PlayIndex));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(IsMute));
+            if ((TestDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(TestDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_TimeStamp));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Original_IsMute));
+            if ((Original_TestDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_TestDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5122,8 +5778,8 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int PlayIndex, bool IsMute, System.DateTime Original_TimeStamp, int Original_PlayIndex, bool Original_IsMute) {
-            return this.Update(Original_TimeStamp, PlayIndex, IsMute, Original_TimeStamp, Original_PlayIndex, Original_IsMute);
+        public virtual int Update(System.DateTime TimeStamp, bool IsMute, global::System.Nullable<global::System.DateTime> TestDate, int Original_ID, System.DateTime Original_TimeStamp, bool Original_IsMute, global::System.Nullable<global::System.DateTime> Original_TestDate) {
+            return this.Update(TimeStamp, IsMute, TestDate, Original_ID, Original_TimeStamp, Original_IsMute, Original_TestDate, Original_ID);
         }
     }
     
@@ -5572,29 +6228,33 @@ SELECT TimeStamp, PlayIndex, IsMute FROM tblSchedule WHERE (TimeStamp = @TimeSta
             tableMapping.ColumnMappings.Add("SITE_ID", "SITE_ID");
             tableMapping.ColumnMappings.Add("Message", "Message");
             tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("UserID", "UserID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [tblSysLog] WHERE (([StartTimeStamp] = @Original_StartTimeStamp) AND " +
-                "([SITE_ID] = @Original_SITE_ID) AND ([Message] = @Original_Message) AND ([ID] = " +
-                "@Original_ID))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [tblSysLog] WHERE (([StartTimeStamp] = @Original_StartTimeStamp) AND ([SITE_ID] = @Original_SITE_ID) AND ([Message] = @Original_Message) AND ([ID] = @Original_ID) AND ((@IsNull_UserID = 1 AND [UserID] IS NULL) OR ([UserID] = @Original_UserID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StartTimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartTimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Message", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Message", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UserID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [tblSysLog] SET [StartTimeStamp] = @StartTimeStamp, [SITE_ID] = @SITE_ID, [Message] = @Message WHERE (([StartTimeStamp] = @Original_StartTimeStamp) AND ([SITE_ID] = @Original_SITE_ID) AND ([Message] = @Original_Message) AND ([ID] = @Original_ID));
-SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tblSysLog] SET [StartTimeStamp] = @StartTimeStamp, [SITE_ID] = @SITE_ID, [Message] = @Message, [UserID] = @UserID WHERE (([StartTimeStamp] = @Original_StartTimeStamp) AND ([SITE_ID] = @Original_SITE_ID) AND ([Message] = @Original_Message) AND ([ID] = @Original_ID) AND ((@IsNull_UserID = 1 AND [UserID] IS NULL) OR ([UserID] = @Original_UserID)));
+SELECT StartTimeStamp, SITE_ID, Message, ID, UserID FROM tblSysLog WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartTimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartTimeStamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Message", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Message", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StartTimeStamp", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartTimeStamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Message", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Message", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UserID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -5611,12 +6271,12 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog";
+            this._commandCollection[0].CommandText = "SELECT  StartTimeStamp, SITE_ID, Message, ID, UserID\r\nFROM      tblSysLog";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog\r\nwhere StartTimeStamp " +
-                ">=@BeginDate and StartTimeStamp <@EndDtae and  [type]=@type";
+            this._commandCollection[1].CommandText = "SELECT ID, Message, SITE_ID, StartTimeStamp, UserID FROM tblSysLog WHERE (StartTi" +
+                "meStamp >= @BeginDate) AND (StartTimeStamp < @EndDtae) AND (Type = @type)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "StartTimeStamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDtae", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "StartTimeStamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5718,6 +6378,455 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class tblTestLogTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public tblTestLogTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "tblTestLog";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("DateTime", "DateTime");
+            tableMapping.ColumnMappings.Add("SITE_ID", "SITE_ID");
+            tableMapping.ColumnMappings.Add("AC", "AC");
+            tableMapping.ColumnMappings.Add("DC", "DC");
+            tableMapping.ColumnMappings.Add("AMP", "AMP");
+            tableMapping.ColumnMappings.Add("SPK", "SPK");
+            tableMapping.ColumnMappings.Add("DOOR", "DOOR");
+            tableMapping.ColumnMappings.Add("Comm", "Comm");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [tblTestLog] WHERE (([ID] = @Original_ID) AND ([DateTime] = @Original_DateTime) AND ([SITE_ID] = @Original_SITE_ID) AND ([AC] = @Original_AC) AND ([DC] = @Original_DC) AND ([AMP] = @Original_AMP) AND ([SPK] = @Original_SPK) AND ([DOOR] = @Original_DOOR) AND ([Comm] = @Original_Comm))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateTime", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AMP", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AMP", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SPK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SPK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DOOR", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DOOR", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comm", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [tblTestLog] ([DateTime], [SITE_ID], [AC], [DC], [AMP], [SPK], [DOOR], [Comm]) VALUES (@DateTime, @SITE_ID, @AC, @DC, @AMP, @SPK, @DOOR, @Comm);
+SELECT ID, DateTime, SITE_ID, AC, DC, AMP, SPK, DOOR, Comm FROM tblTestLog WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTime", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AMP", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AMP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SPK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SPK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DOOR", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DOOR", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comm", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tblTestLog] SET [DateTime] = @DateTime, [SITE_ID] = @SITE_ID, [AC] = @AC, [DC] = @DC, [AMP] = @AMP, [SPK] = @SPK, [DOOR] = @DOOR, [Comm] = @Comm WHERE (([ID] = @Original_ID) AND ([DateTime] = @Original_DateTime) AND ([SITE_ID] = @Original_SITE_ID) AND ([AC] = @Original_AC) AND ([DC] = @Original_DC) AND ([AMP] = @Original_AMP) AND ([SPK] = @Original_SPK) AND ([DOOR] = @Original_DOOR) AND ([Comm] = @Original_Comm));
+SELECT ID, DateTime, SITE_ID, AC, DC, AMP, SPK, DOOR, Comm FROM tblTestLog WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTime", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AMP", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AMP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SPK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SPK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DOOR", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DOOR", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comm", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateTime", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SITE_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SITE_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DC", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AMP", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AMP", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SPK", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SPK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DOOR", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DOOR", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comm", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::wpfBroadcast.Properties.Settings.Default.BroadcastConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT  tblTestLog.*\r\nFROM      tblTestLog";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT  ID, DateTime, SITE_ID, AC, DC, AMP, SPK, DOOR, Comm\r\nFROM      tblTestLog" +
+                "\r\nWHERE   ([DateTime] >= @BeginDate) AND ([DateTime] < @EndDate)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BroadcastDataSet.tblTestLogDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BroadcastDataSet.tblTestLogDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BroadcastDataSet.tblTestLogDataTable dataTable = new BroadcastDataSet.tblTestLogDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByRange(BroadcastDataSet.tblTestLogDataTable dataTable, global::System.Nullable<global::System.DateTime> BeginDate, global::System.Nullable<global::System.DateTime> EndDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((BeginDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(BeginDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BroadcastDataSet.tblTestLogDataTable GetDataBy(global::System.Nullable<global::System.DateTime> BeginDate, global::System.Nullable<global::System.DateTime> EndDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((BeginDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(BeginDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((EndDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            BroadcastDataSet.tblTestLogDataTable dataTable = new BroadcastDataSet.tblTestLogDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BroadcastDataSet.tblTestLogDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BroadcastDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "tblTestLog");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ID, System.DateTime Original_DateTime, int Original_SITE_ID, bool Original_AC, bool Original_DC, bool Original_AMP, bool Original_SPK, bool Original_DOOR, bool Original_Comm) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_DateTime));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SITE_ID));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_AC));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((bool)(Original_DC));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((bool)(Original_AMP));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_SPK));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((bool)(Original_DOOR));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_Comm));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.DateTime DateTime, int SITE_ID, bool AC, bool DC, bool AMP, bool SPK, bool DOOR, bool Comm) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(DateTime));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(SITE_ID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(AC));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(DC));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(AMP));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(SPK));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(DOOR));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(Comm));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    System.DateTime DateTime, 
+                    int SITE_ID, 
+                    bool AC, 
+                    bool DC, 
+                    bool AMP, 
+                    bool SPK, 
+                    bool DOOR, 
+                    bool Comm, 
+                    int Original_ID, 
+                    System.DateTime Original_DateTime, 
+                    int Original_SITE_ID, 
+                    bool Original_AC, 
+                    bool Original_DC, 
+                    bool Original_AMP, 
+                    bool Original_SPK, 
+                    bool Original_DOOR, 
+                    bool Original_Comm, 
+                    int ID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(DateTime));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(SITE_ID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(AC));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(DC));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(AMP));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(SPK));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(DOOR));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Comm));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DateTime));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_SITE_ID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Original_AC));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_DC));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_AMP));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(Original_SPK));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_DOOR));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(Original_Comm));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(ID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    System.DateTime DateTime, 
+                    int SITE_ID, 
+                    bool AC, 
+                    bool DC, 
+                    bool AMP, 
+                    bool SPK, 
+                    bool DOOR, 
+                    bool Comm, 
+                    int Original_ID, 
+                    System.DateTime Original_DateTime, 
+                    int Original_SITE_ID, 
+                    bool Original_AC, 
+                    bool Original_DC, 
+                    bool Original_AMP, 
+                    bool Original_SPK, 
+                    bool Original_DOOR, 
+                    bool Original_Comm) {
+            return this.Update(DateTime, SITE_ID, AC, DC, AMP, SPK, DOOR, Comm, Original_ID, Original_DateTime, Original_SITE_ID, Original_AC, Original_DC, Original_AMP, Original_SPK, Original_DOOR, Original_Comm, Original_ID);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5742,6 +6851,8 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
         private tblRecordSoundTableAdapter _tblRecordSoundTableAdapter;
         
         private tblSysLogTableAdapter _tblSysLogTableAdapter;
+        
+        private tblTestLogTableAdapter _tblTestLogTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5858,6 +6969,20 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public tblTestLogTableAdapter tblTestLogTableAdapter {
+            get {
+                return this._tblTestLogTableAdapter;
+            }
+            set {
+                this._tblTestLogTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5903,6 +7028,10 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                             && (this._tblSysLogTableAdapter.Connection != null))) {
                     return this._tblSysLogTableAdapter.Connection;
                 }
+                if (((this._tblTestLogTableAdapter != null) 
+                            && (this._tblTestLogTableAdapter.Connection != null))) {
+                    return this._tblTestLogTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -5937,6 +7066,9 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                 if ((this._tblSysLogTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._tblTestLogTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -5954,15 +7086,6 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._tblUserGroupTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._tblRecordSoundTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tblRecordSoundTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6002,12 +7125,30 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tblRecordSoundTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tblRecordSoundTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._tblSysLogTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.tblSysLog.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._tblSysLogTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._tblTestLogTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tblTestLog.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tblTestLogTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6026,14 +7167,6 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._tblUserGroupTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._tblRecordSoundTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tblRecordSoundTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6069,11 +7202,27 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tblRecordSoundTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tblRecordSoundTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._tblSysLogTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.tblSysLog.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._tblSysLogTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._tblTestLogTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tblTestLog.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tblTestLogTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6087,11 +7236,27 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(BroadcastDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._tblTestLogTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tblTestLog.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tblTestLogTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tblSysLogTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.tblSysLog.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tblSysLogTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tblRecordSoundTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tblRecordSoundTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6124,14 +7289,6 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tblSIteTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tblRecordSoundTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tblRecordSound.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tblRecordSoundTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6208,6 +7365,10 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
             }
             if (((this._tblSysLogTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._tblSysLogTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("所有以 TableAdapterManager 管理的 TableAdapters 必須使用相同的連接字串。");
+            }
+            if (((this._tblTestLogTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._tblTestLogTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("所有以 TableAdapterManager 管理的 TableAdapters 必須使用相同的連接字串。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -6304,6 +7465,15 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._tblSysLogTableAdapter.Adapter);
                     }
                 }
+                if ((this._tblTestLogTableAdapter != null)) {
+                    revertConnections.Add(this._tblTestLogTableAdapter, this._tblTestLogTableAdapter.Connection);
+                    this._tblTestLogTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._tblTestLogTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._tblTestLogTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._tblTestLogTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._tblTestLogTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -6389,6 +7559,10 @@ SELECT StartTimeStamp, SITE_ID, Message, ID FROM tblSysLog WHERE (ID = @ID)";
                 if ((this._tblSysLogTableAdapter != null)) {
                     this._tblSysLogTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tblSysLogTableAdapter]));
                     this._tblSysLogTableAdapter.Transaction = null;
+                }
+                if ((this._tblTestLogTableAdapter != null)) {
+                    this._tblTestLogTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tblTestLogTableAdapter]));
+                    this._tblTestLogTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

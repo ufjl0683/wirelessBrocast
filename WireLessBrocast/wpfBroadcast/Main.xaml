@@ -331,8 +331,8 @@
                     </StackPanel>
                 </Controls:AccordionItem.Header>
                 <StackPanel>
-                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="預錄詞廣播"   />
-                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="靜音廣播"   />
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="預錄詞廣播" Click="RecordBrocast_Click"  />
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="口語廣播" Click="VoiceBrocast_Click"   />
 
                 </StackPanel>
             </Controls:AccordionItem>
@@ -344,8 +344,8 @@
                     </StackPanel>
                 </Controls:AccordionItem.Header>
                 <StackPanel>
-                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="一般測試"   />
-                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="靜音測試"   />
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="一般測試"  Click="Test_Click"  />
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="靜音測試" Click="SilentTest_Click"  />
 
                 </StackPanel>
             </Controls:AccordionItem>
@@ -359,14 +359,14 @@
                 <StackPanel>
                     <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24" Click="btpReportLogin"  Content="登入紀錄"   />
                     <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="事件紀錄"     Click="btnReportEvent" />
-
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="排程測試紀錄"     Click="btnSchTestLog" />
                 </StackPanel>
             </Controls:AccordionItem>
         </Controls:Accordion>
 
         <esri:InfoWindow Margin="348,260,0,0"/>
 
-        <DataGrid x:Name="tblSIteDataGrid" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="229,10,0.4,0" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" FontSize="16">
+        <DataGrid x:Name="tblSIteDataGrid" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="229,10,0.4,0" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" FontSize="18" ColumnHeaderHeight="50" RowHeight="30">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="sITE_IDColumn" Width="SizeToHeader" Header="編號" Binding="{Binding SITE_ID}"/>
                 <DataGridTextColumn x:Name="sITE_NAMEColumn" Width="200" Header="站名" Binding="{Binding SITE_NAME}"/>

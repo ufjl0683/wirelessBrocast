@@ -97,3 +97,12 @@ D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndSchedule.g.cs
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.baml
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.g.cs
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\App.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.pdb

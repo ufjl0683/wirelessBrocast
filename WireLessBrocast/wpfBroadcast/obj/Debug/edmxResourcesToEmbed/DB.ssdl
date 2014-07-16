@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BroadcastModelStoreContainer">
-    <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
     <AssociationSet Name="FK_tblSchedule_tblRecordSound" Association="BroadcastModel.Store.FK_tblSchedule_tblRecordSound">
       <End Role="tblRecordSound" EntitySet="tblRecordSound" />
       <End Role="tblSchedule" EntitySet="tblSchedule" />
@@ -50,6 +50,7 @@
     <Property Name="EndTimeStamp" Type="datetime" />
     <Property Name="Type" Type="char" Nullable="false" MaxLength="1" />
     <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>

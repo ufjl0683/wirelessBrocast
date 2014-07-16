@@ -9,3 +9,5 @@ D:\backd\防洪\WireLessBrocast\Test\bin\Release\Recoder.pdb
 D:\backd\防洪\WireLessBrocast\Test\obj\Release\Test.csprojResolveAssemblyReference.cache
 D:\backd\防洪\WireLessBrocast\Test\obj\Release\Test.exe
 D:\backd\防洪\WireLessBrocast\Test\obj\Release\Test.pdb
+D:\backd\防洪\WireLessBrocast\Test\bin\Release\1.wav
+D:\backd\防洪\WireLessBrocast\Test\bin\Release\0.wav

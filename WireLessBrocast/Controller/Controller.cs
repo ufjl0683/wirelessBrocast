@@ -30,6 +30,7 @@ namespace Controller
 
            this.touch_panel_mgr = new TouchPanelManager(TouchPanelComPort);
            touch_panel_mgr.OnPanelCmdEvent += touch_panel_mgr_OnPanelCmdEvent;
+           recoder = new Recoder();
        //    new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeech)).Start(new int[] { 0, 3 });
        }
 
@@ -41,10 +42,10 @@ namespace Controller
                voiceThread.Join();
                System.Threading.Thread.Sleep(1000);
            }
-           voiceThread =   new ThreadPlaySpeech(param[0], param[1], Status, touch_panel_mgr);//new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask));
+           voiceThread =   new ThreadPlaySpeechTest(param[0], param[1], Status, touch_panel_mgr);//new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask));
            voiceThread.Start(  );
        }
-
+       
        void kenwood_OnSlaveReceiveEvent(object sender, byte[] data)
        {
            try
@@ -62,9 +63,27 @@ namespace Controller
                    {
                        voiceThread.Abort();
                        voiceThread.Join();
+                      // System.Threading.Thread.Sleep(1000);
+                   }
+                   voiceThread = new ThreadPlaySound(inx, repeat, Status, touch_panel_mgr);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   // voiceThread.Start(new int[] { inx, repeat });
+                   voiceThread.Start();
+               }
+               if (cmd[1] == 'T') //tetsing   p+index + times
+               {
+                   kenwood.Reply(new byte[] { data[0], (byte)'T' });
+                  int repeat = cmd[3];
+                   bool IsSilent = cmd[2]==1?true:false;
+                   if (voiceThread != null)
+                   {
+                       voiceThread.Abort();
+                       voiceThread.Join();
                        System.Threading.Thread.Sleep(1000);
                    }
-                   voiceThread = new ThreadPlaySpeech(inx, repeat, Status, touch_panel_mgr);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   if(IsSilent)
+                   voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   else
+                       voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr); 
                    // voiceThread.Start(new int[] { inx, repeat });
                    voiceThread.Start();
                }
@@ -81,10 +100,33 @@ namespace Controller
                }
                else if (cmd[1] == 'X')
                {
+                   kenwood.Reply(new byte[] { data[0], (byte)'X' });
                    if (voiceThread != null)
                    {
                        voiceThread.Abort();
+                       voiceThread.Join();
+                       System.Threading.Thread.Sleep(1000);
                    }
+                  
+               }
+               else if (cmd[1] == 'E') //echo
+               {
+
+                
+                   kenwood.Reply(new byte[] { data[0], (byte)'E'});
+                     //  voiceThread.Abort();
+                      // do swich ptt of radio here 
+               }
+               else if (cmd[1] == 'V')
+               {
+                   kenwood.Reply(new byte[] { data[0], (byte)'V' });
+                   if (cmd[2] == 1)   // switch ptt of wireless to active 
+                   {
+                     Status.Set((int)StatusIndex.BUSY,true) ;
+                   }
+                   else    // switch ptt to normal
+                       Status.Set((int)StatusIndex.BUSY, false); ;
+
                }
 
            }
