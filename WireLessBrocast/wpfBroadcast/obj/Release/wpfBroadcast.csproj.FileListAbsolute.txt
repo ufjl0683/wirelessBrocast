@@ -108,3 +108,5 @@ D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Release\Dialog\wndTest.g.cs
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Release\Dialog\wndVoiceBroadcast.g.cs
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Release\Dialog\wndTestLogReport.baml
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Release\Dialog\wndTestLogReport.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\DataGridThemes.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\DataGridThemes.pdb

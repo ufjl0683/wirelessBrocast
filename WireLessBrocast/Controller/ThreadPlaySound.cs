@@ -53,6 +53,10 @@ namespace Controller
            //    initsecs = 0;
            //}
            Status.Set((int)StatusIndex.BUSY, true);          //     PlayStatus = 'P';
+            if (!System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + recordid + ".wav"))
+               
+                   touch_panel_mgr.ShowAlert(recordid + ".wav 不存在！");
+
            for (int i = 0; i < cnt; i++)
            {
                playcnt++;
@@ -68,9 +72,12 @@ namespace Controller
            //    "即將關水門請趕快離開,緊急撤離,,緊急撤離"
            //};
               // voice.Rate = -5;
-               player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + recordid + ".wav");
-               player.PlaySync();
-               touch_panel_mgr.ShowAlert("播放詞" + (recordid+1)+",第"+(i+1)+"次");
+              
+                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + recordid + ".wav");
+                   player.PlaySync();
+                   touch_panel_mgr.ShowAlert("播放詞" + (recordid + 1) + ",第" + (i + 1) + "次");
+               
+              
               
             //   voice.Speak(voiceText[recordid]);
              //  voice.Dispose();
@@ -78,29 +85,7 @@ namespace Controller
           // playcnt = 0;
        //    PlayStatus = 'I';
          
-           int sec = 0;
-           try
-           {
-               //System.Threading.Thread.Sleep(5000);
-           //    sec = record.GetRecordTime(InitTime);
-              
-           //    Console.WriteLine("Record  {0} secs", sec-initsecs);
-               //if (sec - initsecs > 0)
-               //{
-               //    Status.Set((int)StatusIndex.AMP, false);
-               //    Status.Set((int)StatusIndex.SPEAKER, false);
-               //}
-               //else
-               //{
-               //    Status.Set((int)StatusIndex.AMP, true);
-               //    Status.Set((int)StatusIndex.SPEAKER, true);
-               //}
-           }
-           catch (Exception ex)
-           {
-
-              
-           }
+         
            Status.Set( (int)StatusIndex.BUSY, false);
            
         

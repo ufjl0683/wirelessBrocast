@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -96,30 +97,66 @@ namespace wpfBroadcast.Dialog
                 System.Windows.Forms.Application.DoEvents();
             }
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
             int cnt;
             if (!int.TryParse(txtRepeat.Text, out cnt))
                 return;
+
+            (sender as Button).IsEnabled = false;
             foreach (BroadcastBindingData site in grdSite.ItemsSource)
             {
                 if (!site.IsSelected)
                     continue;
 
-                lock (App.Kenwood)
-               
-                    site.IsSend = App.Kenwood.Test(site.SITE_ID, IsSilent,cnt);
-                System.Windows.Forms.Application.DoEvents();
+
+                await Task.Run(() =>
+                {
+                    lock (App.Kenwood)
+
+                        site.IsSend = App.Kenwood.Test(site.SITE_ID, IsSilent, cnt);
+
+                });
+                
 
             }
-
+            (sender as Button).IsEnabled = true;
+            App.AddOperationlog(IsSilent?"靜音測試":"語音測試");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             tmr.Stop();
           
+        }
+
+        private  async  void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            foreach (BroadcastBindingData site in grdSite.ItemsSource)
+            {
+                if (!site.IsSelected)
+                    continue;
+
+                await Task.Run(() =>
+                {
+                    lock (App.Kenwood)
+
+                        site.IsSend = App.Kenwood.Abort(site.SITE_ID);
+                });
+                
+
+            }
+
+            wndBroadcast wnd = new Dialog.wndBroadcast(true);
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            wnd.ShowDialog();
         }
     }
 }

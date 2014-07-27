@@ -15,7 +15,7 @@ namespace wpfBroadcast.Converter
             if (res)
                 return new System.Windows.Media.SolidColorBrush(Colors.Red);
             else
-                return new System.Windows.Media.SolidColorBrush(Colors.Green);
+                return new System.Windows.Media.SolidColorBrush(Color.FromArgb(255,0,255,0));
 
         }
 

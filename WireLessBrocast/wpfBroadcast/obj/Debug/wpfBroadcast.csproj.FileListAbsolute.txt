@@ -106,3 +106,7 @@ D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.baml
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.g.cs
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.dll
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\DataGridThemes.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\DataGridThemes.pdb

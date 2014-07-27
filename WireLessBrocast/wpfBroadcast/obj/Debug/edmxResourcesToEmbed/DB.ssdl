@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BroadcastModelStoreContainer">
-    <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-    <AssociationSet Name="FK_tblSchedule_tblRecordSound" Association="BroadcastModel.Store.FK_tblSchedule_tblRecordSound">
-      <End Role="tblRecordSound" EntitySet="tblRecordSound" />
-      <End Role="tblSchedule" EntitySet="tblSchedule" />
-    </AssociationSet>
+    <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblTestLog" EntityType="BroadcastModel.Store.tblTestLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="tblRecordSound">
     <Key>
@@ -21,11 +18,12 @@
   </EntityType>
   <EntityType Name="tblSchedule">
     <Key>
-      <PropertyRef Name="TimeStamp" />
+      <PropertyRef Name="ID" />
     </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="TimeStamp" Type="datetime" Nullable="false" />
-    <Property Name="PlayIndex" Type="int" Nullable="false" />
     <Property Name="IsMute" Type="bit" Nullable="false" />
+    <Property Name="TestDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tblSIte">
     <Key>
@@ -39,6 +37,7 @@
     <Property Name="Amp" Type="bit" Nullable="false" />
     <Property Name="Speaker" Type="bit" Nullable="false" />
     <Property Name="DoorOpen" Type="bit" Nullable="false" />
+    <Property Name="InTest" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblSysLog">
     <Key>
@@ -51,6 +50,20 @@
     <Property Name="Type" Type="char" Nullable="false" MaxLength="1" />
     <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="UserID" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblTestLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="datetime2" Nullable="false" />
+    <Property Name="SITE_ID" Type="int" Nullable="false" />
+    <Property Name="AC" Type="bit" Nullable="false" />
+    <Property Name="DC" Type="bit" Nullable="false" />
+    <Property Name="AMP" Type="bit" Nullable="false" />
+    <Property Name="SPK" Type="bit" Nullable="false" />
+    <Property Name="DOOR" Type="bit" Nullable="false" />
+    <Property Name="Comm" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -68,16 +81,4 @@
     <Property Name="GroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="GroupName" Type="nvarchar" Nullable="false" MaxLength="20" />
   </EntityType>
-  <Association Name="FK_tblSchedule_tblRecordSound">
-    <End Role="tblRecordSound" Type="BroadcastModel.Store.tblRecordSound" Multiplicity="1" />
-    <End Role="tblSchedule" Type="BroadcastModel.Store.tblSchedule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblRecordSound">
-        <PropertyRef Name="PlayIndex" />
-      </Principal>
-      <Dependent Role="tblSchedule">
-        <PropertyRef Name="PlayIndex" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

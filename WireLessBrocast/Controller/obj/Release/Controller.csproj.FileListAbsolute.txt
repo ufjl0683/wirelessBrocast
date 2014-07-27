@@ -9,3 +9,4 @@ D:\backd\防洪\WireLessBrocast\Controller\obj\Release\Controller.exe
 D:\backd\防洪\WireLessBrocast\Controller\obj\Release\Controller.pdb
 D:\backd\防洪\WireLessBrocast\Controller\bin\Release\1.wav
 D:\backd\防洪\WireLessBrocast\Controller\bin\Release\0.wav
+D:\backd\防洪\WireLessBrocast\Controller\bin\Release\20k.wav

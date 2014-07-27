@@ -108,7 +108,7 @@ namespace wpfBroadcast
             return tblSIteQuery;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
            // System.Windows.Data.CollectionViewSource tblSIteViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblSIteViewSource")));
             lock (App.db)
@@ -118,12 +118,22 @@ namespace wpfBroadcast
                     return;
                 site.AC = !site.AC;
                 site.DC = !site.DC;
+               
                 site.DoorOpen = !site.DoorOpen;
+                 
+                
                 site.Amp = !site.Amp;
                 site.Comm = !site.Comm;
                 site.Speaker = !site.Speaker;
+               
                 App.db.SaveChanges();
+                if (site.DoorOpen)
+                {
+                    // VoicePlay(site.SITE_NAME + "箱門開啟");
+                    App.VoicePlayAsync(site.SITE_NAME + "箱門開啟");
+                }
             }
+            
         }
 
         private void btpReportLogin(object sender, RoutedEventArgs e)
@@ -151,7 +161,7 @@ namespace wpfBroadcast
 
         private void RecordBrocast_Click(object sender, RoutedEventArgs e)
         {
-            wndBroadcast wnd = new Dialog.wndBroadcast();
+            wndBroadcast wnd = new Dialog.wndBroadcast(false);
 
             wnd.Title = (sender as Button).Content.ToString();
             wnd.Owner = this;

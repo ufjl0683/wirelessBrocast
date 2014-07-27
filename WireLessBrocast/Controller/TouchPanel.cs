@@ -177,6 +177,8 @@ namespace Controller
                }
                else
                {
+                   if(lastMenuid!=-1)
+                   TextUnSelect(LayerConst.Layer2, lastMenuid + 1, CurrentPanel.GetMenuText(lastMenuid));
                    Beep();
                }
         //       System.Threading.Monitor.Pulse(DisplayCmdQueue);

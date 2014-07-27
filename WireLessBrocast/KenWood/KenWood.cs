@@ -50,7 +50,7 @@ namespace WirelessBrocast
 
            
           
-           System.Threading.Thread.Sleep(1000);
+           System.Threading.Thread.Sleep(500);
            int cnt = com.BytesToRead;
            for (int i = 0; i < cnt; i++)
            {
@@ -68,6 +68,14 @@ namespace WirelessBrocast
            ReceiverThread.Start();
        }
 
+        public bool SendDateTime(int id, int year,int month,int day,int hour,int min,int sec)
+        {
+             Send (new byte[] { (byte)id, (byte)'U', (byte)(year-2000),(byte)month,(byte)day,(byte)hour,(byte)min,(byte)sec });
+
+             return true;
+            
+
+        }
         public bool Test(int id, bool IsSilent,int repeat)
         {
             byte[] res = Send(new byte[] { (byte)id, (byte)'T', (byte)(IsSilent?1:0), (byte)repeat });
@@ -92,6 +100,7 @@ namespace WirelessBrocast
         }
         public bool Play(int id,int inx, int cnt)
         {
+            
             byte[] res = Send(new byte[] { (byte)id, (byte)'P', (byte)inx, (byte)cnt });
             if (res == null)
                 return false;
@@ -148,6 +157,25 @@ namespace WirelessBrocast
            com.Dispose();
        }
        byte[] retcmd;
+
+       //public void SendWithNoReply(byte[] cmd)
+       //{
+       //    MemoryStream ms = new MemoryStream();
+       //    ms.WriteByte(0xaa);
+       //    ms.WriteByte((byte)(cmd.Length));
+       //    int crc = 0;
+
+       //    for (int i = 0; i < cmd.Length; i++)
+       //    {
+       //        crc ^= cmd[i];
+       //        ms.WriteByte(cmd[i]);
+       //    }
+       //    ms.WriteByte((byte)crc);
+       //    ms.WriteByte(0xbb);
+       //    ms.Position = 0;
+       //    byte[] outdata = ms.ToArray();
+          
+       //}
         public byte[] Send( byte[]cmd)
        {
        
@@ -165,7 +193,18 @@ namespace WirelessBrocast
            ms.WriteByte(0xbb);
            ms.Position = 0;
            byte[] outdata = ms.ToArray();
-          
+           if (cmd[0] == 0)  // brocast no reply
+           {
+
+               System.Threading.Thread.Sleep(100);
+               lock (this)
+               {
+                   com.Write(outdata, 0, outdata.Length);
+                   com.BaseStream.Flush();
+               }
+               return new byte[0]; ;
+           }
+
                lock (toutObj)
                {
                    int trycnt = 0;
@@ -178,6 +217,7 @@ namespace WirelessBrocast
                             com.BaseStream.Flush();
                         }
                        Console.WriteLine("send payload");
+                       
                        if (System.Threading.Monitor.Wait(toutObj, 3000))
                        {
                            return retcmd;
@@ -253,7 +293,7 @@ namespace WirelessBrocast
                    byte id = payload[0];
                    if (!this.IsMaster)
                    {
-                       if (id != this.id)
+                       if ( id!=0 &&  id != this.id)
                            continue;
                    }
                    int crc ;

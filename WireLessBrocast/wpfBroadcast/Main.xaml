@@ -6,7 +6,7 @@
      xmlns:con="clr-namespace:wpfBroadcast.Converter"
     
         xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit" xmlns:esri="http://schemas.esri.com/arcgis/client/2009" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:wpfBroadcast" mc:Ignorable="d" x:Class="wpfBroadcast.Main"
-        Title="Main" Height="461.756" Width="629.154" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Unloaded="Window_Unloaded"  >
+        Title="Main" Height="461.756" Width="629.154" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Unloaded="Window_Unloaded" FontSize="18"  >
     <Window.Resources>
         <con:BoolToColorConverter x:Key="BoolToColorConverter" />
         <Style  x:Key='HyperLinkButtonStyle' TargetType='{x:Type Button}'>
@@ -19,10 +19,10 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property='Foreground'        Value='#195AE0' />
+            <Setter Property='Foreground'        Value='White' />
             <Style.Triggers>
                 <Trigger Property='IsMouseOver' Value='true'>
-                    <Setter   Property='Foreground'    Value='Red' />
+                    <Setter   Property='Foreground'    Value='LightBlue' />
                     <Setter Property='Cursor' Value='Hand' />
                 </Trigger>
             </Style.Triggers>
@@ -307,13 +307,15 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource tblSIteViewSource}">
 
-        <Controls:Accordion x:Name="accdMenu"    HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="224" FontSize="24"     >
+        <Controls:Accordion x:Name="accdMenu"  Background="{StaticResource NormalBrush}"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="224" FontSize="24"     >
             <Controls:AccordionItem >
-                <Controls:AccordionItem.Header>
-                    <StackPanel  Orientation="Horizontal" >
+                <Controls:AccordionItem.Header >
+                    <Grid Background="{StaticResource ShineBrush}"   >
+                    <StackPanel  Orientation="Horizontal"      >
                         <Image Width="32" Height="32" Source="icon/setting.png" />
                         <TextBlock Text="系統設定"/>
                     </StackPanel>
+                           </Grid>
                 </Controls:AccordionItem.Header>
                 <StackPanel>
 
@@ -357,7 +359,7 @@
                     </StackPanel>
                 </Controls:AccordionItem.Header>
                 <StackPanel>
-                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24" Click="btpReportLogin"  Content="登入紀錄"   />
+                    <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24" Click="btpReportLogin"  Content="操作紀錄"   />
                     <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="事件紀錄"     Click="btnReportEvent" />
                     <Button Width="168"  Style="{StaticResource HyperLinkButtonStyle}" Margin="10" FontSize="24"   Content="排程測試紀錄"     Click="btnSchTestLog" />
                 </StackPanel>
@@ -366,7 +368,15 @@
 
         <esri:InfoWindow Margin="348,260,0,0"/>
 
-        <DataGrid x:Name="tblSIteDataGrid" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="229,10,0.4,0" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" FontSize="18" ColumnHeaderHeight="50" RowHeight="30">
+        <DataGrid x:Name="tblSIteDataGrid"  HeadersVisibility="Column" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="229,0,0.4,0" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" FontSize="18" ColumnHeaderHeight="50" RowHeight="30" VerticalAlignment="Stretch">
+
+            <!--<DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight"
+                  Value="Bold" />
+                    <Setter    Property="FontSize"  Value="16" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>-->
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="sITE_IDColumn" Width="SizeToHeader" Header="編號" Binding="{Binding SITE_ID}"/>
                 <DataGridTextColumn x:Name="sITE_NAMEColumn" Width="200" Header="站名" Binding="{Binding SITE_NAME}"/>

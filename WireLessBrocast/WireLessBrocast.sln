@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfBroadcast", "wpfBroadcast\wpfBroadcast.csproj", "{1233886A-B6A9-4998-BB7D-FD196344F750}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridThemes", "DataGridTheme\DataGridThemes.csproj", "{75FF1407-1C79-4138-B6AD-3E8D69D2AD36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{1233886A-B6A9-4998-BB7D-FD196344F750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1233886A-B6A9-4998-BB7D-FD196344F750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1233886A-B6A9-4998-BB7D-FD196344F750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FF1407-1C79-4138-B6AD-3E8D69D2AD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FF1407-1C79-4138-B6AD-3E8D69D2AD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FF1407-1C79-4138-B6AD-3E8D69D2AD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FF1407-1C79-4138-B6AD-3E8D69D2AD36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,3 +11,4 @@ D:\backd\防洪\WireLessBrocast\Test\obj\Release\Test.exe
 D:\backd\防洪\WireLessBrocast\Test\obj\Release\Test.pdb
 D:\backd\防洪\WireLessBrocast\Test\bin\Release\1.wav
 D:\backd\防洪\WireLessBrocast\Test\bin\Release\0.wav
+D:\backd\防洪\WireLessBrocast\Test\bin\Release\20k.wav

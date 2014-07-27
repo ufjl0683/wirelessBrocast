@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -71,37 +72,47 @@ namespace wpfBroadcast.Dialog
         }
         bool StopVoiceFlag = false;
         bool InProcess = false;
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
             ClearSendFlag();
             (sender as Button).IsEnabled = false;
             StopVoiceFlag = false ;
             InProcess = true;
-            lock (App.Kenwood)
-            {
-                foreach (BroadcastBindingData site in grdSite.ItemsSource)
+
+            await Task.Run(() =>
                 {
+                    lock (App.Kenwood)
+                    {
+                        foreach (BroadcastBindingData site in grdSite.ItemsSource)
+                        {
 
 
-                    site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, true);
+                            site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, true);
 
-                    System.Windows.Forms.Application.DoEvents();
-                }
+                            
+                        }
 
-                MessageBox.Show("您可以開始廣播");
-                while (!StopVoiceFlag)
-                {
+                        Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show("您可以開始廣播");
+                        });
 
-                    System.Windows.Forms.Application.DoEvents();
-                    System.Threading.Thread.Sleep(100);
-                }
-                
-            }
+
+
+                        while (!StopVoiceFlag)
+                        {
+
+
+                            System.Threading.Thread.Sleep(100);
+                        }
+
+                    }
+                });
 
             (sender as Button).IsEnabled = true;
-            
-          
+
+            App.AddOperationlog("口語廣播");
 
         }
         void ClearSendFlag()
@@ -110,23 +121,27 @@ namespace wpfBroadcast.Dialog
             foreach (BroadcastBindingData site in grdSite.ItemsSource)
             {
                 site.IsSend = false;
-                System.Windows.Forms.Application.DoEvents();
+                 
             }
         }
 
-        void StopVoiceBroadcast()
+        async void StopVoiceBroadcast()
         {
             StopVoiceFlag = true;
 
-            foreach (BroadcastBindingData site in grdSite.ItemsSource)
+         await Task.Run(()=>
             {
-
-                lock (App.Kenwood)
+                foreach (BroadcastBindingData site in grdSite.ItemsSource)
                 {
-                    site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, false);
+
+                     lock (App.Kenwood)
+                    {
+                        site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, false);
+                    }
+                
                 }
-                System.Windows.Forms.Application.DoEvents();
-            }
+
+            });
 
 
             

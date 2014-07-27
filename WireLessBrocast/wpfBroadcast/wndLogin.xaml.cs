@@ -67,6 +67,7 @@ namespace wpfBroadcast
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if(App.tmr!=null)
             App.tmr.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             Environment.Exit(0);
         }

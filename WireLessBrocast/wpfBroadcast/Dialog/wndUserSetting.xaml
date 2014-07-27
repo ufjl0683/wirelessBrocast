@@ -6,8 +6,8 @@
     <Window.Resources>
         <CollectionViewSource x:Key="tblUserViewSource" d:DesignSource="{d:DesignInstance {x:Type wpfBroadcast:tblUser}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource tblUserViewSource}">
-        <DataGrid x:Name="tblUserDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="15,10,10,63" RowDetailsVisibilityMode="VisibleWhenSelected">
+    <Grid DataContext="{StaticResource tblUserViewSource}" Background="{StaticResource NormalBrush}"   >
+        <DataGrid x:Name="tblUserDataGrid" HeadersVisibility="Column" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,0,0.4,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="307"  FontSize="18"  VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="userIDColumn" Binding="{Binding UserID}" Header="帳號" Width="100" />
                 <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding Password}" Header="密碼" Width="100"/>
@@ -15,7 +15,7 @@
                 <DataGridTextColumn x:Name="userNameColumn" Binding="{Binding UserName}" Header="名稱" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"   Content="取消" HorizontalAlignment="Right" Margin="0,0,10.4,9.8" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
-        <Button x:Name="btnOk" Style="{DynamicResource ButtonStyle1}"    Content="確定" Margin="0,0,148.4,7.8" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
+        <Button x:Name="btnCancel"     Content="取消" HorizontalAlignment="Right" Margin="0,0,10.4,9.8" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
+        <Button x:Name="btnOk"     Content="確定" Margin="0,0,148.4,7.8" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
     </Grid>
 </Window>

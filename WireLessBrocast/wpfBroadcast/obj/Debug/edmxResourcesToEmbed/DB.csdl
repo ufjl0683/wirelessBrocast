@@ -5,12 +5,9 @@
     <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.tblUserGroup" />
     <EntitySet Name="tblSIte" EntityType="BroadcastModel.tblSIte" />
     <EntitySet Name="tblSysLog" EntityType="BroadcastModel.tblSysLog" />
-    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.tblSchedule" />
     <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.tblRecordSound" />
-    <AssociationSet Name="FK_tblSchedule_tblRecordSound" Association="BroadcastModel.FK_tblSchedule_tblRecordSound">
-      <End Role="tblRecordSound" EntitySet="tblRecordSound" />
-      <End Role="tblSchedule" EntitySet="tblSchedule" />
-    </AssociationSet>
+    <EntitySet Name="tblTestLog" EntityType="BroadcastModel.tblTestLog" />
+    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.tblSchedule" />
   </EntityContainer>
   <EntityType Name="tblUser">
     <Key>
@@ -40,6 +37,7 @@
     <Property Type="Boolean" Name="Amp" Nullable="false" />
     <Property Type="Boolean" Name="Speaker" Nullable="false" />
     <Property Type="Boolean" Name="DoorOpen" Nullable="false" />
+    <Property Type="Boolean" Name="InTest" Nullable="false" />
   </EntityType>
   <EntityType Name="tblSysLog">
     <Key>
@@ -53,33 +51,34 @@
     <Property Type="String" Name="Message" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="UserID" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="tblSchedule">
-    <Key>
-      <PropertyRef Name="TimeStamp" />
-    </Key>
-    <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="3" />
-    <Property Type="Int32" Name="PlayIndex" Nullable="false" />
-    <Property Type="Boolean" Name="IsMute" Nullable="false" />
-    <NavigationProperty Name="tblRecordSound" Relationship="BroadcastModel.FK_tblSchedule_tblRecordSound" FromRole="tblSchedule" ToRole="tblRecordSound" />
-  </EntityType>
   <EntityType Name="tblRecordSound">
     <Key>
       <PropertyRef Name="PlayIndex" />
     </Key>
     <Property Type="Int32" Name="PlayIndex" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tblSchedule" Relationship="BroadcastModel.FK_tblSchedule_tblRecordSound" FromRole="tblRecordSound" ToRole="tblSchedule" />
   </EntityType>
-  <Association Name="FK_tblSchedule_tblRecordSound">
-    <End Type="BroadcastModel.tblRecordSound" Role="tblRecordSound" Multiplicity="1" />
-    <End Type="BroadcastModel.tblSchedule" Role="tblSchedule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblRecordSound">
-        <PropertyRef Name="PlayIndex" />
-      </Principal>
-      <Dependent Role="tblSchedule">
-        <PropertyRef Name="PlayIndex" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="tblTestLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="7" />
+    <Property Type="Int32" Name="SITE_ID" Nullable="false" />
+    <Property Type="Boolean" Name="AC" Nullable="false" />
+    <Property Type="Boolean" Name="DC" Nullable="false" />
+    <Property Type="Boolean" Name="AMP" Nullable="false" />
+    <Property Type="Boolean" Name="SPK" Nullable="false" />
+    <Property Type="Boolean" Name="DOOR" Nullable="false" />
+    <Property Type="Boolean" Name="Comm" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="TimeStamp" Nullable="false" Precision="3" />
+    <Property Type="Boolean" Name="IsMute" Nullable="false" />
+    <Property Type="DateTime" Name="TestDate" Precision="3" />
+  </EntityType>
 </Schema>

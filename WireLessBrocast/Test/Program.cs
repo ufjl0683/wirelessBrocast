@@ -15,12 +15,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Regex reg = new Regex("([0-9]{1,2}):([0-9]{1,2})");
+            //Regex reg = new Regex("([0-9]{1,2}):([0-9]{1,2})");
 
-            MatchCollection match = reg.Matches("00:23");
-            if(match.Count!=0){
+            //MatchCollection match = reg.Matches("00:23");
+            //if(match.Count!=0){
                 
-            }
+            //}
 
             //System.Collections.BitArray bary = new System.Collections.BitArray(8);
             //bary.Set(7,true );
@@ -32,13 +32,13 @@ namespace Test
             //Recorder.SetRTCNow();
             //Console.ReadKey();
 
-        //    KenWood master = new KenWood(0, "Com15", true);
+            KenWood master = new KenWood(0, "Com4", true);
         //////   KenWood slave = new KenWood("Com4", false);
         //// //  slave.OnSlaveReceiveEvent += slave_OnSlaveReceiveEvent;
 
         ////   byte[] res;
-            //if (master.Play(1, 1, 3))
-            //    Console.WriteLine("success");
+            if (master.Play(1, 1, 3))
+                Console.WriteLine("success");
             //while (true)
             //{
             //    byte status,status1; int cnt;

@@ -7,9 +7,9 @@
         <wpfBroadcast:BroadcastDataSet x:Key="broadcastDataSet"/>
         <CollectionViewSource x:Key="tblSIteViewSource" Source="{Binding tblSIte, Source={StaticResource broadcastDataSet}}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource tblSIteViewSource}">
+    <Grid DataContext="{StaticResource tblSIteViewSource}" Background="{StaticResource NormalBrush}" >
 
-        <DataGrid x:Name="tblSIteDataGrid"  AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="20" Margin="0,0,-0.2,78.4">
+        <DataGrid x:Name="tblSIteDataGrid"  HeadersVisibility="Column"  AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="20" Margin="0,10,-0.2,56.4" VerticalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="sITE_IDColumn" Binding="{Binding SITE_ID}" Header="站號" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="sITE_NAMEColumn" Binding="{Binding SITE_NAME}" Header="名稱" Width="300" CanUserSort="False"/>
@@ -21,9 +21,9 @@
                 <DataGridCheckBoxColumn x:Name="doorCloseColumn" Binding="{Binding DoorClose}" Header="Door Close" Width="SizeToHeader"/>-->
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"  Content="取消" HorizontalAlignment="Right" Margin="0,0,22.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
-        <Button x:Name="btnOk" Style="{DynamicResource ButtonStyle1}"   Content="確定" Margin="0,0,160.8,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
-        <Button x:Name="btnOk_Copy" Style="{DynamicResource ButtonStyle1}"    Content="列印" Margin="0,0,607.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
+        <Button x:Name="btnCancel"    Content="取消" HorizontalAlignment="Right" Margin="0,0,22.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
+        <Button x:Name="btnOk"     Content="確定" Margin="0,0,160.8,10.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Click"/>
+        <Button x:Name="btnOk_Copy"      Content="列印" Margin="0,0,607.8,12.4" Width="121" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnOk_Copy_Click"/>
 
     </Grid>
 </Window>

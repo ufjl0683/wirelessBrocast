@@ -25,6 +25,7 @@ namespace wpfBroadcast.Dialog
             InitializeComponent();
 
             this.reporttype = ReportType;
+            this.repotyViewier.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,18 +35,28 @@ namespace wpfBroadcast.Dialog
             wpfBroadcast.BroadcastDataSet ds = new BroadcastDataSet();
             adp.FillByDateRange(ds.tblSysLog, (DateTime)dtpBeginDate.SelectedDate, ((DateTime)dtpEndDate.SelectedDate).AddDays(1), reporttype);
             report.rptSyLog rpt;
+          //  repotyViewier.ViewerCore.ReportSource = null;
             if (repotyViewier.ViewerCore.ReportSource == null)
             {
                 rpt = new report.rptSyLog();
-             
+              
                 rpt.SetDataSource(ds);
+                if(reporttype=="S")
+                rpt.SetParameterValue("Title", "操作紀錄");
+                else
+                    rpt.SetParameterValue("Title", "事件紀錄");
+                this.repotyViewier.ViewerCore.ReuseParameterWhenRefresh = true;
                 this.repotyViewier.ViewerCore.ReportSource = rpt;
             }
 
             else
             {
                 rpt = this.repotyViewier.ViewerCore.ReportSource as report.rptSyLog;
+              
                 rpt.SetDataSource(ds);
+                //rpt.ParameterFields["Title"].CurrentValues.Clear();
+                //rpt.SetParameterValue("Title", "操作紀錄");
+              //  rpt.SetParameterValue("Title", "操作紀錄");
                 this.repotyViewier.ViewerCore.RefreshReport();
             }
           

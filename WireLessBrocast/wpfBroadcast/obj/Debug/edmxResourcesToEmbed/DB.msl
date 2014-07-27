@@ -22,6 +22,7 @@
     <EntitySetMapping Name="tblSIte">
       <EntityTypeMapping TypeName="BroadcastModel.tblSIte">
         <MappingFragment StoreEntitySet="tblSIte">
+          <ScalarProperty Name="InTest" ColumnName="InTest" />
           <ScalarProperty Name="DoorOpen" ColumnName="DoorOpen" />
           <ScalarProperty Name="Speaker" ColumnName="Speaker" />
           <ScalarProperty Name="Amp" ColumnName="Amp" />
@@ -46,20 +47,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblSchedule">
-      <EntityTypeMapping TypeName="BroadcastModel.tblSchedule">
-        <MappingFragment StoreEntitySet="tblSchedule">
-          <ScalarProperty Name="IsMute" ColumnName="IsMute" />
-          <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
-          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblRecordSound">
       <EntityTypeMapping TypeName="BroadcastModel.tblRecordSound">
         <MappingFragment StoreEntitySet="tblRecordSound">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PlayIndex" ColumnName="PlayIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTestLog">
+      <EntityTypeMapping TypeName="BroadcastModel.tblTestLog">
+        <MappingFragment StoreEntitySet="tblTestLog">
+          <ScalarProperty Name="Comm" ColumnName="Comm" />
+          <ScalarProperty Name="DOOR" ColumnName="DOOR" />
+          <ScalarProperty Name="SPK" ColumnName="SPK" />
+          <ScalarProperty Name="AMP" ColumnName="AMP" />
+          <ScalarProperty Name="DC" ColumnName="DC" />
+          <ScalarProperty Name="AC" ColumnName="AC" />
+          <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSchedule">
+      <EntityTypeMapping TypeName="BroadcastModel.tblSchedule">
+        <MappingFragment StoreEntitySet="tblSchedule">
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="IsMute" ColumnName="IsMute" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

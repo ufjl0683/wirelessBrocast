@@ -9,3 +9,6 @@ D:\backd\防洪\WireLessBrocast\Test\obj\Debug\Test.exe
 D:\backd\防洪\WireLessBrocast\Test\obj\Debug\Test.pdb
 D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Controller.exe
 D:\backd\防洪\WireLessBrocast\Test\bin\Debug\Controller.pdb
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\1.wav
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\0.wav
+D:\backd\防洪\WireLessBrocast\Test\bin\Debug\20k.wav

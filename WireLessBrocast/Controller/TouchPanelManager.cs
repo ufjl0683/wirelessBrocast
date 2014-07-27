@@ -50,8 +50,8 @@ namespace Controller
         Panel CreateMainPanel()
       {
           return new Panel(
-           new Menu[]{ new Menu(){ Text="1.一般廣播", MenuType= EnumMenuType.Normal },
-               new Menu(){ Text="2.系統測試", MenuType= EnumMenuType.Normal},
+           new Menu[]{ new Menu(){ Text="1.預錄詞廣播", MenuType= EnumMenuType.Normal },
+               new Menu(){ Text="2.靜音測試", MenuType= EnumMenuType.Normal},
                new Menu(){Text="3.系統狀態",MenuType= EnumMenuType.Normal},
                 new Menu(){ Text=" 確定", MenuType= EnumMenuType.Confirm},
                   //new Menu(){ Text=" 確定", MenuType= EnumMenuType.Confirm}
@@ -114,6 +114,7 @@ namespace Controller
               LastMenuId = menuid;
               return;
           }
+          LastMenuId = menuid;
           if (MediaSelectPanel != null)
               touchPanel.Attatch(MediaSelectPanel);
           //throw new NotImplementedException();

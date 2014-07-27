@@ -25,10 +25,12 @@ namespace wpfBroadcast.Dialog
     {
         wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
         System.Threading.Thread thTask;
+        bool IsEmergency;
         System.Windows.Threading.DispatcherTimer tmr = new System.Windows.Threading.DispatcherTimer();
-        public wndBroadcast()
+        public wndBroadcast(bool IsEmergency)
         {
             InitializeComponent();
+            this.IsEmergency = IsEmergency;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -38,6 +40,8 @@ namespace wpfBroadcast.Dialog
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+        
+
             var q = from n in db.tblSIte select new BroadcastBindingData() { SITE_ID=n.SITE_ID,SITE_NAME=n.SITE_NAME };
            // System.Collections.Generic.List<BroadcastBindingData> list = new List<BroadcastBindingData>();
             grdSite.ItemsSource = q.ToArray();
@@ -49,6 +53,7 @@ namespace wpfBroadcast.Dialog
             tmr.Interval = TimeSpan.FromSeconds(5);
             tmr.Tick += tmr_Tick;
             tmr.Start();
+            Button_Click(null, null);
         }
 
         bool InTmr = false;
@@ -105,6 +110,7 @@ namespace wpfBroadcast.Dialog
         {
 
             int Playcnt;
+           
          //   grdSite.CommitEdit( );
             if (!int.TryParse(txtCount.Text, out Playcnt))
             {
@@ -115,16 +121,25 @@ namespace wpfBroadcast.Dialog
         //    grdSite.SelectedIndex = -1;
           //  Playcnt=System.Convert.ToInt32(txtCount.Text);
             (sender as Button).IsEnabled = false;
-              await  PlayTask(Playcnt);
+            int pindex=(this.cbRecordSound.SelectedItem as tblRecordSound).PlayIndex;
+            await Task.Run(() => PlayTask(Playcnt,pindex) );
+             
              
             (sender as Button).IsEnabled = true;
+            if(IsEmergency)
+                App.AddOperationlog("緊急廣播");
+            else
+            App.AddOperationlog("預錄詞廣播");
+            
         }
 
         bool StopTask;
         bool InPlayTask;
-        async  Task PlayTask( int  playcnt)
+        async  Task PlayTask( int  playcnt,int PlayIndex)
         {
           // int playcnt=System.Convert.ToInt32(args )
+            //if (App.Kenwood == null)
+            //    App.Kenwood = new KenWood(0, App.ComPort, true);
             if (InPlayTask)
                 return;
 
@@ -135,15 +150,22 @@ namespace wpfBroadcast.Dialog
 
                         if (StopTask)
                             return;
+                        System.Windows.Forms.Application.DoEvents();
                         if (!data.IsSelected)
                             continue;
                         data.IsSend = false;
                         data.RepeatCnt = 0;
-                        lock(App.Kenwood)
-                        data.IsSend = App.Kenwood.Play(data.SITE_ID, (cbRecordSound.SelectedItem as tblRecordSound).PlayIndex - 1,
-                         playcnt);
+                        lock (App.Kenwood)
+                        {
 
+                            data.IsSend =
+                            App.Kenwood.Play(data.SITE_ID,  PlayIndex - 1,
+                              playcnt);
 
+                             
+                        }
+
+                      
 
                     }
                 //    bool finish = true;
@@ -192,19 +214,26 @@ namespace wpfBroadcast.Dialog
             ((sender as CheckBox).DataContext as BroadcastBindingData).IsSelected = (sender as CheckBox).IsChecked ?? false; ;
         }
 
-        private void Monitor_Click(object sender, RoutedEventArgs e)
+        private async void Monitor_Click(object sender, RoutedEventArgs e)
         {
              BroadcastBindingData data = (sender as Button).DataContext as BroadcastBindingData;
+             data.CanEcho = false;
+             await Task.Run(async () =>
+                 {
+                     lock (App.Kenwood)
+                     {
 
-             lock (App.Kenwood)
-             {
-                 data.CanEcho = false;
-                 System.Windows.Forms.Application.DoEvents();
-              bool success =  App.Kenwood.Echo(data.SITE_ID);
-              data.CanEcho = true;
-              System.Windows.Forms.Application.DoEvents();
-              System.Threading.Thread.Sleep(10 * 1000);
-             }
+                      
+                         bool success = App.Kenwood.Echo(data.SITE_ID);
+
+                         System.Threading.Thread.Sleep(1000 * 10);
+                         //System.Threading.Thread.Sleep(10 * 1000);
+                          
+                    }
+                    
+                 });
+             data.CanEcho = true;
+           
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

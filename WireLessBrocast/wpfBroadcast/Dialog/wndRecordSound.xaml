@@ -3,20 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:wpfBroadcast"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="wpfBroadcast.Dialog.wndRecordSound"
-        Title="wndRecordSound" Height="600" Width="323.2" Loaded="Window_Loaded"  FontSize="18" WindowStartupLocation="CenterOwner"  >
+        Title="wndRecordSound" Height="600" Width="323.2" Loaded="Window_Loaded"  FontSize="18" WindowStartupLocation="CenterOwner"      >
     <Window.Resources>
         <CollectionViewSource x:Key="tblRecordSoundViewSource" d:DesignSource="{d:DesignInstance {x:Type local:tblRecordSound}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource tblRecordSoundViewSource}">
+    <Grid DataContext="{StaticResource tblRecordSoundViewSource}"  Background="{StaticResource NormalBrush}"  >
 
-        <DataGrid x:Name="tblRecordSoundDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" Margin="0,0,-0.4,55.4">
+        <DataGrid x:Name="tblRecordSoundDataGrid" HeadersVisibility="Column"  FontSize="18" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" Margin="0,0,-0.2,63.4" VerticalAlignment="Stretch" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="playIndexColumn" Width="SizeToHeader" Header="編號" Binding="{Binding PlayIndex}"/>
                 <DataGridTextColumn x:Name="nameColumn" Width="200" Header="名稱" Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button   x:Name="btnOk"  Style="{DynamicResource ButtonStyle1}"  Content="確定" Margin="0,0,182.8,10.4" Height="27" VerticalAlignment="Bottom" Width="94" Click="btnOk_Click" HorizontalAlignment="Right"/>
-        <Button x:Name="btnCancel" Style="{DynamicResource ButtonStyle1}"    Content="取消" Margin="0,520,23.6,10.4" HorizontalAlignment="Right" Width="94" Click="btnCancel_Click" VerticalAlignment="Bottom"/>
+        <Button   x:Name="btnOk"   Content="確定" Margin="0,0,182.8,10.4" Height="38" VerticalAlignment="Bottom" Width="94" Click="btnOk_Click" HorizontalAlignment="Right"/>
+        <Button x:Name="btnCancel"     Content="取消" Margin="0,0,23.8,10.4" HorizontalAlignment="Right" Width="94" Click="btnCancel_Click" VerticalAlignment="Bottom" Height="38"/>
 
     </Grid>
 </Window>
