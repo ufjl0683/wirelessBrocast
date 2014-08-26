@@ -25,6 +25,7 @@ namespace wpfBroadcast
        public static bool InTmr = false;
         public static System.Threading.Timer tmr;
         public static int tmrLoopCnt = 0;
+        public static bool IsPause = false;
     //   static bool IsScheduleTest;
 
 
@@ -51,6 +52,12 @@ namespace wpfBroadcast
 
         tmr = new System.Threading.Timer((s) =>
                {
+
+                   if (IsPause)
+                   {
+                       InTmr = false;
+                       return;
+                   }
                    if(tmrLoopCnt==0)
                        lock (App.Kenwood)
                        {
@@ -80,7 +87,11 @@ namespace wpfBroadcast
                        var q = from n in db.tblSIte select n;
                        foreach (tblSIte site in q)
                        {
-
+                           if (IsPause)
+                           {
+                               InTmr = false;
+                               return;
+                           }
 
                            try
                            {
@@ -164,7 +175,7 @@ namespace wpfBroadcast
            
        }
 
-
+       
        static void CheckTestingTask()
        {
            wpfBroadcast.BroadcastEntities entity = new BroadcastEntities();

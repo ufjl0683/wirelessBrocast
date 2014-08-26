@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Media;
+//using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading;
@@ -15,13 +16,17 @@ namespace Controller
        System.Collections.BitArray Status;
        TouchPanelManager touch_panel_mgr;
        System.Threading.Thread WorkThread;
-         int playcnt = 0;
-       public ThreadPlaySpeechTest(int recordid, int cnt, System.Collections.BitArray Status, TouchPanelManager touch_panel_mgr)
+       Controller controller;
+       int playcnt = 0;
+       System.Media.SoundPlayer player;
+       bool IsAbort = false;
+       public ThreadPlaySpeechTest(int recordid, int cnt, System.Collections.BitArray Status, TouchPanelManager touch_panel_mgr,Controller controller)
        {
            this.recordid = recordid;
            this.cnt = cnt;
            this.Status = Status;
            this.touch_panel_mgr = touch_panel_mgr;
+           this.controller = controller;
           
        }
 
@@ -35,6 +40,8 @@ namespace Controller
        }
        void Task()
        {
+
+           bool IsDetect = false;
            
           // int[] param = (int[])args;
         //   playcnt = 0;
@@ -51,25 +58,34 @@ namespace Controller
            //{
            //    initsecs = 0;
            //}
-         
+           touch_panel_mgr.ShowAlert("播音測試開始");
            Status.Set((int)StatusIndex.BUSY, true);          //     PlayStatus = 'P';
            for (int i = 0; i < cnt; i++)
            {
                playcnt++;
-              SpeechSynthesizer voice = new SpeechSynthesizer();
-               voice.SelectVoiceByHints(VoiceGender.Male);
-               voice.Volume = 100;
-               string[] voiceText = new string[]
-           {
-               "這是系統測試",
-               "即將關水門請趕快離開",
-               "即將關水門請趕快離開,緊急撤離",
-               "即將關水門請趕快離開,緊急撤離,,緊急撤離"
-           };
-               voice.Rate = -5;
-               touch_panel_mgr.ShowAlert("播放詞" + (recordid+1)+",第"+(i+1)+"次");
-               voice.Speak(voiceText[recordid]);
-               voice.Dispose();
+
+                 player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "TEST.wav");
+
+               player.PlaySync();
+               if (IsAbort)
+               {
+                   touch_panel_mgr.ShowAlert("中止");
+                   return;
+               }
+           //   SpeechSynthesizer voice = new SpeechSynthesizer();
+           //    voice.SelectVoiceByHints(VoiceGender.Male);
+           //    voice.Volume = 100;
+           //    string[] voiceText = new string[]
+           //{
+           //    "這是系統測試",
+           //    "即將關水門請趕快離開",
+           //    "即將關水門請趕快離開,緊急撤離",
+           //    "即將關水門請趕快離開,緊急撤離,,緊急撤離"
+           //};
+           //    voice.Rate = -5;
+           //    touch_panel_mgr.ShowAlert("播放詞" + (recordid+1)+",第"+(i+1)+"次");
+           //    voice.Speak(voiceText[recordid]);
+           //    voice.Dispose();
            }
           // playcnt = 0;
        //    PlayStatus = 'I';
@@ -102,8 +118,24 @@ namespace Controller
 
 
            //}
+          if (controller.IOCard != null)
+          {
+              lock (controller.IOCard)
+              {
+                //  controller.IOCard.EnableAmpSpkTest(1);
+                  byte status, status1;
+                  int cnt = 0;
+                  if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
+                  {
+                      if (status1 != 0x0f)
+                          controller.Status.Set((int)StatusIndex.SPEAKER, true);
+                      else
+                          controller.Status.Set((int)StatusIndex.SPEAKER, false);
+                  }
+              }
+          }
            Status.Set( (int)StatusIndex.BUSY, false);
-           
+           touch_panel_mgr.ShowAlert("播音測試結束");
         
        }
 
@@ -118,6 +150,8 @@ namespace Controller
 
        public void Abort()
        {
+           IsAbort = true;
+           player.Stop();
            WorkThread.Abort();
        }
 

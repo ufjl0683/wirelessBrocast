@@ -19,7 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="grdSite" FontSize="18"  HeadersVisibility="Column"  AutoGenerateColumns="False" Margin="0,66,0.4,0" ColumnHeaderHeight="50" CellEditEnding="grdSite_CellEditEnding" VerticalAlignment="Stretch">
+        <DataGrid x:Name="grdSite" FontSize="18"  HeadersVisibility="Column"  AutoGenerateColumns="False" Margin="0,66,0.4,53" ColumnHeaderHeight="50" CellEditEnding="grdSite_CellEditEnding" VerticalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTemplateColumn      Header="選取">
                     <DataGridTemplateColumn.CellTemplate>
@@ -66,6 +66,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Content="開始"    HorizontalAlignment="Left" Height="37" Margin="572,12,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_1"/>
+        <Button x:Name="btnEmergency" Content="緊急廣播" Margin="0,0,18.4,10" HorizontalAlignment="Right" Width="104" Height="35" VerticalAlignment="Bottom" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

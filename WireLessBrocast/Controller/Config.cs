@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 
 namespace Controller
@@ -12,7 +12,7 @@ namespace Controller
        public int id { get; set; }
        public string WirelessComPort { get; set; }
        public string TouhPanelComPort { get; set; }
-
+       public string IOComPort { get; set; }
       
 
     }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using WirelessBrocast;
 
 
@@ -31,14 +32,45 @@ namespace Test
             //Console.WriteLine("total:" + Recorder.GetRecordTime(DateTime.Now.AddMinutes(-5)));
             //Recorder.SetRTCNow();
             //Console.ReadKey();
+            //player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "1.wav");
+            //player.Play();
 
-            KenWood master = new KenWood(0, "Com4", true);
+
+            //while (true)
+            //{
+            //    Console.WriteLine(player.IsLoadCompleted);
+            //    System.Threading.Thread.Sleep(100);
+            //}
+            
+           // player.Play();
+
+            //KenWood master = new KenWood(0, "Com9", true);
+            //master.SetIO(1, 1, true);
+            //Console.ReadKey();
+            //master.SetIO(1, 1, false);
+            //Console.ReadKey();
+            //master.SetIO(1, 2, true);
+            //Console.ReadKey();
+            //master.SetIO(1, 2, false);
+            //Console.ReadKey();
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    byte  status,status1;  int cnt;
+            //    master.GetPlayStatus(1, out status, out status1, out cnt);
+            //    Console.WriteLine("{0:X2}  {1:X2}", status, status1);
+            //}
+
+
+            
+
+
+
         //////   KenWood slave = new KenWood("Com4", false);
         //// //  slave.OnSlaveReceiveEvent += slave_OnSlaveReceiveEvent;
 
         ////   byte[] res;
-            if (master.Play(1, 1, 3))
-                Console.WriteLine("success");
+         
             //while (true)
             //{
             //    byte status,status1; int cnt;
@@ -52,6 +84,8 @@ namespace Test
             //    }
             //}
            // PanelTest();
+            Thread th = new Thread(PlayTask);
+            th.Start();
             Console.ReadKey();
             //if (master.Play(1, 2, 5))
             //{
@@ -68,8 +102,19 @@ namespace Test
             //        System.Threading.Thread.Sleep(1000);
             //    }
             //}
-            Console.ReadKey();
+          
 
+        }
+        static System.Media.SoundPlayer player;
+        static void PlayTask()
+        {
+            player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "1.wav");
+            for (int i = 0; i < 2; i++)
+            {
+                player.Play();
+            }
+            
+            
         }
         static TouchPanel Pan;
         static void PanelTest()

@@ -26,6 +26,7 @@ namespace wpfBroadcast.Dialog
         wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
         System.Threading.Thread thTask;
         bool IsEmergency;
+        bool IsPause=false;
         System.Windows.Threading.DispatcherTimer tmr = new System.Windows.Threading.DispatcherTimer();
         public wndBroadcast(bool IsEmergency)
         {
@@ -38,7 +39,7 @@ namespace wpfBroadcast.Dialog
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
         
 
@@ -53,20 +54,30 @@ namespace wpfBroadcast.Dialog
             tmr.Interval = TimeSpan.FromSeconds(5);
             tmr.Tick += tmr_Tick;
             tmr.Start();
-            Button_Click(null, null);
+            if(IsEmergency)
+              Button_Click(this.btnEmergency, null);
         }
 
         bool InTmr = false;
-        void tmr_Tick(object sender, EventArgs e)
+        async void tmr_Tick(object sender, EventArgs e)
         {
+            if (IsPause)
+                return;
             if (InTmr)
                 return;
 
             InTmr = true;
             try
             {
+              await  Task.Run(()=>
+                {
                 foreach (BroadcastBindingData site in grdSite.ItemsSource)
                 {
+                    if (IsPause)
+                    {
+                        InTmr = false;
+                        return;
+                    }
                     if (!site.IsSelected)
                         continue;
                     lock (App.Kenwood)
@@ -80,6 +91,7 @@ namespace wpfBroadcast.Dialog
 
                     }
                 }
+                });
             }
             catch
             {
@@ -97,7 +109,7 @@ namespace wpfBroadcast.Dialog
             foreach (BroadcastBindingData site in grdSite.ItemsSource)
             {
                 site.IsSend = false;
-                System.Windows.Forms.Application.DoEvents();
+                site.RepeatCnt = 0;
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -120,8 +132,10 @@ namespace wpfBroadcast.Dialog
 
         //    grdSite.SelectedIndex = -1;
           //  Playcnt=System.Convert.ToInt32(txtCount.Text);
+            tmr.Stop();
             (sender as Button).IsEnabled = false;
             int pindex=(this.cbRecordSound.SelectedItem as tblRecordSound).PlayIndex;
+            StopTask = false;
             await Task.Run(() => PlayTask(Playcnt,pindex) );
              
              
@@ -129,8 +143,8 @@ namespace wpfBroadcast.Dialog
             if(IsEmergency)
                 App.AddOperationlog("緊急廣播");
             else
-            App.AddOperationlog("預錄詞廣播");
-            
+                App.AddOperationlog("預錄詞廣播");
+            tmr.Start();
         }
 
         bool StopTask;
@@ -147,6 +161,8 @@ namespace wpfBroadcast.Dialog
                   
                     foreach (BroadcastBindingData data in grdSite.ItemsSource)
                     {
+                        if (IsPause)
+                            return;
 
                         if (StopTask)
                             return;
@@ -219,18 +235,22 @@ namespace wpfBroadcast.Dialog
              BroadcastBindingData data = (sender as Button).DataContext as BroadcastBindingData;
              data.CanEcho = false;
              await Task.Run(async () =>
-                 {
+             {
+                 tmr.Stop();
                      lock (App.Kenwood)
                      {
 
                       
                          bool success = App.Kenwood.Echo(data.SITE_ID);
 
-                         System.Threading.Thread.Sleep(1000 * 10);
-                         //System.Threading.Thread.Sleep(10 * 1000);
+                           
+                        System.Threading.Thread.Sleep(10 * 1000);
+                      
                           
                     }
                     
+                   //  await Task.Delay(1000 * 10);
+                     tmr.Start();
                  });
              data.CanEcho = true;
            
@@ -259,6 +279,42 @@ namespace wpfBroadcast.Dialog
                 }
             }
             this.StopTask = true;
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            StopTask = true;
+            IsPause = true;
+            (sender as Button).IsEnabled = false;
+            lock (App.Kenwood)
+                App.Kenwood.Abort(0);// all brocast
+            //foreach (BroadcastBindingData site in grdSite.ItemsSource)
+            //{
+            //    if (!site.IsSelected)
+            //        continue;
+
+            //    await Task.Run(() =>
+            //    {
+            //        lock (App.Kenwood)
+
+            //            site.IsSend = App.Kenwood.Abort(site.SITE_ID);
+            //    });
+
+
+            //}
+
+            wndVoiceBroadcast wnd = new Dialog.wndVoiceBroadcast(true);
+
+            wnd.Title = (sender as Button).Content.ToString();
+            wnd.Owner = this;
+
+
+            wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            
+            wnd.ShowDialog();
+            (sender as Button).IsEnabled = true;
+            IsPause = false;
+            
         }
        
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using WirelessBrocast;
 
@@ -67,6 +67,8 @@ namespace Controller
                                   new Menu() { MenuType = EnumMenuType.Normal, Text = "2.廣播詞 2" },
                                   new Menu() { MenuType = EnumMenuType.Normal, Text = "3.廣播詞 3" },
                                   new Menu() { MenuType = EnumMenuType.Normal, Text = "4.廣播詞 4" },
+                                    new Menu() { MenuType = EnumMenuType.Normal, Text = "5.廣播詞 5" },
+                                   
                                    new Menu() { MenuType = EnumMenuType.Confirm, Text = "確定" },
                                      new Menu() { MenuType = EnumMenuType.Cancel, Text = "取消" },
                               });
@@ -141,13 +143,19 @@ namespace Controller
                   SoundId = 3;
                   //   TimesSelectPanel = CreateTimesSelectPanel();
                   break;
-              case 4:   //Confirm
+              case 4:
+                  SoundId = 4;
+                  break;
+              //case 5:
+              //    SoundId = 5;
+              //    break;
+              case 5:   //Confirm
                   touchPanel.CurrentPanel.OnMenuSelect -= MediaSelectPanel_OnMenuSelect;
                   TimesSelectPanel = CreateTimesSelectPanel();
                   TimesSelectPanel.OnMenuSelect += TimesSelectPanel_OnMenuSelect;
                   touchPanel.Attatch(TimesSelectPanel);
                   break;
-              case 5:
+              case 6:
                   touchPanel.CurrentPanel.OnMenuSelect -= MediaSelectPanel_OnMenuSelect;
                   Panel panel = CreateMainPanel();
                   panel.OnMenuSelect += MainPanel_OnMenuSelect;

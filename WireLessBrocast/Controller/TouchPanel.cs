@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -40,6 +40,7 @@ namespace Controller
        public  IPanel CurrentPanel;
        public const byte START_BYTE = 0x5a;
        public const byte END_BYTE = 0x69;
+       public static   int FontSize = 24;
        public string ComPort;
        SerialPort serialPort;
        Thread thRecevieTask;
@@ -74,7 +75,7 @@ namespace Controller
            {
                lock (this.ReceiveCmdQueue)
                {
-                   if (ReceiveCmdQueue.Count() == 0)
+                   if (ReceiveCmdQueue.Count == 0)
                        System.Threading.Monitor.Wait(ReceiveCmdQueue);
                    while (ReceiveCmdQueue.Count > 0)
                    {
@@ -139,7 +140,7 @@ namespace Controller
            if(lastMenuid!=-1)
                   lastmenu = CurrentPanel.GetMenu(lastMenuid);
 
-           int menuid = this.CurrentPanel.HitTest(x, y-32);
+           int menuid = this.CurrentPanel.HitTest(x, y-FontSize);
            if (menuid == -1|| menuid>=CurrentPanel.GetMenuCount() || lastMenuid==menuid)
                return;
            DisplayJob job;
@@ -155,7 +156,7 @@ namespace Controller
                }
                else
                {
-                //   DisplayCmdQueue.Enqueue(new DisplayJob() { JobType = "A", Text = "".PadLeft(32, ' '), lineno = 7, layer = LayerConst.Layer2 });
+                //   DisplayCmdQueue.Enqueue(new DisplayJob() { JobType = "A", Text = "".PadLeft(FontSize, ' '), lineno = 7, layer = LayerConst.Layer2 });
                   
                    Alert("".PadLeft(100, ' '));
                }
@@ -334,7 +335,7 @@ namespace Controller
 
       public  void Alert(string message)
        {
-           ShowSmallString(LayerConst.Layer1, 7, message, Color.Yellow, Color.Black);
+           ShowSmallString(LayerConst.Layer1, 8, message, Color.Yellow, Color.Black);
        }
        public void TextUnSelect(LayerConst layer, int lineno, string text)
        {
@@ -360,9 +361,9 @@ namespace Controller
            System.IO.MemoryStream ms = new System.IO.MemoryStream();
            byte len;
            byte cmd = 0x09;
-           byte fonttype = 0x00; //32x32
-           byte yh = (byte)(lineno * 32 / 256);
-           byte yl = (byte)(lineno * 32 % 256);
+           byte fonttype = 0x00; //FontSizexFontSize
+           byte yh = (byte)(lineno * FontSize / 256);
+           byte yl = (byte)(lineno * FontSize % 256);
            byte fcolorh, fcolorl, bcolorh, bcolorl;
            fcolorh = (byte)((fcolor.R & 0xf8) | (fcolor.G / 32));
            fcolorl = (byte)(((fcolor.G / 8 & 0x07) << 5) | fcolor.B / 8);
@@ -416,9 +417,9 @@ namespace Controller
            System.IO.MemoryStream ms = new System.IO.MemoryStream();
            byte len;
            byte cmd = 0x09;
-           byte fonttype = 0x01; //32x32
-           byte yh = (byte)(lineno * 32/256);
-           byte yl =(byte)( lineno * 32 % 256);
+           byte fonttype = 0x00; //FontSizexFontSize
+           byte yh = (byte)(lineno * FontSize/256);
+           byte yl =(byte)( lineno * FontSize % 256);
            byte fcolorh, fcolorl,bcolorh,bcolorl;
            fcolorh =(byte) ((fcolor.R & 0xf8)|(fcolor.G/32));
            fcolorl = (byte)(((fcolor.G / 8 & 0x07) << 5) | fcolor.B / 8);
@@ -522,7 +523,7 @@ namespace Controller
 
        public int HitTest(int x, int y)
        {
-           int menuid = y / 32;
+           int menuid = y / TouchPanel.FontSize;
 
            if (menuid < menuArray.Length)
            {

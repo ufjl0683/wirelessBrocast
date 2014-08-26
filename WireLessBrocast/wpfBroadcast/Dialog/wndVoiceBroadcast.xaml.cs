@@ -23,13 +23,18 @@ namespace wpfBroadcast.Dialog
     {
         wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
         System.Windows.Threading.DispatcherTimer tmr = new System.Windows.Threading.DispatcherTimer();
-        public wndVoiceBroadcast()
+        bool IsEmergency;
+        public wndVoiceBroadcast(bool IsEmergency)
         {
             InitializeComponent();
+            this.IsEmergency = IsEmergency;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             var q = from n in db.tblSIte select new BroadcastBindingData() { SITE_ID = n.SITE_ID, SITE_NAME = n.SITE_NAME };
             // System.Collections.Generic.List<BroadcastBindingData> list = new List<BroadcastBindingData>();
             grdSite.ItemsSource = q.ToArray();
@@ -40,6 +45,9 @@ namespace wpfBroadcast.Dialog
             tmr.Interval = TimeSpan.FromSeconds(3);
             tmr.Tick += tmr_Tick;
         //   tmr.Start();
+
+            if (IsEmergency)
+               Dispatcher.Invoke(()=> Button_Click(this.btnBegin, null));
 
         }
 
@@ -84,15 +92,20 @@ namespace wpfBroadcast.Dialog
                 {
                     lock (App.Kenwood)
                     {
-                        foreach (BroadcastBindingData site in grdSite.ItemsSource)
+
+                        if (!IsEmergency)
                         {
+                            foreach (BroadcastBindingData site in grdSite.ItemsSource)
+                            {
 
 
-                            site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, true);
+                                site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, true);
 
-                            
+
+                            }
                         }
-
+                        else
+                        App.Kenwood.VoiceBroadcast(0, true);
                         Dispatcher.Invoke(() =>
                         {
                             MessageBox.Show("您可以開始廣播");
@@ -111,7 +124,9 @@ namespace wpfBroadcast.Dialog
                 });
 
             (sender as Button).IsEnabled = true;
-
+            if(IsEmergency)
+                App.AddOperationlog("緊急廣播");
+            else
             App.AddOperationlog("口語廣播");
 
         }
@@ -131,15 +146,17 @@ namespace wpfBroadcast.Dialog
 
          await Task.Run(()=>
             {
-                foreach (BroadcastBindingData site in grdSite.ItemsSource)
+                lock (App.Kenwood)
                 {
-
-                     lock (App.Kenwood)
+                    foreach (BroadcastBindingData site in grdSite.ItemsSource)
                     {
-                        site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, false);
+
+                   
+                            site.IsSend = App.Kenwood.VoiceBroadcast(site.SITE_ID, false);
+                  
                     }
-                
                 }
+                
 
             });
 

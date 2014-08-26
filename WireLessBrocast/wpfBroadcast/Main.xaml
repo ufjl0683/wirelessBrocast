@@ -435,7 +435,7 @@
         </DataGrid>
 
 
-        <Button Content="Test" Margin="0,0,25.4,18" Click="Button_Click_1" HorizontalAlignment="Right" Width="66" Height="34" VerticalAlignment="Bottom"/>
+        <Button Content="Test" Margin="0,0,25.4,18" Click="Button_Click_1" HorizontalAlignment="Right" Width="66" Height="34" VerticalAlignment="Bottom" Visibility="Collapsed"/>
 
     </Grid>
 </Window>

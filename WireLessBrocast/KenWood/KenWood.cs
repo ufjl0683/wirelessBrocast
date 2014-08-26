@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -21,10 +21,13 @@ namespace WirelessBrocast
 
 }
     public delegate void SlaveReceiveEventHandler(object sender, byte[] data); 
+
+    public delegate void ComErrorEventHandler(string errmsg);
+
     public class KenWood
     {
          public event SlaveReceiveEventHandler OnSlaveReceiveEvent;
-
+         public event ComErrorEventHandler OnComError;
        string comPort;
        SerialPort com;
        Thread ReceiverThread;
@@ -68,6 +71,32 @@ namespace WirelessBrocast
            ReceiverThread.Start();
        }
 
+
+        public bool SetIO(int id,int dest, bool On)
+        {
+            // dest 1:PTT, 2:priority output 3:mute
+            byte[] res = Send(new byte[] { (byte)id, (byte)'O', (byte)(dest) , (On)?(byte)1:(byte)0});
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
+
+        public bool SetIO3(int id, int dest, bool On)
+        {
+            // dest 1:PTT, 2:priority output 3:mute
+
+
+            byte[] res = Send(new byte[] { (byte)id, (byte)'O', On?(byte)(dest):(byte)0, (On) ? (byte)1 : (byte)0 });
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
         public bool SendDateTime(int id, int year,int month,int day,int hour,int min,int sec)
         {
              Send (new byte[] { (byte)id, (byte)'U', (byte)(year-2000),(byte)month,(byte)day,(byte)hour,(byte)min,(byte)sec });
@@ -87,10 +116,24 @@ namespace WirelessBrocast
                 return false;
 
         }
+
+        public bool EnableAmpSpkTest(int id)  // for IO
+        {
+
+            byte[] res = Send(new byte[] { (byte)id, (byte)'A'});   //make IO board  fetch test result
+            if (res == null)
+                return false;
+            if (res[0] == id)
+                return true;
+            else
+                return false;
+        }
         public bool VoiceBroadcast(int id, bool start)
         {
 
             byte[] res = Send(new byte[] { (byte)id, (byte)'V', start?(byte)1:(byte)0 });
+            if (id == 0)
+                return true;
             if (res == null)
                 return false;
             if (res[0] == id)
@@ -133,9 +176,15 @@ namespace WirelessBrocast
         {
             byte[] res;
            res=Send(new byte[] {(byte)id, (byte)'S' }) ;
+          
             if (res!= null)
             {
-              
+                if (res.Length != 5)
+                {
+                    status = status1 = 0;
+                        cnt = (byte)0;
+                    return false;
+                }
                 status =  res[2];
                 status1 = res[3];
                 cnt = res[4];
@@ -153,8 +202,14 @@ namespace WirelessBrocast
        public void Close()
        {
            IsExit = true;
+           if (this.ReceiverThread != null)
+           {
+               this.ReceiverThread.Abort();
+               this.SendThread.Abort();
+           }
            com.Close();
            com.Dispose();
+           
        }
        byte[] retcmd;
 
@@ -228,7 +283,7 @@ namespace WirelessBrocast
 
 
                        }
-                   } while (trycnt < 3);
+                   } while (trycnt < 1);
                    return null; //timeout
                }
            }
@@ -341,7 +396,10 @@ namespace WirelessBrocast
 
                }
 
-               catch { ;}
+               catch (Exception ex){
+                   if( ex is System.IO.IOException  && this.OnComError != null)
+                       this.OnComError(ex.Message);
+                   ;}
            }
            
        }

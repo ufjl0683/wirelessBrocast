@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Runtime.InteropServices;
 using System.Speech.Synthesis;
 using System.Text;
@@ -13,27 +13,82 @@ namespace Controller
     {
        public string WirelessComPort { get; set; }
        public string TouchPanelComPort { get; set; }
+       public string IOComPort { get; set; }
        public TouchPanelManager touch_panel_mgr;
        KenWood kenwood;
-       Recoder recoder;
-       
+
+      public  KenWood IOCard;
+     //  Recoder recoder;
+
+       System.Threading.Thread IOStatusThread;
+
       public  System.Collections.BitArray Status = new System.Collections.BitArray(16);
       // char PlayStatus = 'I';  //idle
       IThreadTask voiceThread;
        int id;
       
-       public Controller(int id, string WirelessComPort, string TouchPanelComPort)
+       public Controller(int id, string WirelessComPort, string TouchPanelComPort,string IOComPort)
        {   this.id=id;
        this.WirelessComPort = WirelessComPort;
        this.TouchPanelComPort = TouchPanelComPort;
+       this.IOComPort = IOComPort;
        this.kenwood = new KenWood((byte)id, WirelessComPort, false);
+       try
+       {
+           this.IOCard = new KenWood((byte)0, IOComPort, true);
+       }
+       catch (Exception ex)
+       {
+           IOCard = null;
+       }
            kenwood.OnSlaveReceiveEvent += kenwood_OnSlaveReceiveEvent;
 
            this.touch_panel_mgr = new TouchPanelManager(TouchPanelComPort);
            touch_panel_mgr.OnPanelCmdEvent += touch_panel_mgr_OnPanelCmdEvent;
-           recoder = new Recoder();
+
+           IOStatusThread = new Thread(IOTask);
+           IOStatusThread.Start();
+         //  recoder = new Recoder();
        //    new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeech)).Start(new int[] { 0, 3 });
        }
+
+
+       void IOTask()
+       {
+
+           byte[] m_status=new byte[2];
+           int cnt=0;
+          // bool IsSucess;
+           while (true)
+           {
+               if (IOCard != null)
+               {
+
+                   lock (IOCard)
+                   {
+                       if (IOCard.GetPlayStatus(1, out m_status[0], out m_status[1], out cnt))
+                       {
+                           System.Collections.BitArray ary = new System.Collections.BitArray(m_status);
+                           Status.Set((int)StatusIndex.AC, ary.Get((int)StatusIndex.AC));
+                           Status.Set((int)StatusIndex.DC, ary.Get((int)StatusIndex.DC));
+                          Status.Set((int)StatusIndex.AMP, ary.Get((int)StatusIndex.AMP));
+                           //Status.Set((int)StatusIndex.BUSY, ary.Get((int)StatusIndex.BUSY));
+                           Status.Set((int)StatusIndex.Door, ary.Get((int)StatusIndex.Door));
+                       //    Status.Set((int)StatusIndex.SPEAKER, ary.Get((int)StatusIndex.SPEAKER));
+                       }
+                   }
+
+                   
+                  
+
+               }
+
+
+               System.Threading.Thread.Sleep(1000);
+
+           }
+       }
+       
 
        void touch_panel_mgr_OnPanelCmdEvent(string cmd, params int[] param)
        {
@@ -45,13 +100,13 @@ namespace Controller
            }
            if (cmd.ToUpper() == "NORMAL")
            {
-               voiceThread = new ThreadPlaySound(param[0], param[1], Status, touch_panel_mgr);
+               voiceThread = new ThreadPlaySound(param[0], param[1], Status, touch_panel_mgr,this);
              //new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask));
               
            }
            if (cmd == "Silence")
            {
-               voiceThread = new ThreadPlay20KTest(param[1], Status, touch_panel_mgr);
+               voiceThread = new ThreadPlay20KTest(param[1], Status, touch_panel_mgr,this);
            }
 
            voiceThread.Start();
@@ -77,7 +132,7 @@ namespace Controller
                        voiceThread.Join();
                       // System.Threading.Thread.Sleep(1000);
                    }
-                   voiceThread = new ThreadPlaySound(inx, repeat, Status, touch_panel_mgr);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   voiceThread = new ThreadPlaySound(inx, repeat, Status, touch_panel_mgr,this);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
                    // voiceThread.Start(new int[] { inx, repeat });
                    voiceThread.Start();
                }
@@ -91,12 +146,12 @@ namespace Controller
                    {
                        voiceThread.Abort();
                        voiceThread.Join();
-                       System.Threading.Thread.Sleep(1000);
+                      // System.Threading.Thread.Sleep(1000);
                    }
                    if(!IsSilent)
-                   voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr,this);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
                    else
-                       voiceThread = new ThreadPlay20KTest(repeat, Status, touch_panel_mgr); 
+                       voiceThread = new ThreadPlay20KTest(repeat, Status, touch_panel_mgr,this); 
                    // voiceThread.Start(new int[] { inx, repeat });
                    voiceThread.Start();
                }
@@ -120,7 +175,7 @@ namespace Controller
                    {
                        voiceThread.Abort();
                        voiceThread.Join();
-                       Status.Set((int)StatusIndex.BUSY, false);
+                     //  Status.Set((int)StatusIndex.BUSY, false);
                        System.Threading.Thread.Sleep(1000);
                    }
                   
@@ -130,19 +185,53 @@ namespace Controller
 
                    if (data[0] != 0)
                    kenwood.Reply(new byte[] { data[0], (byte)'E'});
+
+                   System.Threading.Thread th = new Thread(
+                       () =>
+                       {
+                           Console.WriteLine("Echo begin!");
+                           if (IOCard != null)
+                           {
+                               lock(IOCard)
+                               IOCard.SetIO(1, 1, true);
+                           }
+                           System.Threading.Thread.Sleep(9000);
+                           if (IOCard != null)
+                           {
+                               lock (IOCard)
+                               IOCard.SetIO(1, 1, false);
+                           }
+                           Console.WriteLine("Echo end!");
+                       }
+                  );
+
+                   th.Start();
                      //  voiceThread.Abort();
                       // do swich ptt of radio here 
                }
                else if (cmd[1] == 'V')  //voice broadcast
                {
-                   if (data[0] != 0)
-                   kenwood.Reply(new byte[] { data[0], (byte)'V' });
+                
                    if (cmd[2] == 1)   // switch ptt of wireless to active 
                    {
-                     Status.Set((int)StatusIndex.BUSY,true) ;
+                       Status.Set((int)StatusIndex.BUSY, true);
+                       if (IOCard != null)
+                       {
+                           lock(IOCard)
+                            IOCard.SetIO(1, 2, true);
+                       }
                    }
                    else    // switch ptt to normal
+                   {
                        Status.Set((int)StatusIndex.BUSY, false); ;
+                       if (IOCard != null)
+                       {
+                           lock(IOCard)
+                             IOCard.SetIO(1, 2, false);
+                       }
+                   }
+                   if (data[0] != 0)
+                       kenwood.Reply(new byte[] { data[0], (byte)'V' });
 
                }
                else if (cmd[1] == 'U') //Set Date Time

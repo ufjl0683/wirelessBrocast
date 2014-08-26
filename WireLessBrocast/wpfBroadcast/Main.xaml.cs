@@ -95,8 +95,9 @@ namespace wpfBroadcast
             wnd.Title = (sender as Button).Content.ToString();
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
             wnd.Owner = this;
+            App.IsPause = true;
             wnd.ShowDialog();
-
+            App.IsPause = false;
          
         
         }
@@ -168,19 +169,23 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            App.IsPause = true;
             wnd.ShowDialog();
+            App.IsPause = false;
         }
 
         private void VoiceBrocast_Click(object sender, RoutedEventArgs e)
         {
-            wndVoiceBroadcast wnd = new Dialog.wndVoiceBroadcast();
+            wndVoiceBroadcast wnd = new Dialog.wndVoiceBroadcast(false);
 
             wnd.Title = (sender as Button).Content.ToString();
             wnd.Owner = this;
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            App.IsPause = true;
             wnd.ShowDialog();
+            App.IsPause = false;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -192,7 +197,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            App.IsPause = true;
             wnd.ShowDialog();
+            App.IsPause = false;
         }
 
         private void SilentTest_Click(object sender, RoutedEventArgs e)
@@ -204,7 +211,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            App.IsPause = true;
             wnd.ShowDialog();
+            App.IsPause = false;
         }
 
         private void btnSchTestLog(object sender, RoutedEventArgs e)

@@ -35,7 +35,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="開始"   Margin="0,0,189.6,10.4" HorizontalAlignment="Right" Width="90" Height="37" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button x:Name="btnBegin" Content="開始"   Margin="0,0,189.6,10.4" HorizontalAlignment="Right" Width="90" Height="37" VerticalAlignment="Bottom" Click="Button_Click"/>
         <Button Content="停止"   Margin="0,0,66.6,10.4" HorizontalAlignment="Right" Width="90" Height="37" VerticalAlignment="Bottom" Click="Button_Click_1"/>
 
     </Grid>
