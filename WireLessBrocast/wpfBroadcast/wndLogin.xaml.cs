@@ -55,7 +55,9 @@ namespace wpfBroadcast
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
+            wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
+
+            this.txtAppName.Text = db.tblApplication.Take(1).FirstOrDefault().ApplicationName;
             
         }
 

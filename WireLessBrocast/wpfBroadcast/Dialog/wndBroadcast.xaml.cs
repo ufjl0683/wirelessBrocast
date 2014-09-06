@@ -154,69 +154,84 @@ namespace wpfBroadcast.Dialog
           // int playcnt=System.Convert.ToInt32(args )
             //if (App.Kenwood == null)
             //    App.Kenwood = new KenWood(0, App.ComPort, true);
-            if (InPlayTask)
-                return;
+            try
+            {
+                if (InPlayTask)
+                    return;
 
-            InPlayTask = true;
-                  
-                    foreach (BroadcastBindingData data in grdSite.ItemsSource)
+                InPlayTask = true;
+
+                foreach (BroadcastBindingData data in grdSite.ItemsSource)
+                {
+                    if (IsPause)
+                        return;
+
+                    if (StopTask)
+                        return;
+                    System.Windows.Forms.Application.DoEvents();
+                    if (!data.IsSelected)
+                        continue;
+                    data.IsSend = false;
+                    data.RepeatCnt = 0;
+                    lock (App.Kenwood)
                     {
-                        if (IsPause)
-                            return;
 
-                        if (StopTask)
-                            return;
-                        System.Windows.Forms.Application.DoEvents();
-                        if (!data.IsSelected)
-                            continue;
-                        data.IsSend = false;
-                        data.RepeatCnt = 0;
-                        lock (App.Kenwood)
-                        {
+                        data.IsSend =
+                        App.Kenwood.Play(data.SITE_ID, PlayIndex - 1,
+                          playcnt);
 
-                            data.IsSend =
-                            App.Kenwood.Play(data.SITE_ID,  PlayIndex - 1,
-                              playcnt);
-
-                             
-                        }
-
-                      
 
                     }
-                //    bool finish = true;
-                //    do
-                //    {
 
-                //        finish = true;
-                //        foreach (BroadcastBindingData data in grdSite.ItemsSource)
-                //        {
-                //            byte status1, status2;
-                //            int cnt;
 
-                //            if (StopTask)
-                //                return;
-                //            if (!data.IsSelected)
-                //                continue;
-                //            lock (App.Kenwood)
-                //            App.Kenwood.GetPlayStatus(data.SITE_ID, out status1, out status2, out cnt);
-                           
 
-                //            BitArray array = new BitArray(new byte[] { status1, status2 });
-                //            data.IsBusy = array.Get((int)StatusIndex.BUSY);
-                             
-                                
-                //            data.RepeatCnt = cnt;
-                //            finish &= (!data.IsBusy || !data.IsSend);
-                //            System.Windows.Forms.Application.DoEvents();
-                //        }
-                //    } while (!finish);
+                }
+                bool finish = true;
+                do
+                {
 
-                       
-                        
-               
+                    finish = true;
+                    foreach (BroadcastBindingData data in grdSite.ItemsSource)
+                    {
+                        byte status1, status2;
+                        int cnt;
+                        if (IsPause)
+                        {
+                            return;
+                        }
+                        if (StopTask)
+                        {
+                            return;
+                        }
+                        if (!data.IsSelected)
+                            continue;
+                        lock (App.Kenwood)
+                            App.Kenwood.GetPlayStatus(data.SITE_ID, out status1, out status2, out cnt);
+
+
+                        BitArray array = new BitArray(new byte[] { status1, status2 });
+                        data.IsBusy = array.Get((int)StatusIndex.BUSY);
+
+
+                        data.RepeatCnt = cnt;
+                        finish &= (!data.IsBusy || !data.IsSend);
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                } while (!finish);
+
+
+
+            }
+            catch
+            {
+                ;
+            }
+            finally
+            {
+
                 //MessageBox.Show("finished");
                 InPlayTask = false;
+            }
         }
 
         private void grdSite_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

@@ -40,7 +40,8 @@ namespace Controller
        public  IPanel CurrentPanel;
        public const byte START_BYTE = 0x5a;
        public const byte END_BYTE = 0x69;
-       public static   int FontSize = 24;
+       public static   int FontSize = 32;
+       public static int FontType = 01;
        public string ComPort;
        SerialPort serialPort;
        Thread thRecevieTask;
@@ -223,6 +224,8 @@ namespace Controller
            lock (this)
                serialPort.Write(comdata, 0, comdata.Length);
        }
+
+       DateTime LastTouchTime;
        void ReceiveTask()
        {
 
@@ -257,8 +260,15 @@ namespace Controller
 #if DEBUG
                            Console.WriteLine("x:{0},y:{1}", x, y);
 #endif
-                           ReceiveCmdQueue.Enqueue(new int[] { x, y });
-                           System.Threading.Monitor.Pulse(ReceiveCmdQueue);
+                           if (!(LastTouchTime != null && DateTime.Now.Subtract(LastTouchTime) < TimeSpan.FromSeconds(0.5)))
+                           {
+                               ReceiveCmdQueue.Enqueue(new int[] { x, y });
+                               System.Threading.Monitor.Pulse(ReceiveCmdQueue);
+                           }
+                           LastTouchTime = DateTime.Now;
+                         
+                           
+                          
                        }
 
 
@@ -417,7 +427,7 @@ namespace Controller
            System.IO.MemoryStream ms = new System.IO.MemoryStream();
            byte len;
            byte cmd = 0x09;
-           byte fonttype = 0x00; //FontSizexFontSize
+           byte fonttype = (byte)FontType; //FontSizexFontSize
            byte yh = (byte)(lineno * FontSize/256);
            byte yl =(byte)( lineno * FontSize % 256);
            byte fcolorh, fcolorl,bcolorh,bcolorl;
@@ -478,7 +488,7 @@ namespace Controller
        {
         //   this.ClearScreen(LayerConst.Layer1);
           // this.ClearScreen(LayerConst.Layer2);
-           for (int i = 1; i <= 6; i++)
+           for (int i = 1; i <= 7; i++)
                ShowString(LayerConst.Layer2 , i, "".PadLeft(64, ' '), Color.White, Color.Black);
            this.CurrentPanel = i_panel;
            i_panel.IsActive = true;

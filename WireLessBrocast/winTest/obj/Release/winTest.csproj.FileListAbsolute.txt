@@ -1,0 +1,16 @@
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\winTest.exe.config
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\winTest.exe
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\winTest.pdb
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\EntityFramework.dll
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\EntityFramework.xml
+D:\backd\防洪\WireLessBrocast\winTest\bin\Release\zh-Hant\EntityFramework.resources.dll
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\MainWindow.baml
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\MainWindow.g.cs
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\App.g.cs
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest_MarkupCompile.cache
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.g.resources
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.Properties.Resources.resources
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.csproj.GenerateResource.Cache
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.exe
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.pdb
+D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.csprojResolveAssemblyReference.cache

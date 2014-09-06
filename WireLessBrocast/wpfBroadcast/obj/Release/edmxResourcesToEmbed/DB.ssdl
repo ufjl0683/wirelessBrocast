@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BroadcastModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BroadcastModelStoreContainer">
+    <EntitySet Name="tblApplication" EntityType="BroadcastModel.Store.tblApplication" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.Store.tblRecordSound" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSchedule" EntityType="BroadcastModel.Store.tblSchedule" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSIte" EntityType="BroadcastModel.Store.tblSIte" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSiteStatusLog" EntityType="BroadcastModel.Store.tblSiteStatusLog" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSysLog" EntityType="BroadcastModel.Store.tblSysLog" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblTestLog" EntityType="BroadcastModel.Store.tblTestLog" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblUser" EntityType="BroadcastModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.Store.tblUserGroup" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
+  <EntityType Name="tblApplication">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tblRecordSound">
     <Key>
       <PropertyRef Name="PlayIndex" />
@@ -39,6 +48,16 @@
     <Property Name="DoorOpen" Type="bit" Nullable="false" />
     <Property Name="InTest" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="tblSiteStatusLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SITE_ID" Type="int" Nullable="false" />
+    <Property Name="StartTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="EndTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
   <EntityType Name="tblSysLog">
     <Key>
       <PropertyRef Name="ID" />
@@ -56,7 +75,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="DateTime" Type="datetime2" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
     <Property Name="SITE_ID" Type="int" Nullable="false" />
     <Property Name="AC" Type="bit" Nullable="false" />
     <Property Name="DC" Type="bit" Nullable="false" />

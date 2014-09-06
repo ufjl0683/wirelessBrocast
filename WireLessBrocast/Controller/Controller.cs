@@ -16,7 +16,7 @@ namespace Controller
        public string IOComPort { get; set; }
        public TouchPanelManager touch_panel_mgr;
        KenWood kenwood;
-
+      public byte SpeakerOut = 0;
       public  KenWood IOCard;
      //  Recoder recoder;
 
@@ -74,12 +74,14 @@ namespace Controller
                           Status.Set((int)StatusIndex.AMP, ary.Get((int)StatusIndex.AMP));
                            //Status.Set((int)StatusIndex.BUSY, ary.Get((int)StatusIndex.BUSY));
                            Status.Set((int)StatusIndex.Door, ary.Get((int)StatusIndex.Door));
+                           if (m_status[1] > SpeakerOut)
+                               SpeakerOut = m_status[1];
+
                        //    Status.Set((int)StatusIndex.SPEAKER, ary.Get((int)StatusIndex.SPEAKER));
                        }
                    }
 
-                   
-                  
+                   Console.WriteLine("擴大機輸出讀值:{0:X2}", m_status[1]);
 
                }
 
@@ -122,16 +124,20 @@ namespace Controller
                string cmd = System.Text.ASCIIEncoding.ASCII.GetString(data);
                if (cmd[1] == 'P') //play   p+index + times
                {
+
                    if(data[0]!=0)
                    kenwood.Reply(new byte[] { data[0], (byte)'P', (byte)1 });
                    int inx = cmd[2];
                    int repeat = cmd[3];
+
+                   Console.WriteLine("預錄詞命令接收,停止現有任務中!");
                    if (voiceThread != null)
                    {
                        voiceThread.Abort();
                        voiceThread.Join();
                       // System.Threading.Thread.Sleep(1000);
                    }
+                   Console.WriteLine("預錄詞{0},{1}次",inx+1,repeat);
                    voiceThread = new ThreadPlaySound(inx, repeat, Status, touch_panel_mgr,this);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
                    // voiceThread.Start(new int[] { inx, repeat });
                    voiceThread.Start();
@@ -142,16 +148,29 @@ namespace Controller
                    kenwood.Reply(new byte[] { data[0], (byte)'T' });
                   int repeat = cmd[3];
                    bool IsSilent = cmd[2]==1?true:false;
+                   Console.WriteLine("測試命令接收,停止現有任務中!");
+                 
                    if (voiceThread != null)
                    {
                        voiceThread.Abort();
                        voiceThread.Join();
                       // System.Threading.Thread.Sleep(1000);
                    }
-                   if(!IsSilent)
-                   voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr,this);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+                   
+               
+
+                   if (!IsSilent)
+                   {
+
+                       Console.WriteLine("開始測試!");
+                       voiceThread = new ThreadPlaySpeechTest(0, repeat, Status, touch_panel_mgr, this);  // new System.Threading.Thread(new ParameterizedThreadStart(PlaySpeechTask)  );
+
+                   }
                    else
-                       voiceThread = new ThreadPlay20KTest(repeat, Status, touch_panel_mgr,this); 
+                   {
+                       Console.WriteLine("開始測試!");
+                       voiceThread = new ThreadPlay20KTest(repeat, Status, touch_panel_mgr, this);
+                   }
                    // voiceThread.Start(new int[] { inx, repeat });
                    voiceThread.Start();
                }
@@ -171,11 +190,13 @@ namespace Controller
                {
                    if (data[0] != 0)
                    kenwood.Reply(new byte[] { data[0], (byte)'X' });
+                   Console.WriteLine("中止現有任務!");
                    if (voiceThread != null)
                    {
                        voiceThread.Abort();
-                       voiceThread.Join();
+                      // voiceThread.Join();
                      //  Status.Set((int)StatusIndex.BUSY, false);
+                       Console.WriteLine("任務已中止!");
                        System.Threading.Thread.Sleep(1000);
                    }
                   
@@ -214,6 +235,7 @@ namespace Controller
                 
                    if (cmd[2] == 1)   // switch ptt of wireless to active 
                    {
+                       Console.WriteLine("PTT 切入!");
                        Status.Set((int)StatusIndex.BUSY, true);
                        if (IOCard != null)
                        {
@@ -224,6 +246,7 @@ namespace Controller
                    else    // switch ptt to normal
                    {
                        Status.Set((int)StatusIndex.BUSY, false); ;
+                       Console.WriteLine("PTT 結束!");
                        if (IOCard != null)
                        {
                            lock(IOCard)

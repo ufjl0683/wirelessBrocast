@@ -165,6 +165,8 @@ namespace WirelessBrocast
         public bool Abort(int id)
         {
             byte[] res = Send(new byte[] { (byte)id, (byte)'X' });
+            if (id == 0)
+                return true;
             if (res == null)
                 return false;
             if (res[0] == id)
@@ -271,7 +273,7 @@ namespace WirelessBrocast
                             com.Write(outdata, 0, outdata.Length);
                             com.BaseStream.Flush();
                         }
-                       Console.WriteLine("send payload");
+                    //   Console.WriteLine("send payload");
                        
                        if (System.Threading.Monitor.Wait(toutObj, 3000))
                        {
@@ -329,20 +331,20 @@ namespace WirelessBrocast
                    do
                    { 
                        data = com.ReadByte();
-                       Console.WriteLine("{0:X2}", data);
+                   //    Console.WriteLine("{0:X2}", data);
                    } while (data != 0xaa);
                    int len;
                   
                     len = com.ReadByte();
                    if (len > 48) continue;  //
-                   Console.WriteLine("{0:X2}", len);
+             //      Console.WriteLine("{0:X2}", len);
                    byte[] payload = new byte[len];
                 
                    for (int i = 0; i < len; i++)
                    {
                       
                        payload[i] = (byte)com.ReadByte();
-                       Console.WriteLine("{0:X2}", payload[i]);
+                     //  Console.WriteLine("{0:X2}", payload[i]);
                    }
 
                    byte id = payload[0];
@@ -354,7 +356,7 @@ namespace WirelessBrocast
                    int crc ;
                   
                    crc= com.ReadByte();
-                   Console.WriteLine("{0:X2}", crc);
+                  // Console.WriteLine("{0:X2}", crc);
                    int crcchk = 0;
                    for (int i = 0; i < payload.Length; i++)
                    {
@@ -367,7 +369,7 @@ namespace WirelessBrocast
                        continue;
                    }
                    int tail = com.ReadByte();
-                   Console.WriteLine("{0:X2}", tail);
+              //     Console.WriteLine("{0:X2}", tail);
                    if (tail != 0xbb)
                    {
                        Console.WriteLine("no 0xbb");
@@ -379,7 +381,7 @@ namespace WirelessBrocast
                    {
                        if (OnSlaveReceiveEvent != null)
                        {
-                           Console.WriteLine("receive payload");
+                        //   Console.WriteLine("receive payload");
                            OnSlaveReceiveEvent(this, payload);
 
                        }

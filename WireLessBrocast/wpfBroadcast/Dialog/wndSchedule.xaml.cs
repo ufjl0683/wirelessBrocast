@@ -24,9 +24,9 @@ namespace wpfBroadcast.Dialog
             InitializeComponent();
         }
 
-        //private System.Data.Objects.ObjectQuery<tblRecordSound> GettblRecordSoundQuery(BroadcastEntities broadcastEntities)
+        //private System.Data.Entity.Infrastructure.Db<tblRecordSound> GettblRecordSoundQuery(BroadcastEntities broadcastEntities)
         //{
-        //    System.Data.Objects.ObjectQuery<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = broadcastEntities.tblRecordSound;
+        //    System.Data.Objects.ObjectSet<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = broadcastEntities.tblRecordSound;
         //    // 更新查詢以將 tblSchedule 資料包含在 tblRecordSound 中。您可以依需要修改這個程式碼。
         //    tblRecordSoundQuery = tblRecordSoundQuery.Include("tblSchedule");
         //    // 傳回 ObjectQuery。
@@ -39,21 +39,21 @@ namespace wpfBroadcast.Dialog
             broadcastEntities = new wpfBroadcast.BroadcastEntities();
             // 將資料載入 tblRecordSound。您可以依需要修改這個程式碼。
             //System.Windows.Data.CollectionViewSource tblRecordSoundViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblRecordSoundViewSource")));
-            //System.Data.Objects.ObjectQuery<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = this.GettblRecordSoundQuery(broadcastEntities);
+            //System.Data.Objects.ObjectSet<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = this.GettblRecordSoundQuery(broadcastEntities);
             //tblRecordSoundViewSource.Source = tblRecordSoundQuery.Execute(System.Data.Objects.MergeOption.AppendOnly);
             // 將資料載入 tblSchedule。您可以依需要修改這個程式碼。
             System.Windows.Data.CollectionViewSource tblScheduleViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblScheduleViewSource")));
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSchedule> tblScheduleQuery = this.GettblScheduleQuery(broadcastEntities);
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblSchedule> tblScheduleQuery = this.GettblScheduleQuery(broadcastEntities);
             tblScheduleViewSource.Source = tblScheduleQuery.Execute(System.Data.Objects.MergeOption.AppendOnly);
         }
 
-        private System.Data.Objects.ObjectQuery<tblSchedule> GettblScheduleQuery(BroadcastEntities broadcastEntities)
+        private System.Data.Objects.ObjectSet<tblSchedule> GettblScheduleQuery(BroadcastEntities broadcastEntities)
         {
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSchedule> tblScheduleQuery = broadcastEntities.tblSchedule;
-            // 若要明確載入資料，您必須加入類似下面的 Include 方法:
-            // tblScheduleQuery = tblScheduleQuery.Include("tblSchedule.tblRecordSound").
-            // 如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=157380
-            // 傳回 ObjectQuery。
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblSchedule> tblScheduleQuery = broadcastEntities.tblSchedule;
+            //// 若要明確載入資料，您必須加入類似下面的 Include 方法:
+            //// tblScheduleQuery = tblScheduleQuery.Include("tblSchedule.tblRecordSound").
+            //// 如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=157380
+            //// 傳回 ObjectQuery。
             return tblScheduleQuery;
         }
 

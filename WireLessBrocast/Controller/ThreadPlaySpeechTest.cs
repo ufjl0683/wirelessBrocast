@@ -59,12 +59,13 @@ namespace Controller
            //    initsecs = 0;
            //}
            touch_panel_mgr.ShowAlert("播音測試開始");
+           controller.SpeakerOut = 0;
            Status.Set((int)StatusIndex.BUSY, true);          //     PlayStatus = 'P';
            for (int i = 0; i < cnt; i++)
            {
                playcnt++;
 
-                 player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "TEST.wav");
+                 player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory+"sound\\" + "TEST.wav");
 
                player.PlaySync();
                if (IsAbort)
@@ -118,22 +119,28 @@ namespace Controller
 
 
            //}
-          if (controller.IOCard != null)
-          {
-              lock (controller.IOCard)
-              {
-                //  controller.IOCard.EnableAmpSpkTest(1);
-                  byte status, status1;
-                  int cnt = 0;
-                  if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
-                  {
-                      if (status1 != 0x0f)
-                          controller.Status.Set((int)StatusIndex.SPEAKER, true);
-                      else
-                          controller.Status.Set((int)StatusIndex.SPEAKER, false);
-                  }
-              }
-          }
+
+          if (controller.SpeakerOut != 0x0f)
+
+              controller.Status.Set((int)StatusIndex.SPEAKER, true);
+          else
+              controller.Status.Set((int)StatusIndex.SPEAKER, false);
+          //if (controller.IOCard != null)
+          //{
+          //    lock (controller.IOCard)
+          //    {
+          //      //  controller.IOCard.EnableAmpSpkTest(1);
+          //        byte status, status1;
+          //        int cnt = 0;
+          //        if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
+          //        {
+          //            if (status1 != 0x0f)
+          //                controller.Status.Set((int)StatusIndex.SPEAKER, true);
+          //            else
+          //                controller.Status.Set((int)StatusIndex.SPEAKER, false);
+          //        }
+          //    }
+          //}
            Status.Set( (int)StatusIndex.BUSY, false);
            touch_panel_mgr.ShowAlert("播音測試結束");
         

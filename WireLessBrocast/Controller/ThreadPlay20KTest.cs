@@ -56,6 +56,7 @@ namespace Controller
            //}
            Status.Set((int)StatusIndex.BUSY, true);          //     PlayStatus = 'P';
            touch_panel_mgr.ShowAlert("靜音測試開始");
+           controller.SpeakerOut = 0;
            for (int i = 0; i < cnt; i++)
            {
                playcnt++;
@@ -73,7 +74,7 @@ namespace Controller
               // voice.Rate = -5;
                Console.WriteLine("20khz begin");
 
-               player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory  + "20k.wav");
+               player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory+"sound\\"  + "20k.wav");
                 
                player.PlaySync();
 
@@ -108,22 +109,28 @@ namespace Controller
 
               
            }
-           if (controller.IOCard != null)
-           {
-               lock (controller.IOCard)
-               {
-                   byte status, status1;
-                   int cnt = 0;
-                   if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
-                   {
-                       if (status1 != 0x0f)
-                           controller.Status.Set((int)StatusIndex.SPEAKER, true);
-                       else
-                           controller.Status.Set((int)StatusIndex.SPEAKER, false);
-                   }
-               }
-               // controller.IOCard.EnableAmpSpkTest(1);
-           }
+           if (controller.SpeakerOut != 0x0f)
+            
+               controller.Status.Set((int)StatusIndex.SPEAKER, true);
+            else
+               controller.Status.Set((int)StatusIndex.SPEAKER, false);
+          
+           //if (controller.IOCard != null)
+           //{
+           //    lock (controller.IOCard)
+           //    {
+           //        byte status, status1;
+           //        int cnt = 0;
+           //        if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
+           //        {
+           //            if (status1 != 0x0f)
+           //                controller.Status.Set((int)StatusIndex.SPEAKER, true);
+           //            else
+           //                controller.Status.Set((int)StatusIndex.SPEAKER, false);
+           //        }
+           //    }
+           //    // controller.IOCard.EnableAmpSpkTest(1);
+           //}
            Status.Set( (int)StatusIndex.BUSY, false);
          
            touch_panel_mgr.ShowAlert("靜音測試結束");

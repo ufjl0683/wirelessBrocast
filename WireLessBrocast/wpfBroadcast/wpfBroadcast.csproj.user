@@ -8,6 +8,6 @@
     <StartArguments>Com4</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <StartArguments>Com9</StartArguments>
+    <StartArguments>Com3</StartArguments>
   </PropertyGroup>
 </Project>

@@ -54,10 +54,13 @@ namespace Controller
            //{
            //    initsecs = 0;
            //}
-           Status.Set((int)StatusIndex.BUSY, true);          //     PlayStatus = 'P';
-            if (!System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + recordid + ".wav"))
+           Status.Set((int)StatusIndex.BUSY, true);
+
+           controller.SpeakerOut = 0;
+           //     PlayStatus = 'P';
+           //if (!System.IO.File.Exists(AppDomain.CurrentDomain.BaseDirectory + "sound\\" + recordid + ".wav"))
                
-                   touch_panel_mgr.ShowAlert(recordid + ".wav 不存在！");
+           //        touch_panel_mgr.ShowAlert(recordid + ".wav 不存在！");
 
            for (int i = 0; i < cnt; i++)
            {
@@ -65,34 +68,65 @@ namespace Controller
            
             
               
-                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + recordid + ".wav");
+                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "sound\\"+recordid + "-C.wav");
                    player.PlaySync();
-                    
+
+
+                   if (IsAbort)
+                   {
+                       touch_panel_mgr.ShowAlert("中止");
+                       break;
+                   }
+                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "sound\\" + recordid + "-T.wav");
+                   player.PlaySync();
+
+                   if (IsAbort)
+                   {
+                       touch_panel_mgr.ShowAlert("中止");
+                       break;
+                   }
+
+                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "sound\\" + recordid + "-K.wav");
+                   player.PlaySync();
+
+                   if (IsAbort)
+                   {
+                       touch_panel_mgr.ShowAlert("中止");
+                       break;
+                   }
+
+                   player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "sound\\" + recordid + "-E.wav");
+                   player.PlaySync();
                    touch_panel_mgr.ShowAlert("播放詞" + (recordid + 1) + ",第" + (i + 1) + "次");
 
                    if (IsAbort)
                    {
                        touch_panel_mgr.ShowAlert("中止");
-                       return;
+                       break;
                    }
 
                   
            }
           // playcnt = 0;
        //    PlayStatus = 'I';
-           if (this.controller.IOCard != null)
-           {
-               //this.controller.IOCard.EnableAmpSpkTest(1);
-               byte status, status1;
-               int cnt = 0;
-               if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
-               {
-                   if (status1 != 0x0f)
-                       controller.Status.Set((int)StatusIndex.SPEAKER, true);
-                   else
-                       controller.Status.Set((int)StatusIndex.SPEAKER, false);
-               }
-           }
+           if (controller.SpeakerOut != 0x0f)
+
+               controller.Status.Set((int)StatusIndex.SPEAKER, true);
+           else
+               controller.Status.Set((int)StatusIndex.SPEAKER, false);
+           //if (this.controller.IOCard != null)
+           //{
+           //    //this.controller.IOCard.EnableAmpSpkTest(1);
+           //    byte status, status1;
+           //    int cnt = 0;
+           //    if (controller.IOCard.GetPlayStatus(1, out status, out status1, out cnt))
+           //    {
+           //        if (status1 != 0x0f)
+           //            controller.Status.Set((int)StatusIndex.SPEAKER, true);
+           //        else
+           //            controller.Status.Set((int)StatusIndex.SPEAKER, false);
+           //    }
+           //}
            Status.Set( (int)StatusIndex.BUSY, false);
            
         

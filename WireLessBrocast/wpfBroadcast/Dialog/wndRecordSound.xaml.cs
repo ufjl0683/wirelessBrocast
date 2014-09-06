@@ -24,9 +24,9 @@ namespace wpfBroadcast.Dialog
             InitializeComponent();
         }
 
-        private System.Data.Objects.ObjectQuery<tblRecordSound> GettblRecordSoundQuery(BroadcastEntities broadcastEntities)
+        private System.Data.Objects.ObjectSet <tblRecordSound> GettblRecordSoundQuery(BroadcastEntities broadcastEntities)
         {
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = broadcastEntities.tblRecordSound;
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = broadcastEntities.tblRecordSound;
             // 傳回 ObjectQuery。
             return tblRecordSoundQuery;
         }
@@ -37,7 +37,7 @@ namespace wpfBroadcast.Dialog
             broadcastEntities = new wpfBroadcast.BroadcastEntities();
             // 將資料載入 tblRecordSound。您可以依需要修改這個程式碼。
             System.Windows.Data.CollectionViewSource tblRecordSoundViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblRecordSoundViewSource")));
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = this.GettblRecordSoundQuery(broadcastEntities);
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblRecordSound> tblRecordSoundQuery = this.GettblRecordSoundQuery(broadcastEntities);
             tblRecordSoundViewSource.Source = tblRecordSoundQuery.Execute(System.Data.Objects.MergeOption.AppendOnly);
         }
 

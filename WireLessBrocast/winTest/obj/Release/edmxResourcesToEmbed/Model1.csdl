@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BroadcastModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BroadcastEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="tblApplication" EntityType="BroadcastModel.tblApplication" />
+    <EntitySet Name="tblRecordSound" EntityType="BroadcastModel.tblRecordSound" />
+    <EntitySet Name="tblSchedule" EntityType="BroadcastModel.tblSchedule" />
+    <EntitySet Name="tblSIte" EntityType="BroadcastModel.tblSIte" />
+    <EntitySet Name="tblSiteStatusLog" EntityType="BroadcastModel.tblSiteStatusLog" />
+    <EntitySet Name="tblSysLog" EntityType="BroadcastModel.tblSysLog" />
+    <EntitySet Name="tblTestLog" EntityType="BroadcastModel.tblTestLog" />
+    <EntitySet Name="tblUser" EntityType="BroadcastModel.tblUser" />
+    <EntitySet Name="tblUserGroup" EntityType="BroadcastModel.tblUserGroup" />
+  </EntityContainer>
+  <EntityType Name="tblApplication">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblRecordSound">
+    <Key>
+      <PropertyRef Name="PlayIndex" />
+    </Key>
+    <Property Name="PlayIndex" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsMute" Type="Boolean" Nullable="false" />
+    <Property Name="TestDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblSIte">
+    <Key>
+      <PropertyRef Name="SITE_ID" />
+    </Key>
+    <Property Name="SITE_ID" Type="Int32" Nullable="false" />
+    <Property Name="SITE_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Comm" Type="Boolean" Nullable="false" />
+    <Property Name="AC" Type="Boolean" Nullable="false" />
+    <Property Name="DC" Type="Boolean" Nullable="false" />
+    <Property Name="Amp" Type="Boolean" Nullable="false" />
+    <Property Name="Speaker" Type="Boolean" Nullable="false" />
+    <Property Name="DoorOpen" Type="Boolean" Nullable="false" />
+    <Property Name="InTest" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSiteStatusLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="SITE_ID" Type="Int32" Nullable="false" />
+    <Property Name="StartTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblSysLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="SITE_ID" Type="Int32" Nullable="false" />
+    <Property Name="StartTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="UserID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblTestLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="SITE_ID" Type="Int32" Nullable="false" />
+    <Property Name="AC" Type="Boolean" Nullable="false" />
+    <Property Name="DC" Type="Boolean" Nullable="false" />
+    <Property Name="AMP" Type="Boolean" Nullable="false" />
+    <Property Name="SPK" Type="Boolean" Nullable="false" />
+    <Property Name="DOOR" Type="Boolean" Nullable="false" />
+    <Property Name="Comm" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblUserGroup">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

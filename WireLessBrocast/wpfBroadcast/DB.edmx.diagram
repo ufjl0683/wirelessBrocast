@@ -4,15 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4d982338697d469e977b0c345087d29b" Name="圖表1" ZoomLevel="89">
-        <EntityTypeShape EntityType="BroadcastModel.tblUser" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BroadcastModel.tblUserGroup" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BroadcastModel.tblSIte" Width="1.5" PointX="5" PointY="0.75" />
-        <EntityTypeShape EntityType="BroadcastModel.tblSysLog" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="BroadcastModel.tblRecordSound" Width="1.5" PointX="5.875" PointY="7.375" />
-        <EntityTypeShape EntityType="BroadcastModel.tblTestLog" Width="1.5" PointX="2.9033003090430518" PointY="6.9707450601136056" />
-        <EntityTypeShape EntityType="BroadcastModel.tblSchedule" Width="1.5" PointX="2.4852786764899633" PointY="7.03094446986492" />
-        </Diagram>
+      <Diagram DiagramId="3b03bd05a3334049b4b8b30fc8cae838" Name="圖表1">
+        <EntityTypeShape EntityType="BroadcastModel.tblApplication" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblRecordSound" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblSchedule" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblSIte" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblSiteStatusLog" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblSysLog" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblTestLog" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblUser" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BroadcastModel.tblUserGroup" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

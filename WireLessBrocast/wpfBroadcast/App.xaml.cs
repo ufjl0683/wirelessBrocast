@@ -37,11 +37,27 @@ namespace wpfBroadcast
 #if DEBUG
                return;
 #endif
+
+               //try
+               //{
+               //    wpfBroadcast.BroadcastEntities ent = new BroadcastEntities();
+
+               //    tblUser user = ent.tblUser.FirstOrDefault();
+               //    MessageBox.Show(user.UserName);
+               //}
+               //catch (Exception ex)
+               //{
+               //    MessageBox.Show(ex.Message);
+               //    MessageBox.Show(ex.InnerException.Message);
+
+               //}
+               AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                if (Environment.GetCommandLineArgs().Length < 2)
                    throw new Exception("缺少通訊設置參數");
                ComPort = Environment.GetCommandLineArgs()[1].ToString().Trim();
               Kenwood = new KenWood(0, ComPort, true);
-               
+
+             
 
            }
            catch (Exception ex)
@@ -166,13 +182,21 @@ namespace wpfBroadcast
 
                );
 
-           tmr.Change(0, 10 * 1000);
+          tmr.Change(0, 10 * 1000);
           
 #if DEBUG
            return;
 #endif
           
            
+       }
+
+       static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+       {
+           System.IO.File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory+"error.txt",(e.ExceptionObject as Exception).Message + "," + (e.ExceptionObject as Exception).StackTrace);
+           MessageBox.Show((e.ExceptionObject as Exception).Message + "," + (e.ExceptionObject as Exception).StackTrace);
+            //throw new NotImplementedException();
+         
        }
 
        

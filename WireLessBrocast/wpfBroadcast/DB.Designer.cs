@@ -68,6 +68,118 @@ namespace wpfBroadcast
         /// <summary>
         /// 沒有可用的中繼資料文件。
         /// </summary>
+        public ObjectSet<tblApplication> tblApplication
+        {
+            get
+            {
+                if ((_tblApplication == null))
+                {
+                    _tblApplication = base.CreateObjectSet<tblApplication>("tblApplication");
+                }
+                return _tblApplication;
+            }
+        }
+        private ObjectSet<tblApplication> _tblApplication;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblRecordSound> tblRecordSound
+        {
+            get
+            {
+                if ((_tblRecordSound == null))
+                {
+                    _tblRecordSound = base.CreateObjectSet<tblRecordSound>("tblRecordSound");
+                }
+                return _tblRecordSound;
+            }
+        }
+        private ObjectSet<tblRecordSound> _tblRecordSound;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblSchedule> tblSchedule
+        {
+            get
+            {
+                if ((_tblSchedule == null))
+                {
+                    _tblSchedule = base.CreateObjectSet<tblSchedule>("tblSchedule");
+                }
+                return _tblSchedule;
+            }
+        }
+        private ObjectSet<tblSchedule> _tblSchedule;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblSIte> tblSIte
+        {
+            get
+            {
+                if ((_tblSIte == null))
+                {
+                    _tblSIte = base.CreateObjectSet<tblSIte>("tblSIte");
+                }
+                return _tblSIte;
+            }
+        }
+        private ObjectSet<tblSIte> _tblSIte;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblSiteStatusLog> tblSiteStatusLog
+        {
+            get
+            {
+                if ((_tblSiteStatusLog == null))
+                {
+                    _tblSiteStatusLog = base.CreateObjectSet<tblSiteStatusLog>("tblSiteStatusLog");
+                }
+                return _tblSiteStatusLog;
+            }
+        }
+        private ObjectSet<tblSiteStatusLog> _tblSiteStatusLog;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblSysLog> tblSysLog
+        {
+            get
+            {
+                if ((_tblSysLog == null))
+                {
+                    _tblSysLog = base.CreateObjectSet<tblSysLog>("tblSysLog");
+                }
+                return _tblSysLog;
+            }
+        }
+        private ObjectSet<tblSysLog> _tblSysLog;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        public ObjectSet<tblTestLog> tblTestLog
+        {
+            get
+            {
+                if ((_tblTestLog == null))
+                {
+                    _tblTestLog = base.CreateObjectSet<tblTestLog>("tblTestLog");
+                }
+                return _tblTestLog;
+            }
+        }
+        private ObjectSet<tblTestLog> _tblTestLog;
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
         public ObjectSet<tblUser> tblUser
         {
             get
@@ -96,90 +208,66 @@ namespace wpfBroadcast
             }
         }
         private ObjectSet<tblUserGroup> _tblUserGroup;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        public ObjectSet<tblSIte> tblSIte
-        {
-            get
-            {
-                if ((_tblSIte == null))
-                {
-                    _tblSIte = base.CreateObjectSet<tblSIte>("tblSIte");
-                }
-                return _tblSIte;
-            }
-        }
-        private ObjectSet<tblSIte> _tblSIte;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        public ObjectSet<tblSysLog> tblSysLog
-        {
-            get
-            {
-                if ((_tblSysLog == null))
-                {
-                    _tblSysLog = base.CreateObjectSet<tblSysLog>("tblSysLog");
-                }
-                return _tblSysLog;
-            }
-        }
-        private ObjectSet<tblSysLog> _tblSysLog;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        public ObjectSet<tblRecordSound> tblRecordSound
-        {
-            get
-            {
-                if ((_tblRecordSound == null))
-                {
-                    _tblRecordSound = base.CreateObjectSet<tblRecordSound>("tblRecordSound");
-                }
-                return _tblRecordSound;
-            }
-        }
-        private ObjectSet<tblRecordSound> _tblRecordSound;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        public ObjectSet<tblTestLog> tblTestLog
-        {
-            get
-            {
-                if ((_tblTestLog == null))
-                {
-                    _tblTestLog = base.CreateObjectSet<tblTestLog>("tblTestLog");
-                }
-                return _tblTestLog;
-            }
-        }
-        private ObjectSet<tblTestLog> _tblTestLog;
-    
-        /// <summary>
-        /// 沒有可用的中繼資料文件。
-        /// </summary>
-        public ObjectSet<tblSchedule> tblSchedule
-        {
-            get
-            {
-                if ((_tblSchedule == null))
-                {
-                    _tblSchedule = base.CreateObjectSet<tblSchedule>("tblSchedule");
-                }
-                return _tblSchedule;
-            }
-        }
-        private ObjectSet<tblSchedule> _tblSchedule;
 
         #endregion
 
         #region AddTo 方法
+    
+        /// <summary>
+        /// 將新物件加入 tblApplication EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblApplication(tblApplication tblApplication)
+        {
+            base.AddObject("tblApplication", tblApplication);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblRecordSound EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblRecordSound(tblRecordSound tblRecordSound)
+        {
+            base.AddObject("tblRecordSound", tblRecordSound);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblSchedule EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblSchedule(tblSchedule tblSchedule)
+        {
+            base.AddObject("tblSchedule", tblSchedule);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblSIte EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblSIte(tblSIte tblSIte)
+        {
+            base.AddObject("tblSIte", tblSIte);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblSiteStatusLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblSiteStatusLog(tblSiteStatusLog tblSiteStatusLog)
+        {
+            base.AddObject("tblSiteStatusLog", tblSiteStatusLog);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblSysLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblSysLog(tblSysLog tblSysLog)
+        {
+            base.AddObject("tblSysLog", tblSysLog);
+        }
+    
+        /// <summary>
+        /// 將新物件加入 tblTestLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
+        /// </summary>
+        public void AddTotblTestLog(tblTestLog tblTestLog)
+        {
+            base.AddObject("tblTestLog", tblTestLog);
+        }
     
         /// <summary>
         /// 將新物件加入 tblUser EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
@@ -196,46 +284,6 @@ namespace wpfBroadcast
         {
             base.AddObject("tblUserGroup", tblUserGroup);
         }
-    
-        /// <summary>
-        /// 將新物件加入 tblSIte EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblSIte(tblSIte tblSIte)
-        {
-            base.AddObject("tblSIte", tblSIte);
-        }
-    
-        /// <summary>
-        /// 將新物件加入 tblSysLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblSysLog(tblSysLog tblSysLog)
-        {
-            base.AddObject("tblSysLog", tblSysLog);
-        }
-    
-        /// <summary>
-        /// 將新物件加入 tblRecordSound EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblRecordSound(tblRecordSound tblRecordSound)
-        {
-            base.AddObject("tblRecordSound", tblRecordSound);
-        }
-    
-        /// <summary>
-        /// 將新物件加入 tblTestLog EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblTestLog(tblTestLog tblTestLog)
-        {
-            base.AddObject("tblTestLog", tblTestLog);
-        }
-    
-        /// <summary>
-        /// 將新物件加入 tblSchedule EntitySet 的方法已被取代。請考慮改為使用關聯的 ObjectSet&lt;T&gt; 屬性的 .Add 方法。
-        /// </summary>
-        public void AddTotblSchedule(tblSchedule tblSchedule)
-        {
-            base.AddObject("tblSchedule", tblSchedule);
-        }
 
         #endregion
 
@@ -244,6 +292,88 @@ namespace wpfBroadcast
     #endregion
 
     #region 實體
+    
+    /// <summary>
+    /// 沒有可用的中繼資料文件。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BroadcastModel", Name="tblApplication")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tblApplication : EntityObject
+    {
+        #region Factory 方法
+    
+        /// <summary>
+        /// 建立新 tblApplication 物件。
+        /// </summary>
+        /// <param name="id">ID 屬性的初始值。</param>
+        /// <param name="applicationName">ApplicationName 屬性的初始值。</param>
+        public static tblApplication CreatetblApplication(global::System.Int32 id, global::System.String applicationName)
+        {
+            tblApplication tblApplication = new tblApplication();
+            tblApplication.ID = id;
+            tblApplication.ApplicationName = applicationName;
+            return tblApplication;
+        }
+
+        #endregion
+
+        #region 簡單屬性
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ApplicationName
+        {
+            get
+            {
+                return _ApplicationName;
+            }
+            set
+            {
+                OnApplicationNameChanging(value);
+                ReportPropertyChanging("ApplicationName");
+                _ApplicationName = StructuralObject.SetValidValue(value, false, "ApplicationName");
+                ReportPropertyChanged("ApplicationName");
+                OnApplicationNameChanged();
+            }
+        }
+        private global::System.String _ApplicationName;
+        partial void OnApplicationNameChanging(global::System.String value);
+        partial void OnApplicationNameChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// 沒有可用的中繼資料文件。
@@ -724,6 +854,166 @@ namespace wpfBroadcast
     /// <summary>
     /// 沒有可用的中繼資料文件。
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BroadcastModel", Name="tblSiteStatusLog")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tblSiteStatusLog : EntityObject
+    {
+        #region Factory 方法
+    
+        /// <summary>
+        /// 建立新 tblSiteStatusLog 物件。
+        /// </summary>
+        /// <param name="id">ID 屬性的初始值。</param>
+        /// <param name="sITE_ID">SITE_ID 屬性的初始值。</param>
+        /// <param name="startTimeStamp">StartTimeStamp 屬性的初始值。</param>
+        /// <param name="endTimeStamp">EndTimeStamp 屬性的初始值。</param>
+        /// <param name="message">Message 屬性的初始值。</param>
+        public static tblSiteStatusLog CreatetblSiteStatusLog(global::System.Int32 id, global::System.Int32 sITE_ID, global::System.DateTime startTimeStamp, global::System.DateTime endTimeStamp, global::System.String message)
+        {
+            tblSiteStatusLog tblSiteStatusLog = new tblSiteStatusLog();
+            tblSiteStatusLog.ID = id;
+            tblSiteStatusLog.SITE_ID = sITE_ID;
+            tblSiteStatusLog.StartTimeStamp = startTimeStamp;
+            tblSiteStatusLog.EndTimeStamp = endTimeStamp;
+            tblSiteStatusLog.Message = message;
+            return tblSiteStatusLog;
+        }
+
+        #endregion
+
+        #region 簡單屬性
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SITE_ID
+        {
+            get
+            {
+                return _SITE_ID;
+            }
+            set
+            {
+                OnSITE_IDChanging(value);
+                ReportPropertyChanging("SITE_ID");
+                _SITE_ID = StructuralObject.SetValidValue(value, "SITE_ID");
+                ReportPropertyChanged("SITE_ID");
+                OnSITE_IDChanged();
+            }
+        }
+        private global::System.Int32 _SITE_ID;
+        partial void OnSITE_IDChanging(global::System.Int32 value);
+        partial void OnSITE_IDChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime StartTimeStamp
+        {
+            get
+            {
+                return _StartTimeStamp;
+            }
+            set
+            {
+                OnStartTimeStampChanging(value);
+                ReportPropertyChanging("StartTimeStamp");
+                _StartTimeStamp = StructuralObject.SetValidValue(value, "StartTimeStamp");
+                ReportPropertyChanged("StartTimeStamp");
+                OnStartTimeStampChanged();
+            }
+        }
+        private global::System.DateTime _StartTimeStamp;
+        partial void OnStartTimeStampChanging(global::System.DateTime value);
+        partial void OnStartTimeStampChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime EndTimeStamp
+        {
+            get
+            {
+                return _EndTimeStamp;
+            }
+            set
+            {
+                OnEndTimeStampChanging(value);
+                ReportPropertyChanging("EndTimeStamp");
+                _EndTimeStamp = StructuralObject.SetValidValue(value, "EndTimeStamp");
+                ReportPropertyChanged("EndTimeStamp");
+                OnEndTimeStampChanged();
+            }
+        }
+        private global::System.DateTime _EndTimeStamp;
+        partial void OnEndTimeStampChanging(global::System.DateTime value);
+        partial void OnEndTimeStampChanged();
+    
+        /// <summary>
+        /// 沒有可用的中繼資料文件。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// 沒有可用的中繼資料文件。
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="BroadcastModel", Name="tblSysLog")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -943,7 +1233,6 @@ namespace wpfBroadcast
         /// 建立新 tblTestLog 物件。
         /// </summary>
         /// <param name="id">ID 屬性的初始值。</param>
-        /// <param name="dateTime">DateTime 屬性的初始值。</param>
         /// <param name="sITE_ID">SITE_ID 屬性的初始值。</param>
         /// <param name="aC">AC 屬性的初始值。</param>
         /// <param name="dC">DC 屬性的初始值。</param>
@@ -951,11 +1240,10 @@ namespace wpfBroadcast
         /// <param name="sPK">SPK 屬性的初始值。</param>
         /// <param name="dOOR">DOOR 屬性的初始值。</param>
         /// <param name="comm">Comm 屬性的初始值。</param>
-        public static tblTestLog CreatetblTestLog(global::System.Int32 id, global::System.DateTime dateTime, global::System.Int32 sITE_ID, global::System.Boolean aC, global::System.Boolean dC, global::System.Boolean aMP, global::System.Boolean sPK, global::System.Boolean dOOR, global::System.Boolean comm)
+        public static tblTestLog CreatetblTestLog(global::System.Int32 id, global::System.Int32 sITE_ID, global::System.Boolean aC, global::System.Boolean dC, global::System.Boolean aMP, global::System.Boolean sPK, global::System.Boolean dOOR, global::System.Boolean comm)
         {
             tblTestLog tblTestLog = new tblTestLog();
             tblTestLog.ID = id;
-            tblTestLog.DateTime = dateTime;
             tblTestLog.SITE_ID = sITE_ID;
             tblTestLog.AC = aC;
             tblTestLog.DC = dC;
@@ -1000,9 +1288,9 @@ namespace wpfBroadcast
         /// <summary>
         /// 沒有可用的中繼資料文件。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime DateTime
+        public Nullable<global::System.DateTime> DateTime
         {
             get
             {
@@ -1017,8 +1305,8 @@ namespace wpfBroadcast
                 OnDateTimeChanged();
             }
         }
-        private global::System.DateTime _DateTime;
-        partial void OnDateTimeChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _DateTime;
+        partial void OnDateTimeChanging(Nullable<global::System.DateTime> value);
         partial void OnDateTimeChanged();
     
         /// <summary>

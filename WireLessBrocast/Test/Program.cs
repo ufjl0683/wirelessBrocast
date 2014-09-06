@@ -16,6 +16,13 @@ namespace Test
     {
         static void Main(string[] args)
         {
+
+            Test.BroadcastEntities db = new BroadcastEntities();
+
+            var q= from n in db.tblUser  select n;
+
+                   foreach(tblUser user in q)
+                       Console.WriteLine(user.UserName);
             //Regex reg = new Regex("([0-9]{1,2}):([0-9]{1,2})");
 
             //MatchCollection match = reg.Matches("00:23");
@@ -84,8 +91,8 @@ namespace Test
             //    }
             //}
            // PanelTest();
-            Thread th = new Thread(PlayTask);
-            th.Start();
+            //Thread th = new Thread(PlayTask);
+            //th.Start();
             Console.ReadKey();
             //if (master.Play(1, 2, 5))
             //{
@@ -108,7 +115,7 @@ namespace Test
         static System.Media.SoundPlayer player;
         static void PlayTask()
         {
-            player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "1.wav");
+            player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "2.wav");
             for (int i = 0; i < 2; i++)
             {
                 player.Play();

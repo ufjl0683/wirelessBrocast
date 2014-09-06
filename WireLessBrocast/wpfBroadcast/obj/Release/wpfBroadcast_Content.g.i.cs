@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/broadcast.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mark.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/setting.png")]
 
 

@@ -32,15 +32,16 @@ namespace wpfBroadcast
             this.accdMenu.SelectAll();
 
           db  = new BroadcastEntities();
+          this.Title = db.tblApplication.FirstOrDefault().ApplicationName;
             tblSysLog log = new tblSysLog() { Message = "系統登入", SITE_ID = 0, Type = "S", StartTimeStamp = DateTime.Now ,UserID=App.loginUser.UserID};
 
             db.tblSysLog.AddObject(log);
             db.SaveChanges();
-         //   wpfBroadcast.BroadcastEntities broadcastEntities = new wpfBroadcast.BroadcastEntities();
+            wpfBroadcast.BroadcastEntities broadcastEntities = new wpfBroadcast.BroadcastEntities();
            
             // 將資料載入 tblSIte。您可以依需要修改這個程式碼。
             System.Windows.Data.CollectionViewSource tblSIteViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tblSIteViewSource")));
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSIte> tblSIteQuery = this.GettblSIteQuery(App.db);
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblSIte> tblSIteQuery = this.GettblSIteQuery(App.db);
             tblSIteViewSource.Source = tblSIteQuery.Execute(System.Data.Objects.MergeOption.AppendOnly);
 
         }
@@ -102,9 +103,9 @@ namespace wpfBroadcast
         
         }
 
-        private System.Data.Objects.ObjectQuery<tblSIte> GettblSIteQuery(BroadcastEntities broadcastEntities)
+        private System.Data.Objects.ObjectSet<tblSIte> GettblSIteQuery(BroadcastEntities broadcastEntities)
         {
-            System.Data.Objects.ObjectQuery<wpfBroadcast.tblSIte> tblSIteQuery = broadcastEntities.tblSIte;
+            System.Data.Objects.ObjectSet<wpfBroadcast.tblSIte> tblSIteQuery = broadcastEntities.tblSIte;
             // 傳回 ObjectQuery。
             return tblSIteQuery;
         }
@@ -197,9 +198,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-            App.IsPause = true;
+         //   App.IsPause = true;
             wnd.ShowDialog();
-            App.IsPause = false;
+         //   App.IsPause = false;
         }
 
         private void SilentTest_Click(object sender, RoutedEventArgs e)
@@ -211,9 +212,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-            App.IsPause = true;
+           // App.IsPause = true;
             wnd.ShowDialog();
-            App.IsPause = false;
+          //  App.IsPause = false;
         }
 
         private void btnSchTestLog(object sender, RoutedEventArgs e)

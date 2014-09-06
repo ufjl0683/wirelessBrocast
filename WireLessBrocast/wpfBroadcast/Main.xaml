@@ -6,7 +6,7 @@
      xmlns:con="clr-namespace:wpfBroadcast.Converter"
     
         xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit" xmlns:esri="http://schemas.esri.com/arcgis/client/2009" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:wpfBroadcast" mc:Ignorable="d" x:Class="wpfBroadcast.Main"
-        Title="Main" Height="461.756" Width="629.154" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Unloaded="Window_Unloaded" FontSize="18"  >
+        Title="Main" Height="461.756" Width="629.154" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" Unloaded="Window_Unloaded" FontSize="18" Icon="Mark.png"  >
     <Window.Resources>
         <con:BoolToColorConverter x:Key="BoolToColorConverter" />
         <Style  x:Key='HyperLinkButtonStyle' TargetType='{x:Type Button}'>
@@ -366,7 +366,7 @@
             </Controls:AccordionItem>
         </Controls:Accordion>
 
-        <esri:InfoWindow Margin="348,260,0,0"/>
+        <!--<esri:InfoWindow Margin="348,260,0,0"/>-->
 
         <DataGrid x:Name="tblSIteDataGrid"  HeadersVisibility="Column" IsReadOnly="True" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="229,0,0.4,0" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" FontSize="18" ColumnHeaderHeight="50" RowHeight="30" VerticalAlignment="Stretch">
 

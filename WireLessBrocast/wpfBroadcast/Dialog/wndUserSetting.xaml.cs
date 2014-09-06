@@ -26,6 +26,8 @@ namespace wpfBroadcast.Dialog
 
         private System.Data.Objects.ObjectQuery<tblUser> GettblUserQuery(BroadcastEntities broadcastEntities)
         {
+
+
             System.Data.Objects.ObjectQuery<wpfBroadcast.tblUser> tblUserQuery = broadcastEntities.tblUser;
             // 若要明確載入資料，您必須加入類似下面的 Include 方法:
             // tblUserQuery = tblUserQuery.Include("tblUser.tblUserGroup").
