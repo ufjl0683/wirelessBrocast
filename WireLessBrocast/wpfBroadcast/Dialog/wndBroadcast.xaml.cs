@@ -39,7 +39,7 @@ namespace wpfBroadcast.Dialog
 
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private  void Window_Loaded(object sender, RoutedEventArgs e)
         {
         
 
@@ -143,7 +143,7 @@ namespace wpfBroadcast.Dialog
             if(IsEmergency)
                 App.AddOperationlog("緊急廣播");
             else
-                App.AddOperationlog("預錄詞廣播");
+                App.AddOperationlog((cbRecordSound.SelectedItem as tblRecordSound).Name + "X" + txtCount.Text);
             tmr.Start();
         }
 
@@ -296,7 +296,7 @@ namespace wpfBroadcast.Dialog
             this.StopTask = true;
         }
 
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        private  void Button_Click_2(object sender, RoutedEventArgs e)
         {
             StopTask = true;
             IsPause = true;

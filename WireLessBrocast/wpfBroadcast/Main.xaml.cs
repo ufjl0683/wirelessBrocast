@@ -132,7 +132,7 @@ namespace wpfBroadcast
                 if (site.DoorOpen)
                 {
                     // VoicePlay(site.SITE_NAME + "箱門開啟");
-                    App.VoicePlayAsync(site.SITE_NAME + "箱門開啟");
+                     App.VoicePlayAsync(site.SITE_NAME + "箱門開啟");
                 }
             }
             
