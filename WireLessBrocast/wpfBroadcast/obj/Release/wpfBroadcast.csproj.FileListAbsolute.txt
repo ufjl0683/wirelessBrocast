@@ -60,3 +60,4 @@ D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\PresentationUI.dll
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\ReachFramework.dll
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\sapbusinessobjects.wpf.viewer.dll
 D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\SAPBusinessObjects.WPF.ViewerShared.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Release\Xceed.Wpf.Toolkit.dll

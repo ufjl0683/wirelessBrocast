@@ -62,7 +62,11 @@ namespace wpfBroadcast.Dialog
         async void tmr_Tick(object sender, EventArgs e)
         {
             if (IsPause)
+            {
+                tmr.Stop();
+                tmr.IsEnabled = false;
                 return;
+            }
             if (InTmr)
                 return;
 
@@ -133,6 +137,7 @@ namespace wpfBroadcast.Dialog
         //    grdSite.SelectedIndex = -1;
           //  Playcnt=System.Convert.ToInt32(txtCount.Text);
             tmr.Stop();
+            tmr.IsEnabled = true;
             (sender as Button).IsEnabled = false;
             int pindex=(this.cbRecordSound.SelectedItem as tblRecordSound).PlayIndex;
             StopTask = false;
@@ -143,7 +148,15 @@ namespace wpfBroadcast.Dialog
             if(IsEmergency)
                 App.AddOperationlog("緊急廣播");
             else
+            {
                 App.AddOperationlog((cbRecordSound.SelectedItem as tblRecordSound).Name + "X" + txtCount.Text);
+                 foreach (BroadcastBindingData data in grdSite.ItemsSource)
+                 {
+
+                     if (data.IsSelected)
+                         App.AddOperationlog(data.SITE_ID, (cbRecordSound.SelectedItem as tblRecordSound).Name + "X" + txtCount.Text);
+                 }
+             }
             tmr.Start();
         }
 
@@ -271,15 +284,22 @@ namespace wpfBroadcast.Dialog
            
         }
 
+        bool isForceLeave = false;
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("確定要離開", "Brocast", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            if (!isForceLeave &&   MessageBox.Show("確定要離開", "Brocast", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel  )
             {
                 e.Cancel = true;
                 return;
             }
 
+            busyIndicator.Content ="廣播任務結束中!";
+            busyIndicator.IsBusy = true;
+            this.StopTask = true;
+            IsPause = true;
             tmr.Stop();
+            tmr.IsEnabled = false;
+            
             if (InPlayTask)
             {
 
@@ -293,7 +313,8 @@ namespace wpfBroadcast.Dialog
                     }
                 }
             }
-            this.StopTask = true;
+        
+            busyIndicator.IsBusy = false;
         }
 
         private  void Button_Click_2(object sender, RoutedEventArgs e)
@@ -303,6 +324,7 @@ namespace wpfBroadcast.Dialog
             (sender as Button).IsEnabled = false;
             lock (App.Kenwood)
                 App.Kenwood.Abort(0);// all brocast
+
             //foreach (BroadcastBindingData site in grdSite.ItemsSource)
             //{
             //    if (!site.IsSelected)
@@ -329,6 +351,12 @@ namespace wpfBroadcast.Dialog
             wnd.ShowDialog();
             (sender as Button).IsEnabled = true;
             IsPause = false;
+            isForceLeave = true;
+            this.StopTask = true;
+            IsPause = true;
+            tmr.Stop();
+            tmr.IsEnabled = false;
+            this.Close();
             
         }
        

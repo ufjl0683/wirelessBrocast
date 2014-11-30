@@ -25,7 +25,11 @@ namespace wpfBroadcast
          
         public wndLogin()
         {
+
+           // MessageBox.Show("before iniy");
             InitializeComponent();
+           
+        //    MessageBox.Show("after iniy");
           //  App.Kenwood = new KenWood(0, App.ComPort, true);
         }
 
@@ -55,9 +59,18 @@ namespace wpfBroadcast
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
+            try
+            {
+               // MessageBox.Show("loaded");
+                wpfBroadcast.BroadcastEntities db = new BroadcastEntities();
 
-            this.txtAppName.Text = db.tblApplication.Take(1).FirstOrDefault().ApplicationName;
+                this.txtAppName.Text = db.tblApplication.Take(1).FirstOrDefault().ApplicationName;
+           //   MessageBox.Show(db.tblApplication.Take(1).FirstOrDefault().ApplicationName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "," + ex.StackTrace);
+            }
             
         }
 

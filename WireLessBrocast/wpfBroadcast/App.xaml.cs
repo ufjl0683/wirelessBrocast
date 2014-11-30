@@ -27,7 +27,7 @@ namespace wpfBroadcast
         public static int tmrLoopCnt = 0;
         public static bool IsPause = false;
     //   static bool IsScheduleTest;
-
+      //  public static System.Collections.Generic.Dictionary<int, int> dictSiteErrorCnt=new Dictionary<int,int>();
 
 
        static App()
@@ -54,8 +54,11 @@ namespace wpfBroadcast
                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                if (Environment.GetCommandLineArgs().Length < 2)
                    throw new Exception("缺少通訊設置參數");
+            //   MessageBox.Show("Open Comport");
                ComPort = Environment.GetCommandLineArgs()[1].ToString().Trim();
+          //     MessageBox.Show("build kenwood Comport");
               Kenwood = new KenWood(0, ComPort, true);
+           //   MessageBox.Show("build kenwood finish");
 
              
 
@@ -68,12 +71,21 @@ namespace wpfBroadcast
 
         tmr = new System.Threading.Timer((s) =>
                {
+                  // MessageBox.Show("in tmr");
 
+                   //  MessageBox.Show("step3");
+                 
                    if (IsPause)
                    {
                        InTmr = false;
                        return;
                    }
+
+                   if (InTmr)
+                       return;
+                   InTmr = true;
+                 
+               //    MessageBox.Show("step1");
                    if(tmrLoopCnt==0)
                        lock (App.Kenwood)
                        {
@@ -82,18 +94,19 @@ namespace wpfBroadcast
 
                        }
                    tmrLoopCnt = (tmrLoopCnt + 1) % 360;
+                 //  MessageBox.Show("step2");
                    if (Kenwood == null)
                        return;
-                   if (InTmr)
-                       return;
-                   InTmr = true;
+                
+                //   InTmr = true;
 
 
                    lock (db)
                    {
 
+                    //   MessageBox.Show("Begin Check testing task");
                        CheckTestingTask();
-
+                    //   MessageBox.Show("end Check testing task");
                        //lock (App.Kenwood)
                        //{
                        //    DateTime now = DateTime.Now;
@@ -103,6 +116,10 @@ namespace wpfBroadcast
                        var q = from n in db.tblSIte select n;
                        foreach (tblSIte site in q)
                        {
+                           //if (!dictSiteErrorCnt.ContainsKey(site.SITE_ID))
+                           //{
+                           //    dictSiteErrorCnt.Add(site.SITE_ID, 0);
+                           //}
                            if (IsPause)
                            {
                                InTmr = false;
@@ -117,8 +134,15 @@ namespace wpfBroadcast
                                    byte status1, status2;
                                    int cnt;
                                    bool success;
+                                   int trycnt = 0;
                                    lock (App.Kenwood)
-                                       success = App.Kenwood.GetPlayStatus(site.SITE_ID, out status1, out status2, out cnt);
+                                   {
+                                       do
+                                       {
+                                           success = App.Kenwood.GetPlayStatus(site.SITE_ID, out status1, out status2, out cnt);
+                                           trycnt++;
+                                       } while (!success && trycnt <3);
+                                   }
                                    System.Collections.BitArray array = new System.Collections.BitArray(new byte[] { status1, status2 });
                                    site.AC = array.Get((int)StatusIndex.AC);
                                    site.DC = array.Get((int)StatusIndex.DC);
@@ -131,9 +155,16 @@ namespace wpfBroadcast
                                    site.Amp = array.Get((int)StatusIndex.AMP);
                                    site.Speaker = array.Get((int)StatusIndex.SPEAKER);
                                    if (!success)
-                                       site.Comm = true;
+                                   {
+                                       //dictSiteErrorCnt[site.SITE_ID]++;
+                                       //if(dictSiteErrorCnt[site.SITE_ID]>3)
+                                            site.Comm = true;
+                                   }
                                    else
+                                   {
                                        site.Comm = false;
+                                       //dictSiteErrorCnt[site.SITE_ID] = 0;
+                                   }
                                    if (site.InTest && (!success || success && !array.Get((int)StatusIndex.BUSY)))
                                    {
                                        site.InTest = false;
@@ -182,7 +213,8 @@ namespace wpfBroadcast
 
                );
 
-          tmr.Change(0, 10 * 1000);
+          tmr.Change(5*1000, 60 * 1000);
+       
           
 #if DEBUG
            return;
@@ -216,7 +248,7 @@ namespace wpfBroadcast
                      {
                              
                        lock (App.Kenwood)
-                          site.Comm=     !App.Kenwood.Test(site.SITE_ID,  schd.IsMute,1);
+                           site.Comm=     !App.Kenwood.Test(site.SITE_ID,  schd.IsMute,schd.IsMute?  2:1);
 
                        site.InTest = true;
                      }
@@ -230,7 +262,16 @@ namespace wpfBroadcast
 
        }
 
+      public static  void  AddOperationlog( int siteid,string message)
+      {
+          wpfBroadcast.BroadcastEntities entity = new BroadcastEntities();
+          entity.tblSysLog.AddObject(
+                new tblSysLog() { Message = message, Type = "S", SITE_ID = siteid, StartTimeStamp = DateTime.Now, UserID = loginUser.UserID }
 
+              );
+
+          entity.SaveChanges();
+      }
       public  static void AddOperationlog( string message)
       {
           wpfBroadcast.BroadcastEntities entity=new BroadcastEntities();

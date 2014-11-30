@@ -46,6 +46,7 @@
         <TextBox x:Name="txtRepeat" HorizontalAlignment="Left" Height="27" Margin="433,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" Text="1" Visibility="Collapsed"/>
         <Button Content="開始"     HorizontalAlignment="Left" Height="37" Margin="572,12,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_1"/>
         <Button Content="緊急廣播"    Margin="0,0,39.6,10.4" Click="Button_Click_2" HorizontalAlignment="Right" Width="126" Height="41" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="txtTitle" HorizontalAlignment="Left" Height="27" Margin="139,12,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="344" Foreground="#FFFEF6F6" FontSize="24" FontWeight="Bold"/>
 
     </Grid>
 </Window>

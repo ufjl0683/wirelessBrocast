@@ -30,6 +30,11 @@ namespace wpfBroadcast.Dialog
 
             InitializeComponent();
             this.IsSilent = IsSilent;
+
+            if (IsSilent)
+                txtTitle.Text = "靜音測試";
+            else
+                txtTitle.Text = "一般測試";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -67,6 +72,7 @@ namespace wpfBroadcast.Dialog
                         {
                             if (IsPause)
                             {
+                                return;
                             }
                             if (!site.IsSelected)
                                 continue;
@@ -141,8 +147,8 @@ namespace wpfBroadcast.Dialog
 
                
                   
-
-                        site.IsSend = App.Kenwood.Test(site.SITE_ID, IsSilent, cnt);
+                
+                site.IsSend = App.Kenwood.Test(site.SITE_ID, IsSilent,IsSilent? 2:cnt);
 
                
                 
@@ -158,7 +164,10 @@ namespace wpfBroadcast.Dialog
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            IsPause = true;
+            IsStopTask = true;
             tmr.Stop();
+            tmr.IsEnabled = false;
           
         }
 
@@ -192,6 +201,8 @@ namespace wpfBroadcast.Dialog
             wnd.ShowDialog();
             (sender as Button).IsEnabled = true;
             IsPause = false;
+            tmr.Stop();
+            tmr.IsEnabled = false;
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)

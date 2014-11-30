@@ -198,9 +198,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-         //   App.IsPause = true;
+           App.IsPause = true;
             wnd.ShowDialog();
-         //   App.IsPause = false;
+           App.IsPause = false;
         }
 
         private void SilentTest_Click(object sender, RoutedEventArgs e)
@@ -212,9 +212,9 @@ namespace wpfBroadcast
 
 
             wnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-           // App.IsPause = true;
+            App.IsPause = true;
             wnd.ShowDialog();
-          //  App.IsPause = false;
+           App.IsPause = false;
         }
 
         private void btnSchTestLog(object sender, RoutedEventArgs e)

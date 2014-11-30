@@ -30,6 +30,8 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using wpfBroadcast;
+using wpfBroadcast.Converter;
 
 
 namespace wpfBroadcast {

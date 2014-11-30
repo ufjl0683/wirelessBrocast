@@ -26,10 +26,18 @@ namespace winTest
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            winTest.BroadcastEntities db = new BroadcastEntities();
+            try
+            {
+                winTest.BroadcastEntities db = new BroadcastEntities();
 
-            tblUser user = db.tblUser.FirstOrDefault();
-            MessageBox.Show(user.UserName);
+                tblUser user = db.tblUser.FirstOrDefault();
+
+                MessageBox.Show(user.UserName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "," + ex.StackTrace);
+            }
         }
     }
 }

@@ -51,14 +51,21 @@ namespace wpfBroadcast.Dialog
 
         }
 
+        bool InTmr = false;
+        bool IsPause = false;
         void tmr_Tick(object sender, EventArgs e)
         {
 
+            if (InTmr)
+                return;
+            InTmr = true;
             foreach (BroadcastBindingData site in grdSite.ItemsSource)
             {
                 
                     byte status1,status2;
                     int cnt;
+                    if (IsPause)
+                        return;
                     try
                     {
                         lock (App.Kenwood)
@@ -187,6 +194,11 @@ namespace wpfBroadcast.Dialog
                 MessageBox.Show("請先停止口語廣播");
                 e.Cancel = true;
             }
+
+            IsPause = true;
+            tmr.Stop();
+            tmr.IsEnabled = false;
+            
         }
     }
 }
