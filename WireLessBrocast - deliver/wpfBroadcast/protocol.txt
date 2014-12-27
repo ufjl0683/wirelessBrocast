@@ -1,0 +1,2 @@
+﻿//get play status  [id status cnt]
+                   // bit 0~bit7    busy    door   AC  DC   amp speaker

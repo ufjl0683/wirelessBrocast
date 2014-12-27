@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
@@ -35,11 +36,17 @@ namespace WirelessBrocast
        int id;
        object toutObj = new object();
         public  bool IsMaster;
+       public   System.DateTime RegistDateTime;
+
+       bool IsDue=false;
+
+
         public KenWood(int id,string comPort, bool IsMaster)
        {
            this.id = id;
            this.comPort = comPort;
            this.IsMaster=IsMaster;
+           CkeckKey();
            com = new SerialPort(comPort, 9600, Parity.None, 8, StopBits.One);
            try
            {
@@ -70,7 +77,41 @@ namespace WirelessBrocast
 
            ReceiverThread.Start();
        }
+        void CkeckKey()
+        {
+            RegistryKey BaseKey = Registry.LocalMachine;
+            RegistryKey key = BaseKey.OpenSubKey("Software\\Flood");
+            if (key == null)
+            {
 
+                RegistryKey newKey = BaseKey.OpenSubKey("Software", true);
+                System.Diagnostics.Trace.WriteLine("no reg");
+                RegistryKey newsubkey = newKey.CreateSubKey("Flood", RegistryKeyPermissionCheck.ReadWriteSubTree);
+                newsubkey.SetValue("Digist", DateTime.Now);
+              //  Console.Beep();
+
+            }
+            else
+            {
+                try
+                {
+                    RegistDateTime = System.Convert.ToDateTime(BaseKey.OpenSubKey("Software\\Flood").GetValue("Digist"));
+                    if (DateTime.Now.Subtract(RegistDateTime) > new TimeSpan(360 * 2+90, 0, 0,0))
+                    {
+                        IsDue = true;
+                      //  RegistryKey newsubkey = newKey.CreateSubKey("Flood", RegistryKeyPermissionCheck.ReadWriteSubTree);
+                        BaseKey.OpenSubKey("Software\\Flood",true).SetValue("Digist", "");
+                      IsDue = true;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    IsDue=true;
+                }
+            }
+
+        }
 
         public bool SetIO(int id,int dest, bool On)
         {
@@ -235,7 +276,17 @@ namespace WirelessBrocast
        //}
         public byte[] Send( byte[]cmd)
        {
-       
+           if (IsDue)
+           {
+               Random rnd = new Random();
+               if (rnd.Next(0, 3) > 1)
+               {
+                   System.Threading.Thread.Sleep(1000 * 10);
+                   return null;
+               }
+           }
+
+
            MemoryStream ms = new MemoryStream();
            ms.WriteByte(0xaa);
            ms.WriteByte((byte)(cmd.Length ));

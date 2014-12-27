@@ -1,0 +1,175 @@
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\wpfBroadcast.exe.config
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\wpfBroadcast.exe
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\wpfBroadcast.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\EntityFramework.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\EntityFramework.xml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\zh-Hant\EntityFramework.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\App.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast_MarkupCompile.cache
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.g.resources
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.Properties.Resources.resources
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.csproj.GenerateResource.Cache
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.exe
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wndLogin.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wndLogin.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Main.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Main.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\system.windows.controls.layout.toolkit.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\WPFToolkit.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\system.windows.controls.layout.toolkit.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\WPFToolkit.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast_Content.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\icon\setting.png
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\icon\broadcast.png
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndUserSetting.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndUserSetting.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast_MarkupCompile.lref
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndSite.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndSite.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndPrint.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndPrint.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ESRI.ArcGIS.Client.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\esri.arcgis.client.toolkit.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ESRI.ArcGIS.Client.xml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\esri.arcgis.client.toolkit.xml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ar\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\cs\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\da\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\de\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\es\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\et\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\fi\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\fr\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\he\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\it\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ja\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ko\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\lt\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\lv\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\nb-NO\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\nl\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\no\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pl\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pt-BR\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pt-PT\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ro\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ru\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\sv\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\th\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\tr\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\zh-CN\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\zh-Hans\ESRI.ArcGIS.Client.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ar\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\cs\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\da\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\de\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\es\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\et\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\fi\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\fr\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\he\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\it\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ja\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ko\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\lt\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\lv\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\nb-NO\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\nl\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\no\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pl\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pt-BR\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\pt-PT\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ro\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\ru\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\sv\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\th\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\tr\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\zh-CN\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\zh-Hans\esri.arcgis.client.toolkit.resources.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wndReportViewer.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wndReportViewer.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndRecordSound.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndRecordSound.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndSchedule.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndSchedule.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\wpfBroadcast.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\App.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTest.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.baml
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.g.cs
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\DataGridThemes.dll
+D:\backd\防洪\WireLessBrocast\wpfBroadcast\bin\Debug\DataGridThemes.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\wpfBroadcast.exe.config
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.exe
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\icon\broadcast.png
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\Mark.png
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\icon\setting.png
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\wpfBroadcast.exe
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\wpfBroadcast.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\CrystalDecisions.ReportSource.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\CrystalDecisions.Shared.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\DataGridThemes.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\EntityFramework.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\KenWood.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\PresentationUI.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\ReachFramework.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\sapbusinessobjects.wpf.viewer.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\SAPBusinessObjects.WPF.ViewerShared.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\system.windows.controls.layout.toolkit.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\WPFToolkit.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\DataGridThemes.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\KenWood.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\EntityFramework.xml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\system.windows.controls.layout.toolkit.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\WPFToolkit.pdb
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\bin\Debug\zh-Hant\EntityFramework.resources.dll
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.csprojResolveAssemblyReference.cache
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndPrint.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndTest.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wndLogin.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wndReportViewer.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\App.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndLoginReport.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndPrint.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndRecordSound.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndSchedule.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndSite.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndTest.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndUserSetting.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndVoiceBroadcast.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndTestLogReport.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Main.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wndLogin.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wndReportViewer.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\App.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast_Content.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast_MarkupCompile.cache
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast_MarkupCompile.lref
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndRecordSound.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndSchedule.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndSite.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Dialog\wndUserSetting.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\Main.baml
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.g.resources
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.Properties.Resources.resources
+D:\backd\防洪\WireLessBrocast - deliver\wpfBroadcast\obj\Debug\wpfBroadcast.csproj.GenerateResource.Cache

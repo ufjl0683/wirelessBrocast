@@ -13,4 +13,3 @@ D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.Properties.Resources
 D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.csproj.GenerateResource.Cache
 D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.exe
 D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.pdb
-D:\backd\防洪\WireLessBrocast\winTest\obj\Release\winTest.csprojResolveAssemblyReference.cache
