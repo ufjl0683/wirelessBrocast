@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,12 +18,12 @@ namespace Test
         static void Main(string[] args)
         {
 
-            Test.BroadcastEntities db = new BroadcastEntities();
+            //Test.BroadcastEntities db = new BroadcastEntities();
 
-            var q= from n in db.tblUser  select n;
+            //var q= from n in db.tblUser  select n;
 
-                   foreach(tblUser user in q)
-                       Console.WriteLine(user.UserName);
+            //       foreach(tblUser user in q)
+            //           Console.WriteLine(user.UserName);
             //Regex reg = new Regex("([0-9]{1,2}):([0-9]{1,2})");
 
             //MatchCollection match = reg.Matches("00:23");
@@ -93,6 +94,7 @@ namespace Test
            // PanelTest();
             //Thread th = new Thread(PlayTask);
             //th.Start();
+            //  CkeckKey();
             Console.ReadKey();
             //if (master.Play(1, 2, 5))
             //{
@@ -112,6 +114,44 @@ namespace Test
           
 
         }
+
+       static  DateTime RegistDateTime;
+        static  bool IsDue;
+        //static bool CkeckKey()
+        //{
+        //    RegistryKey BaseKey = Registry.LocalMachine;
+        //    RegistryKey key = BaseKey.OpenSubKey("Software\\Flood");
+        //    if (key == null)
+        //    {
+
+        //        RegistryKey newKey = BaseKey.OpenSubKey("Software", true);
+        //        System.Diagnostics.Trace.WriteLine("no reg");
+        //        RegistryKey newsubkey = newKey.CreateSubKey("Flood", RegistryKeyPermissionCheck.ReadWriteSubTree);
+        //        newsubkey.SetValue("Digist", DateTime.Now);
+        //        //  Console.Beep();
+               
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            RegistDateTime = System.Convert.ToDateTime(BaseKey.OpenSubKey("Software\\Flood").GetValue("Digist"));
+        //            if (DateTime.Now.Subtract(RegistDateTime) > new TimeSpan(360 * 2 + 90, 0, 0, 0))
+        //            {
+        //                IsDue = true;
+        //                //  RegistryKey newsubkey = newKey.CreateSubKey("Flood", RegistryKeyPermissionCheck.ReadWriteSubTree);
+        //                BaseKey.OpenSubKey("Software\\Flood", true).SetValue("Digist", "");
+        //                IsDue = true;
+        //            }
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            IsDue = true;
+        //        }
+        //    }
+
+        //}
         static System.Media.SoundPlayer player;
         static void PlayTask()
         {
